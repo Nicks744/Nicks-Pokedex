@@ -1,31 +1,15 @@
 {{define "history"}}{{template "head" .}}
 <section class="team-head">
-  <h1>Histórico <span class="muted">({{len .Items}})</span></h1>
-  {{if .Items}}
-  <form method="post" action="/history/clear" onsubmit="return confirm('Limpar o histórico?')">
-    <button class="btn btn--ghost" type="submit">Limpar</button>
-  </form>
-  {{end}}
+  <h1>Histórico <span class="muted" id="histCount">(0)</span></h1>
+  <button id="histClear" class="btn btn--ghost" type="button" hidden>Limpar</button>
 </section>
 
-{{if not .Items}}
-<div class="empty empty--lg">
+<div id="histEmpty" class="empty empty--lg" hidden>
   <strong>Nenhuma consulta ainda.</strong>
-  <span>Abra qualquer Pokémon na <a href="/">Pokédex</a> — ele aparece aqui.</span>
+  <span>Abra qualquer Pokémon na <a href="{{.BaseURL}}">Pokédex</a> — ele aparece aqui.</span>
 </div>
-{{else}}
-<div class="history">
-  {{range .Items}}
-  <a class="hist-card" href="/pokemon/{{.Slug}}">
-    <div class="hist-card__portrait">{{template "sprite" .Pokemon}}</div>
-    <div class="hist-card__body">
-      <span class="hist-card__dex">Nº {{printf "%04d" .Dex}}</span>
-      <span class="hist-card__name">{{.Name}}</span>
-      <div class="hist-card__types">{{range .Types}}{{template "typechip" .}}{{end}}</div>
-    </div>
-    <span class="hist-card__when">{{.When}}</span>
-  </a>
-  {{end}}
-</div>
-{{end}}
+
+<div id="history" class="history"></div>
+
+<script defer src="static/js/history.js"></script>
 {{template "foot" .}}{{end}}

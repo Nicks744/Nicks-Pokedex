@@ -18,10 +18,19 @@ go run . serve
 ### Opções
 
 ```bash
-go run . import -jar "CAMINHO\Cobblemon-....jar"   # usar outro jar
+go run . import -jar "CAMINHO\Cobblemon-....jar"   # usar outro jar (senão, auto-detecta)
 go run . import -offline                            # sem baixar stats de move
 go run . serve  -addr :9000                         # outra porta
+go run . build  -out docs -base /Repo/             # gera o site estático
 ```
+
+## Deploy (GitHub Pages, grátis)
+
+O comando `build` pré-renderiza todas as páginas em `docs/` (site 100% estático;
+Time e Histórico ficam no `localStorage` do navegador). O workflow
+[`.github/workflows/pages.yml`](.github/workflows/pages.yml) builda e publica no
+GitHub Pages **a cada push na `main`** — sem servidor, sem banco, sem custo. Usa
+os dados versionados em `data/`, então não precisa do jar do Cobblemon na nuvem.
 
 O caminho padrão do jar aponta para o Cobblemon detectado na máquina
 (`main.go`, constante `defaultJar`). Ao atualizar o mod, troque a constante

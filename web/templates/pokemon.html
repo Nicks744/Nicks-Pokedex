@@ -11,7 +11,7 @@
     <div class="poke__types">
       {{range .Types}}{{template "typebadge" .}}{{end}}
     </div>
-    <button class="btn team-toggle {{if $.InTeam}}is-in{{end}}" data-slug="{{.Slug}}" aria-pressed="{{$.InTeam}}">
+    <button class="btn team-toggle" data-slug="{{.Slug}}" aria-pressed="false">
       <span class="team-toggle__add">＋ Adicionar ao time</span>
       <span class="team-toggle__rem">✓ No time — remover</span>
     </button>
@@ -76,7 +76,7 @@
           <span class="build__nature">{{.Nature}} <em>{{.NatureEffect}}</em></span>
         </div>
         <div class="build__evs"><span class="build__k">EVs</span> {{.EVs}}</div>
-        {{if .Moves}}<div class="build__moves">{{range .Moves}}<a class="move-pill" href="/move/{{.Slug}}">{{if .Type}}<img class="gem" src="{{typeGem .Type}}" alt="" width="14" height="14">{{end}}{{.Name}}</a>{{end}}</div>{{end}}
+        {{if .Moves}}<div class="build__moves">{{range .Moves}}<a class="move-pill" href="move/{{.Slug}}">{{if .Type}}<img class="gem" src="{{typeGem .Type}}" alt="" width="14" height="14">{{end}}{{.Name}}</a>{{end}}</div>{{end}}
         {{if .Reason}}<p class="build__reason">{{.Reason}}</p>{{end}}
       </div>
       {{end}}
@@ -100,7 +100,7 @@
   </section>
 </article>
 {{end}}
-<script defer src="/static/js/pokemon.js"></script>
+<script defer src="static/js/pokemon.js"></script>
 {{template "foot" .}}{{end}}
 
 {{/* Uma barra de stat. Recebe dict Label/Value. */}}

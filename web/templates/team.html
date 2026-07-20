@@ -1,58 +1,21 @@
 {{define "team"}}{{template "head" .}}
 <section class="team-head">
-  <h1>Meu Time <span class="muted">({{len .Members}}/6)</span></h1>
-  {{if .Members}}
-  <form method="post" action="/team/clear" onsubmit="return confirm('Esvaziar o time?')">
-    <button class="btn btn--ghost" type="submit">Esvaziar</button>
-  </form>
-  {{end}}
+  <h1>Meu Time <span class="muted" id="teamCount">(0/6)</span></h1>
+  <button id="teamClear" class="btn btn--ghost" type="button" hidden>Esvaziar</button>
 </section>
 
-{{if not .Members}}
-<div class="empty empty--lg">
+<div id="teamEmpty" class="empty empty--lg" hidden>
   <strong>Seu time está vazio.</strong>
-  <span>Abra qualquer Pokémon na <a href="/">Pokédex</a> e clique em <em>Adicionar ao time</em>.</span>
-</div>
-{{else}}
-
-<div class="team-roster">
-  {{range .Members}}
-  <div class="roster-card">
-    <div class="roster-card__id">Nº {{printf "%04d" .Dex}}</div>
-    <div class="roster-card__portrait">{{template "sprite" .}}</div>
-    <a class="roster-card__name" href="/pokemon/{{.Slug}}">{{.Name}}</a>
-    <div class="roster-card__types">{{range .Types}}{{template "typebadge" .}}{{end}}</div>
-    <form method="post" action="/team/remove">
-      <input type="hidden" name="slug" value="{{.Slug}}">
-      <button class="roster-card__rem" type="submit" aria-label="Remover">✕</button>
-    </form>
-  </div>
-  {{end}}
+  <span>Abra qualquer Pokémon na <a href="{{.BaseURL}}">Pokédex</a> e clique em <em>Adicionar ao time</em>.</span>
 </div>
 
-<section class="card card--wide">
+<div id="teamRoster" class="team-roster"></div>
+
+<section id="teamCoverage" class="card card--wide" hidden>
   <h2 class="card__title">Cobertura defensiva do time</h2>
   <p class="card__hint">Cada célula mostra o multiplicador de dano que aquele membro <strong>recebe</strong>. A coluna final conta quantos membros são fracos àquele tipo — <span class="wc--hot-inline">números altos = buraco no time</span>.</p>
-  <div class="tablewrap">
-    <table class="matrix">
-      <thead>
-        <tr>
-          <th class="matrix__corner">Ataque</th>
-          {{range .Members}}<th class="matrix__member"><a href="/pokemon/{{.Slug}}">{{.Name}}</a></th>{{end}}
-          <th class="matrix__count">Fracos</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{range .Rows}}
-        <tr>
-          <td class="matrix__type">{{template "typebadge" .Type}}</td>
-          {{range .Cells}}<td class="cell {{multClass .}}">{{mult .}}×</td>{{end}}
-          <td class="wc {{if ge .WeakCount 3}}wc--hot{{else if ge .WeakCount 2}}wc--warn{{end}}">{{.WeakCount}}</td>
-        </tr>
-        {{end}}
-      </tbody>
-    </table>
-  </div>
+  <div class="tablewrap"><table class="matrix" id="teamMatrix"></table></div>
 </section>
-{{end}}
+
+<script defer src="static/js/team.js"></script>
 {{template "foot" .}}{{end}}

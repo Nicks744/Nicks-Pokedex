@@ -25,7 +25,7 @@
     <thead><tr><th>Pokémon</th><th>Como</th></tr></thead>
     <tbody>
       {{range .Learners}}<tr>
-        <td class="move__name"><a href="/pokemon/{{.Slug}}">{{.Name}}</a></td>
+        <td class="move__name"><a href="pokemon/{{.Slug}}">{{.Name}}</a></td>
         <td><span class="pill pill--sm">{{.Method}}</span></td>
       </tr>{{else}}<tr><td colspan="2" class="muted">Ninguém aprende este golpe na base.</td></tr>{{end}}
     </tbody>

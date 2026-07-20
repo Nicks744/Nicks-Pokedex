@@ -33,7 +33,7 @@
       const t = this.getAttribute("type") || "";
       const a = document.createElement("a");
       a.className = "type";
-      a.href = "/?type=" + t;
+      a.href = "?type=" + t;
       a.style.setProperty("--type-color", typeColor(t));
       a.textContent = title(t);
       this.replaceChildren(a);
@@ -46,7 +46,7 @@
   function renderCard(p, inTeam) {
     const a = document.createElement("a");
     a.className = "pcard__link";
-    a.href = "/pokemon/" + p.slug;
+    a.href = "pokemon/" + p.slug;
 
     const portrait = document.createElement("div");
     portrait.className = "pcard__portrait";

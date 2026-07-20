@@ -2,6 +2,10 @@
 *.exe
 /pokedex
 
+# Site estático gerado pelo `build` (é gerado no CI e publicado no Pages)
+/docs/
+/_preview/
+
 # Estado de runtime (o servidor reescreve; não versionar)
 /data/team.json
 /data/history.json

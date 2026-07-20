@@ -1,4 +1,5 @@
-// Package server expoe a pokedex/wiki e o construtor de time via HTTP.
+// Package server expoe a pokedex/wiki via HTTP e tambem gera a versao estatica
+// (para hospedar no GitHub Pages). Time e Historico sao client-side (localStorage).
 package server
 
 import (
@@ -7,9 +8,10 @@ import (
 	"html/template"
 	"io/fs"
 	"net/http"
+	"net/http/httptest"
+	"os"
 	"path/filepath"
 	"strings"
-	"time"
 
 	"nickspokedex/internal/analysis"
 	"nickspokedex/internal/model"
@@ -17,66 +19,76 @@ import (
 	"nickspokedex/internal/typechart"
 )
 
-// Server agrega o store e os templates.
+// Server agrega o store, os templates e o base path (para o GitHub Pages).
 type Server struct {
-	st  *store.Store
-	tpl *template.Template
+	st   *store.Store
+	tpl  *template.Template
+	base string // "/" local, "/repo/" no Pages — vai no <base href>
 }
 
-// Run carrega os dados e sobe o servidor HTTP.
-func Run(addr, dataDir string, webFS fs.FS) error {
+func newServer(dataDir string, webFS fs.FS, base string) (*Server, error) {
 	st, err := store.Load(dataDir)
 	if err != nil {
-		return err
+		return nil, err
+	}
+	if base == "" {
+		base = "/"
 	}
 	tpl, err := template.New("").Funcs(funcMap()).ParseFS(webFS, "templates/*.html")
 	if err != nil {
-		return err
+		return nil, err
 	}
-	s := &Server{st: st, tpl: tpl}
+	return &Server{st: st, tpl: tpl, base: base}, nil
+}
 
+func (s *Server) mux(dataDir string, webFS fs.FS) *http.ServeMux {
 	mux := http.NewServeMux()
 	staticFS, _ := fs.Sub(webFS, "static")
 	mux.Handle("GET /static/", http.StripPrefix("/static/", http.FileServerFS(staticFS)))
 
 	// Sprites e type gems gerados pela importacao.
-	sprites := http.FileServer(http.Dir(filepath.Join(dataDir, "sprites")))
-	mux.Handle("GET /sprites/", http.StripPrefix("/sprites/", sprites))
-	gems := http.FileServer(http.Dir(filepath.Join(dataDir, "types")))
-	mux.Handle("GET /types/", http.StripPrefix("/types/", gems))
+	mux.Handle("GET /sprites/", http.StripPrefix("/sprites/", http.FileServer(http.Dir(filepath.Join(dataDir, "sprites")))))
+	mux.Handle("GET /types/", http.StripPrefix("/types/", http.FileServer(http.Dir(filepath.Join(dataDir, "types")))))
 
 	mux.HandleFunc("GET /{$}", s.handleIndex)
 	mux.HandleFunc("GET /pokemon/{slug}", s.handlePokemon)
 	mux.HandleFunc("GET /move/{slug}", s.handleMove)
 	mux.HandleFunc("GET /team", s.handleTeam)
-	mux.HandleFunc("POST /team/add", s.handleTeamAdd)
-	mux.HandleFunc("POST /team/remove", s.handleTeamRemove)
-	mux.HandleFunc("POST /team/clear", s.handleTeamClear)
 	mux.HandleFunc("GET /history", s.handleHistory)
-	mux.HandleFunc("POST /history/clear", s.handleHistoryClear)
 
-	// API JSON (consumida pela busca/filtros no cliente).
+	// API JSON consumida pela busca no cliente. O caminho .json e o usado pela
+	// versao estatica (arquivo real em docs/api/pokemon.json).
 	mux.HandleFunc("GET /api/pokemon", s.handleAPIPokemon)
-	mux.HandleFunc("GET /api/team", s.handleAPITeam)
+	mux.HandleFunc("GET /api/pokemon.json", s.handleAPIPokemon)
+	return mux
+}
 
+// Run carrega os dados e sobe o servidor HTTP.
+func Run(addr, dataDir string, webFS fs.FS) error {
+	s, err := newServer(dataDir, webFS, "/")
+	if err != nil {
+		return err
+	}
 	fmt.Printf("Nick's Pokedex no ar em http://localhost%s\n", addr)
-	return http.ListenAndServe(addr, mux)
+	return http.ListenAndServe(addr, s.mux(dataDir, webFS))
 }
 
 // ---------- view models ----------
 
-// Base guarda campos comuns a todas as paginas (Title/Active para o nav).
+// Base guarda campos comuns a todas as paginas (nav + base path para URLs).
 type Base struct {
-	Title  string
-	Active string
-	Query  string
+	Title   string
+	Active  string
+	Query   string
+	BaseURL string
+}
+
+func (s *Server) base0(title, active string) Base {
+	return Base{Title: title, Active: active, BaseURL: s.base}
 }
 
 type indexView struct {
 	Base
-	Results  []model.Pokemon
-	Count    int
-	TeamSize int
 }
 
 type moveRow struct {
@@ -95,7 +107,6 @@ type pokemonView struct {
 	Weak    []typechart.Matchup
 	Resist  []typechart.Matchup
 	Immune  []typechart.Matchup
-	InTeam  bool
 	Family  *store.EvoNode
 	Builds  []analysis.Build
 }
@@ -106,29 +117,12 @@ type moveDetailView struct {
 	Learners []store.Learner
 }
 
-type teamRow struct {
-	Type      string
-	Cells     []float64
-	WeakCount int
-}
-
-type teamView struct {
-	Base
-	Members []model.Pokemon
-	Rows    []teamRow
-}
-
 // ---------- handlers ----------
 
 func (s *Server) handleIndex(w http.ResponseWriter, r *http.Request) {
-	q := r.URL.Query().Get("q")
-	results := s.st.Search(q)
-	s.render(w, "index", indexView{
-		Base:     Base{Title: "Pokédex", Active: "dex", Query: q},
-		Results:  results,
-		Count:    len(results),
-		TeamSize: len(s.st.Team().Members),
-	})
+	b := s.base0("Pokédex", "dex")
+	b.Query = r.URL.Query().Get("q")
+	s.render(w, "index", indexView{Base: b})
 }
 
 func (s *Server) handlePokemon(w http.ResponseWriter, r *http.Request) {
@@ -138,19 +132,9 @@ func (s *Server) handlePokemon(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	s.st.RecordView(slug)
-
 	weak, resist, immune := typechart.DefensiveProfile(p.Types)
-
-	inTeam := false
-	for _, m := range s.st.Team().Members {
-		if m == slug {
-			inTeam = true
-		}
-	}
-
-	view := pokemonView{
-		Base:    Base{Title: p.Name, Active: "dex"},
+	s.render(w, "pokemon", pokemonView{
+		Base:    s.base0(p.Name, "dex"),
 		P:       *p,
 		LevelUp: s.levelRows(p.LevelMoves),
 		TM:      s.plainRows(p.TMMoves),
@@ -159,11 +143,9 @@ func (s *Server) handlePokemon(w http.ResponseWriter, r *http.Request) {
 		Weak:    weak,
 		Resist:  resist,
 		Immune:  immune,
-		InTeam:  inTeam,
 		Family:  s.st.EvolutionFamily(slug),
 		Builds:  analysis.Suggest(*p, s.st.Move),
-	}
-	s.render(w, "pokemon", view)
+	})
 }
 
 func (s *Server) levelRows(lms []model.LevelMove) []moveRow {
@@ -197,63 +179,21 @@ func (s *Server) handleMove(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	learners := s.st.Learners[slug]
 	s.render(w, "move", moveDetailView{
-		Base:     Base{Title: mv.Name, Active: ""},
+		Base:     s.base0(mv.Name, ""),
 		M:        mv,
-		Learners: learners,
+		Learners: s.st.Learners[slug],
 	})
 }
 
+// Time e Historico sao renderizados como shells; o conteudo vem do localStorage
+// via JS (team.js / history.js), o que funciona tambem no site estatico.
 func (s *Server) handleTeam(w http.ResponseWriter, r *http.Request) {
-	members := s.st.TeamPokemon()
-
-	rows := make([]teamRow, 0, len(typechart.Types))
-	for _, atk := range typechart.Types {
-		row := teamRow{Type: atk, Cells: make([]float64, len(members))}
-		for i, m := range members {
-			mult := typechart.DefensiveMultiplier(atk, m.Types)
-			row.Cells[i] = mult
-			if mult > 1 {
-				row.WeakCount++
-			}
-		}
-		rows = append(rows, row)
-	}
-
-	s.render(w, "team", teamView{
-		Base:    Base{Title: "Meu Time", Active: "team"},
-		Members: members,
-		Rows:    rows,
-	})
+	s.render(w, "team", indexView{Base: s.base0("Meu Time", "team")})
 }
 
-func (s *Server) handleTeamAdd(w http.ResponseWriter, r *http.Request) {
-	slug := r.FormValue("slug")
-	if err := s.st.AddToTeam(slug); err != nil {
-		if isXHR(r) {
-			writeJSONErr(w, err)
-			return
-		}
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
-	}
-	s.finishTeamMutation(w, r)
-}
-
-func (s *Server) handleTeamRemove(w http.ResponseWriter, r *http.Request) {
-	_ = s.st.RemoveFromTeam(r.FormValue("slug"))
-	s.finishTeamMutation(w, r)
-}
-
-// finishTeamMutation responde JSON pra requisicoes fetch, ou redireciona no
-// fluxo sem JavaScript (progressive enhancement).
-func (s *Server) finishTeamMutation(w http.ResponseWriter, r *http.Request) {
-	if isXHR(r) {
-		writeJSON(w, map[string]any{"ok": true, "team": s.st.Team().Members})
-		return
-	}
-	redirectBack(w, r)
+func (s *Server) handleHistory(w http.ResponseWriter, r *http.Request) {
+	s.render(w, "history", indexView{Base: s.base0("Histórico", "history")})
 }
 
 // ---------- API JSON ----------
@@ -281,18 +221,9 @@ func (s *Server) handleAPIPokemon(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, out)
 }
 
-// spriteURL retorna o caminho do sprite servido localmente.
+// spriteURL retorna o caminho RELATIVO do sprite (resolvido pelo <base href>).
 func spriteURL(dex int) string {
-	return fmt.Sprintf("/sprites/%d.png", dex)
-}
-
-func (s *Server) handleAPITeam(w http.ResponseWriter, r *http.Request) {
-	writeJSON(w, map[string]any{"team": s.st.Team().Members})
-}
-
-func isXHR(r *http.Request) bool {
-	return r.Header.Get("X-Requested-With") == "fetch" ||
-		strings.Contains(r.Header.Get("Accept"), "application/json")
+	return fmt.Sprintf("sprites/%d.png", dex)
 }
 
 func writeJSON(w http.ResponseWriter, v any) {
@@ -300,83 +231,137 @@ func writeJSON(w http.ResponseWriter, v any) {
 	_ = json.NewEncoder(w).Encode(v)
 }
 
-func writeJSONErr(w http.ResponseWriter, err error) {
-	w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	w.WriteHeader(http.StatusBadRequest)
-	_ = json.NewEncoder(w).Encode(map[string]string{"error": err.Error()})
-}
-
-func (s *Server) handleTeamClear(w http.ResponseWriter, r *http.Request) {
-	_ = s.st.ClearTeam()
-	http.Redirect(w, r, "/team", http.StatusSeeOther)
-}
-
-// ---------- historico ----------
-
-type historyItem struct {
-	model.Pokemon
-	When string
-}
-
-type historyView struct {
-	Base
-	Items []historyItem
-}
-
-func (s *Server) handleHistory(w http.ResponseWriter, r *http.Request) {
-	now := time.Now()
-	var items []historyItem
-	for _, e := range s.st.History() {
-		p, ok := s.st.Get(e.Slug)
-		if !ok {
-			continue
-		}
-		items = append(items, historyItem{
-			Pokemon: *p,
-			When:    relTime(now, time.Unix(e.At, 0)),
-		})
-	}
-	s.render(w, "history", historyView{
-		Base:  Base{Title: "Histórico", Active: "history"},
-		Items: items,
-	})
-}
-
-func (s *Server) handleHistoryClear(w http.ResponseWriter, r *http.Request) {
-	_ = s.st.ClearHistory()
-	http.Redirect(w, r, "/history", http.StatusSeeOther)
-}
-
-// relTime formata "há X" em pt-br.
-func relTime(now, then time.Time) string {
-	d := now.Sub(then)
-	switch {
-	case d < time.Minute:
-		return "agora mesmo"
-	case d < time.Hour:
-		return fmt.Sprintf("há %d min", int(d.Minutes()))
-	case d < 24*time.Hour:
-		return fmt.Sprintf("há %d h", int(d.Hours()))
-	case d < 48*time.Hour:
-		return "ontem"
-	default:
-		return fmt.Sprintf("há %d dias", int(d.Hours()/24))
-	}
-}
-
-func redirectBack(w http.ResponseWriter, r *http.Request) {
-	dest := r.Header.Get("Referer")
-	if dest == "" {
-		dest = "/team"
-	}
-	http.Redirect(w, r, dest, http.StatusSeeOther)
-}
-
 func (s *Server) render(w http.ResponseWriter, name string, data any) {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	if err := s.tpl.ExecuteTemplate(w, name, data); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
+}
+
+// ---------- geracao estatica (GitHub Pages) ----------
+
+// BuildStatic gera o site estatico completo em outDir, reaproveitando os mesmos
+// handlers via httptest. base e o prefixo de URL (ex.: "/Nicks-Pokedex/").
+func BuildStatic(dataDir string, webFS fs.FS, outDir, base string) error {
+	if base == "" {
+		base = "/"
+	}
+	if !strings.HasSuffix(base, "/") {
+		base += "/"
+	}
+	s, err := newServer(dataDir, webFS, base)
+	if err != nil {
+		return err
+	}
+	h := s.mux(dataDir, webFS)
+
+	if err := os.RemoveAll(outDir); err != nil {
+		return err
+	}
+	// .nojekyll evita o processamento do Jekyll no GitHub Pages.
+	if err := writeFile(filepath.Join(outDir, ".nojekyll"), nil); err != nil {
+		return err
+	}
+
+	// Paginas HTML (usa index.html dentro de cada pasta -> URLs limpas).
+	pages := map[string]string{
+		"/":        "index.html",
+		"/team":    "team/index.html",
+		"/history": "history/index.html",
+	}
+	for _, p := range s.st.AllSorted() {
+		pages["/pokemon/"+p.Slug] = "pokemon/" + p.Slug + "/index.html"
+	}
+	for slug := range s.st.Moves {
+		pages["/move/"+slug] = "move/" + slug + "/index.html"
+	}
+
+	n := 0
+	for url, out := range pages {
+		body, code := snapshot(h, url)
+		if code != http.StatusOK {
+			return fmt.Errorf("gerando %s: status %d", url, code)
+		}
+		if err := writeFile(filepath.Join(outDir, out), body); err != nil {
+			return err
+		}
+		n++
+	}
+	fmt.Printf("paginas geradas: %d\n", n)
+
+	// API JSON estatica.
+	body, code := snapshot(h, "/api/pokemon.json")
+	if code != http.StatusOK {
+		return fmt.Errorf("gerando api: status %d", code)
+	}
+	if err := writeFile(filepath.Join(outDir, "api/pokemon.json"), body); err != nil {
+		return err
+	}
+
+	// 404 (GitHub Pages usa 404.html na raiz).
+	if body, code := snapshot(h, "/"); code == http.StatusOK {
+		_ = writeFile(filepath.Join(outDir, "404.html"), body)
+	}
+
+	// Assets: static (embed), sprites e types (disco).
+	if err := copyFSDir(webFS, "static", filepath.Join(outDir, "static")); err != nil {
+		return err
+	}
+	for _, d := range []string{"sprites", "types"} {
+		if err := copyDiskDir(filepath.Join(dataDir, d), filepath.Join(outDir, d)); err != nil {
+			return err
+		}
+	}
+	fmt.Printf("assets copiados. site estatico em %s (base %s)\n", outDir, base)
+	return nil
+}
+
+func snapshot(h http.Handler, url string) ([]byte, int) {
+	req := httptest.NewRequest(http.MethodGet, url, nil)
+	rec := httptest.NewRecorder()
+	h.ServeHTTP(rec, req)
+	return rec.Body.Bytes(), rec.Code
+}
+
+func writeFile(p string, data []byte) error {
+	if err := os.MkdirAll(filepath.Dir(p), 0o755); err != nil {
+		return err
+	}
+	return os.WriteFile(p, data, 0o644)
+}
+
+func copyFSDir(fsys fs.FS, sub, dst string) error {
+	sysFS, err := fs.Sub(fsys, sub)
+	if err != nil {
+		return err
+	}
+	return fs.WalkDir(sysFS, ".", func(p string, d fs.DirEntry, err error) error {
+		if err != nil || d.IsDir() {
+			return err
+		}
+		data, err := fs.ReadFile(sysFS, p)
+		if err != nil {
+			return err
+		}
+		return writeFile(filepath.Join(dst, filepath.FromSlash(p)), data)
+	})
+}
+
+func copyDiskDir(src, dst string) error {
+	return filepath.WalkDir(src, func(p string, d fs.DirEntry, err error) error {
+		if err != nil || d.IsDir() {
+			return err
+		}
+		rel, err := filepath.Rel(src, p)
+		if err != nil {
+			return err
+		}
+		data, err := os.ReadFile(p)
+		if err != nil {
+			return err
+		}
+		return writeFile(filepath.Join(dst, rel), data)
+	})
 }
 
 // ---------- template funcs ----------
@@ -392,7 +377,7 @@ func funcMap() template.FuncMap {
 		"lower":     strings.ToLower,
 		"dict":      dict,
 		"sprite":    spriteURL,
-		"typeGem":   func(t string) string { return "/types/" + strings.ToLower(t) + ".png" },
+		"typeGem":   func(t string) string { return "types/" + strings.ToLower(t) + ".png" },
 	}
 }
 

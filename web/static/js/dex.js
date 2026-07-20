@@ -19,9 +19,9 @@
     empty: document.getElementById("empty"),
   };
 
+  const { PokeStore: S } = window;
   const state = { q: "", types: new Set(), gen: "", sort: "dex" };
   let all = [];
-  const team = new Set(); // slugs no time (pro botão "+")
 
   /* --- filtros de tipo (chips) --- */
   function buildChips() {
@@ -65,33 +65,20 @@
     els.count.textContent = list.length + " Pokémon";
 
     const frag = document.createDocumentFragment();
-    for (const p of list) frag.appendChild(renderCard(p, team.has(p.slug)));
+    for (const p of list) frag.appendChild(renderCard(p, S.inTeam(p.slug)));
     els.grid.replaceChildren(frag);
     els.empty.hidden = list.length !== 0;
   }
 
-  /* --- botão "+" no card: adiciona/remove do time sem sair da página --- */
-  async function toggleTeam(slug, btn) {
-    const inTeam = team.has(slug);
-    const url = inTeam ? "/team/remove" : "/team/add";
-    btn.disabled = true;
-    try {
-      const res = await fetch(url, {
-        method: "POST",
-        headers: { "X-Requested-With": "fetch", "Content-Type": "application/x-www-form-urlencoded" },
-        body: "slug=" + encodeURIComponent(slug),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) { showToast(data.error || "Não foi possível atualizar o time."); return; }
-      if (inTeam) team.delete(slug); else team.add(slug);
-      const on = team.has(slug);
-      btn.classList.toggle("is-in", on);
-      btn.textContent = on ? "✓" : "＋";
-      btn.title = on ? "No time — clique para remover" : "Adicionar ao time";
-      btn.classList.remove("pop"); void btn.offsetWidth; btn.classList.add("pop");
-    } finally {
-      btn.disabled = false;
-    }
+  /* --- botão "+" no card: adiciona/remove do time (localStorage) --- */
+  function toggleTeam(slug, btn) {
+    const res = S.inTeam(slug) ? S.removeTeam(slug) : S.addTeam(slug);
+    if (!res.ok) { showToast(res.error || "Não foi possível atualizar o time."); return; }
+    const on = S.inTeam(slug);
+    btn.classList.toggle("is-in", on);
+    btn.textContent = on ? "✓" : "＋";
+    btn.title = on ? "No time — clique para remover" : "Adicionar ao time";
+    btn.classList.remove("pop"); void btn.offsetWidth; btn.classList.add("pop");
   }
 
   function showToast(msg) {
@@ -151,12 +138,9 @@
     wire();
     applyURLParams();
     try {
-      const [pokeRes, teamRes] = await Promise.all([fetch("/api/pokemon"), fetch("/api/team")]);
-      all = await pokeRes.json();
-      const t = await teamRes.json().catch(() => ({ team: [] }));
-      (t.team || []).forEach((s) => team.add(s));
+      all = await (await fetch("api/pokemon.json")).json();
     } catch (e) {
-      els.loading.textContent = "Falha ao carregar a base. Rodou `go run . import`?";
+      els.loading.textContent = "Falha ao carregar a base.";
       return;
     }
     els.loading.remove();
