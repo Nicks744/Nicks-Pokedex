@@ -1,0 +1,5 @@
+# Normaliza quebras de linha: LF no repositório para arquivos de texto.
+* text=auto eol=lf
+
+# Binários (sprites e gems) — nunca alterar.
+*.png binary

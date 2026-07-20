@@ -1,0 +1,123 @@
+{{define "pokemon"}}{{template "head" .}}
+{{with .P}}
+<article class="poke">
+  <header class="poke__head">
+    <div class="poke__portrait">
+      {{template "sprite" .}}
+      <button id="shinyToggle" class="shiny-toggle" type="button" title="Ver shiny" aria-label="Alternar shiny">✨</button>
+    </div>
+    <div class="poke__id">Nº {{printf "%04d" .Dex}} · {{.Generation}}</div>
+    <h1 class="poke__name">{{.Name}}</h1>
+    <div class="poke__types">
+      {{range .Types}}{{template "typebadge" .}}{{end}}
+    </div>
+    <button class="btn team-toggle {{if $.InTeam}}is-in{{end}}" data-slug="{{.Slug}}" aria-pressed="{{$.InTeam}}">
+      <span class="team-toggle__add">＋ Adicionar ao time</span>
+      <span class="team-toggle__rem">✓ No time — remover</span>
+    </button>
+    {{if .Description}}<p class="poke__desc">{{.Description}}</p>{{end}}
+  </header>
+
+  <div class="poke__grid">
+    <section class="card">
+      <h2 class="card__title">Base Stats</h2>
+      <div class="stats">
+        {{template "statrow" (dict "Label" "HP"  "Value" .BaseStats.HP)}}
+        {{template "statrow" (dict "Label" "Atk" "Value" .BaseStats.Attack)}}
+        {{template "statrow" (dict "Label" "Def" "Value" .BaseStats.Defence)}}
+        {{template "statrow" (dict "Label" "SpA" "Value" .BaseStats.SpAttack)}}
+        {{template "statrow" (dict "Label" "SpD" "Value" .BaseStats.SpDefence)}}
+        {{template "statrow" (dict "Label" "Spe" "Value" .BaseStats.Speed)}}
+      </div>
+      <div class="stats__total">BST <strong>{{.BaseStats.Total}}</strong></div>
+    </section>
+
+    <section class="card">
+      <h2 class="card__title">Perfil</h2>
+      <dl class="kv">
+        <dt>Habilidades</dt>
+        <dd>{{range .Abilities}}<span class="pill">{{.Name}}{{if .Hidden}} <em>(oculta)</em>{{end}}</span>{{end}}</dd>
+        <dt>Grupos de ovo</dt>
+        <dd>{{range .EggGroups}}<span class="pill">{{title .}}</span>{{else}}<span class="muted">—</span>{{end}}</dd>
+      </dl>
+    </section>
+
+    <section class="card card--wide">
+      <h2 class="card__title">Matchups defensivos</h2>
+      <p class="card__hint">O quanto este Pokémon <strong>sofre</strong> de cada tipo de ataque.</p>
+      <div class="matchups">
+        {{if $.Weak}}<div class="matchups__group"><span class="matchups__label">Fraco a</span>{{range $.Weak}}{{template "matchup" .}}{{end}}</div>{{end}}
+        {{if $.Resist}}<div class="matchups__group"><span class="matchups__label">Resiste</span>{{range $.Resist}}{{template "matchup" .}}{{end}}</div>{{end}}
+        {{if $.Immune}}<div class="matchups__group"><span class="matchups__label">Imune</span>{{range $.Immune}}{{template "matchup" .}}{{end}}</div>{{end}}
+      </div>
+    </section>
+  </div>
+
+  {{if and $.Family $.Family.Next}}
+  <section class="card card--wide">
+    <div class="card__titlebar">
+      <h2 class="card__title">Linha evolutiva</h2>
+      <button id="evoInspect" class="btn btn--ghost btn--sm" type="button">Inspecionar</button>
+    </div>
+    <div id="evoChain" class="evo-chain">{{template "evonode" $.Family}}</div>
+  </section>
+  {{end}}
+
+  {{if $.Builds}}
+  <section class="card card--wide">
+    <h2 class="card__title">Natureza &amp; Builds</h2>
+    <p class="card__hint">Natureza que mais combina: <strong>{{(index $.Builds 0).Nature}}</strong>
+      <span class="muted">({{(index $.Builds 0).NatureEffect}})</span>. Sugestões abaixo — golpes tirados do que ele aprende.</p>
+    <div class="builds">
+      {{range $.Builds}}
+      <div class="build">
+        <div class="build__head">
+          <span class="build__role">{{.Role}}</span>
+          <span class="build__nature">{{.Nature}} <em>{{.NatureEffect}}</em></span>
+        </div>
+        <div class="build__evs"><span class="build__k">EVs</span> {{.EVs}}</div>
+        {{if .Moves}}<div class="build__moves">{{range .Moves}}<a class="move-pill" href="/move/{{.Slug}}">{{if .Type}}<img class="gem" src="{{typeGem .Type}}" alt="" width="14" height="14">{{end}}{{.Name}}</a>{{end}}</div>{{end}}
+        {{if .Reason}}<p class="build__reason">{{.Reason}}</p>{{end}}
+      </div>
+      {{end}}
+    </div>
+  </section>
+  {{end}}
+
+  <section class="card card--wide">
+    <h2 class="card__title">Golpes</h2>
+    {{if $.LevelUp}}
+    <h3 class="card__subtitle">Por level</h3>
+    <div class="tablewrap"><table class="movetable">
+      <thead><tr><th>Lv</th><th>Golpe</th><th>Tipo</th><th>Cat.</th><th>Pow</th><th>Prec</th><th>PP</th></tr></thead>
+      <tbody>{{range $.LevelUp}}<tr><td class="lv">{{.Level}}</td>{{template "movecells" .}}</tr>{{end}}</tbody>
+    </table></div>
+    {{end}}
+
+    {{template "movesection" (dict "Title" "TMs / HMs" "Rows" $.TM)}}
+    {{template "movesection" (dict "Title" "Ovo" "Rows" $.Egg)}}
+    {{template "movesection" (dict "Title" "Tutor" "Rows" $.Tutor)}}
+  </section>
+</article>
+{{end}}
+<script defer src="/static/js/pokemon.js"></script>
+{{template "foot" .}}{{end}}
+
+{{/* Uma barra de stat. Recebe dict Label/Value. */}}
+{{define "statrow"}}<div class="stat">
+  <span class="stat__label">{{.Label}}</span>
+  <span class="stat__val">{{.Value}}</span>
+  <span class="stat__bar"><i style="width:{{statPct .Value}}%; background:{{statColor .Value}}"></i></span>
+</div>{{end}}
+
+{{/* Chip de matchup defensivo. Recebe typechart.Matchup. */}}
+{{define "matchup"}}<span class="matchup {{multClass .Multiplier}}" style="--type-color:{{typeColor .Type}}">{{title .Type}} <b>{{mult .Multiplier}}×</b></span>{{end}}
+
+{{/* Secao de golpes sem level (TM/Egg/Tutor). Recebe dict Title/Rows. */}}
+{{define "movesection"}}{{if .Rows}}
+<h3 class="card__subtitle">{{.Title}}</h3>
+<div class="tablewrap"><table class="movetable">
+  <thead><tr><th>Golpe</th><th>Tipo</th><th>Cat.</th><th>Pow</th><th>Prec</th><th>PP</th></tr></thead>
+  <tbody>{{range .Rows}}<tr>{{template "movecells" .}}</tr>{{end}}</tbody>
+</table></div>
+{{end}}{{end}}

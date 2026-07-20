@@ -1,0 +1,34 @@
+{{define "move"}}{{template "head" .}}
+{{with .M}}
+<article class="move-detail">
+  <header class="move-detail__head">
+    <h1 class="move-detail__name">{{.Name}}</h1>
+    <div class="move-detail__meta">
+      {{if .Type}}{{template "typebadge" .Type}}{{end}}
+      <span class="cat cat--{{lower .Category}}">{{if .Category}}{{.Category}}{{else}}—{{end}}</span>
+    </div>
+  </header>
+
+  <div class="stat-tiles">
+    <div class="tile"><span class="tile__label">Poder</span><span class="tile__val">{{if gt .Power 0}}{{.Power}}{{else}}—{{end}}</span></div>
+    <div class="tile"><span class="tile__label">Precisão</span><span class="tile__val">{{if gt .Accuracy 0}}{{.Accuracy}}{{else}}∞{{end}}</span></div>
+    <div class="tile"><span class="tile__label">PP</span><span class="tile__val">{{if gt .PP 0}}{{.PP}}{{else}}—{{end}}</span></div>
+  </div>
+
+  {{if .Desc}}<p class="move-detail__desc">{{.Desc}}</p>{{end}}
+</article>
+{{end}}
+
+<section class="card card--wide">
+  <h2 class="card__title">Quem aprende <span class="muted">({{len .Learners}})</span></h2>
+  <div class="tablewrap"><table class="movetable">
+    <thead><tr><th>Pokémon</th><th>Como</th></tr></thead>
+    <tbody>
+      {{range .Learners}}<tr>
+        <td class="move__name"><a href="/pokemon/{{.Slug}}">{{.Name}}</a></td>
+        <td><span class="pill pill--sm">{{.Method}}</span></td>
+      </tr>{{else}}<tr><td colspan="2" class="muted">Ninguém aprende este golpe na base.</td></tr>{{end}}
+    </tbody>
+  </table></div>
+</section>
+{{template "foot" .}}{{end}}

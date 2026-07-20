@@ -1,0 +1,60 @@
+{{define "head"}}<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{.Title}} · Nick's Pokédex</title>
+<link rel="stylesheet" href="/static/css/app.css">
+<script defer src="/static/js/components.js"></script>
+</head>
+<body>
+{{template "nav" .}}
+<main class="container">{{end}}
+
+{{define "foot"}}</main>
+<footer class="foot">
+  <span>Nick's Pokédex</span> · dados extraídos do <strong>Cobblemon</strong> · stats de golpes via Pokémon Showdown
+</footer>
+</body>
+</html>{{end}}
+
+{{define "nav"}}<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/">
+      <span class="brand__dot"></span> Nick's Pokédex
+    </a>
+    <nav class="nav__links">
+      <a href="/" class="nav__link {{if eq .Active "dex"}}is-active{{end}}">Pokédex</a>
+      <a href="/team" class="nav__link {{if eq .Active "team"}}is-active{{end}}">Meu Time</a>
+      <a href="/history" class="nav__link {{if eq .Active "history"}}is-active{{end}}">Histórico</a>
+    </nav>
+  </div>
+</header>{{end}}
+
+{{/* Badge de tipo (link). Recebe a string do tipo (ex.: "grass"). */}}
+{{define "typebadge"}}<a class="type type--{{.}}" href="/?type={{.}}" style="--type-color:{{typeColor .}}">{{title .}}</a>{{end}}
+
+{{/* Chip de tipo (span, sem link). Use quando o elemento pai já é um <a>,
+     pois <a> dentro de <a> é HTML inválido e quebra o layout. */}}
+{{define "typechip"}}<span class="type" style="--type-color:{{typeColor .}}">{{title .}}</span>{{end}}
+
+{{/* Sprite de um Pokemon. Recebe um model.Pokemon (usa .Dex e .Name). */}}
+{{define "sprite"}}<img class="sprite" src="{{sprite .Dex}}" alt="{{.Name}}" loading="lazy" width="96" height="96" onerror="this.classList.add('sprite--missing')">{{end}}
+
+{{/* Celulas de um golpe numa tabela de moves. Recebe um moveRow. */}}
+{{define "movecells"}}<td class="move__name"><a href="/move/{{.Slug}}">{{.Name}}</a></td>
+<td class="move__type">{{if .Type}}<img class="gem" src="{{typeGem .Type}}" alt="" width="16" height="16" loading="lazy">{{template "typebadge" .Type}}{{end}}</td>
+<td><span class="cat cat--{{lower .Category}}">{{if .Category}}{{.Category}}{{else}}—{{end}}</span></td>
+<td class="num">{{if gt .Power 0}}{{.Power}}{{else}}—{{end}}</td>
+<td class="num">{{if gt .Accuracy 0}}{{.Accuracy}}{{else}}—{{end}}</td>
+<td class="num">{{if gt .PP 0}}{{.PP}}{{else}}—{{end}}</td>{{end}}
+
+{{/* No recursivo da linha evolutiva. Recebe um store.EvoNode. */}}
+{{define "evonode"}}<div class="evo-stage">
+  {{if .Condition}}<div class="evo-arrow"><span class="evo-arrow__ico">▶</span><span class="evo-cond">{{.Condition}}</span></div>{{end}}
+  <a class="evo-mon {{if .Current}}is-current{{end}}" href="/pokemon/{{.Slug}}" title="{{.Name}}">
+    {{template "sprite" .}}
+    <span class="evo-mon__name">{{.Name}}</span>
+  </a>
+  {{if .Next}}<div class="evo-branches">{{range .Next}}{{template "evonode" .}}{{end}}</div>{{end}}
+</div>{{end}}

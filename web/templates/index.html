@@ -1,0 +1,50 @@
+{{define "index"}}{{template "head" .}}
+<section class="hero">
+  <h1 class="hero__title">Pokédex do Nick</h1>
+  <p class="hero__sub">Busca instantânea na sua base do Cobblemon — tipos, golpes por level e análise de time.</p>
+  <div class="search">
+    <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 21l-4.3-4.3M11 19a8 8 0 100-16 8 8 0 000 16z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <input id="q" class="search__input" type="search" placeholder="Buscar por nome ou #número…" value="{{.Query}}" autocomplete="off" spellcheck="false">
+  </div>
+</section>
+
+<section class="filters" aria-label="Filtros">
+  <div class="chips" id="typeChips"></div>
+  <div class="filters__row">
+    <label class="field">
+      <span class="field__label">Geração</span>
+      <select id="gen" class="select">
+        <option value="">Todas</option>
+        <option value="Gen 1">Gen 1</option>
+        <option value="Gen 2">Gen 2</option>
+        <option value="Gen 3">Gen 3</option>
+        <option value="Gen 4">Gen 4</option>
+        <option value="Gen 5">Gen 5</option>
+        <option value="Gen 6">Gen 6</option>
+        <option value="Gen 7">Gen 7</option>
+        <option value="Gen 8">Gen 8</option>
+        <option value="Gen 9">Gen 9</option>
+      </select>
+    </label>
+    <label class="field">
+      <span class="field__label">Ordenar</span>
+      <select id="sort" class="select">
+        <option value="dex">Nº da Pokédex</option>
+        <option value="name">Nome (A–Z)</option>
+        <option value="bst">Total de stats (BST)</option>
+      </select>
+    </label>
+    <button id="clearFilters" class="btn btn--ghost" type="button">Limpar filtros</button>
+    <span class="result-count" id="count" aria-live="polite"></span>
+  </div>
+</section>
+
+<div id="loading" class="loading"><span class="spinner"></span> Carregando Pokédex…</div>
+<div id="empty" class="empty" hidden>
+  <strong>Nenhum Pokémon encontrado.</strong>
+  <span>Tente outro nome ou limpe os filtros.</span>
+</div>
+<div id="grid" class="grid" aria-live="polite"></div>
+
+<script defer src="/static/js/dex.js"></script>
+{{template "foot" .}}{{end}}

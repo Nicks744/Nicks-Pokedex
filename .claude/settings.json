@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+
+  "//": "Whitelist do projeto Nick's Pokedex. 'allow' = rotina segura (roda sem perguntar). 'ask' = precisa de cuidado (pede confirmacao). 'deny' = nunca.",
+
+  "permissions": {
+    "allow": [
+      "Bash(go build:*)",
+      "Bash(go run:*)",
+      "Bash(go vet:*)",
+      "Bash(go test:*)",
+      "Bash(go mod:*)",
+      "Bash(go fmt:*)",
+      "Bash(go doc:*)",
+      "Bash(gofmt:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(unzip -l:*)",
+      "Bash(unzip -p:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git branch:*)",
+      "Bash(git checkout -b:*)",
+      "Bash(git switch:*)",
+      "Bash(git stash:*)",
+      "Bash(git init:*)",
+      "Read(**)",
+      "Edit(**)",
+      "Write(**)",
+      "Grep(**)",
+      "Glob(**)",
+      "TodoWrite"
+    ],
+
+    "ask": [
+      "Bash(rm:*)",
+      "Bash(mv:*)",
+      "Bash(curl:*)",
+      "Bash(go install:*)",
+      "Bash(git push:*)",
+      "Bash(git reset:*)",
+      "Bash(git rebase:*)",
+      "Bash(git clean:*)",
+      "Bash(git checkout:*)"
+    ],
+
+    "deny": [
+      "Bash(rm -rf /:*)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)"
+    ]
+  }
+}
