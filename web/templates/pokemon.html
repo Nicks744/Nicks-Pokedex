@@ -85,6 +85,39 @@
     </section>
   </div>
 
+  <section class="card card--wide">
+    <div class="card__titlebar">
+      <h2 class="card__title">Onde encontrar</h2>
+      <span class="card__hint">Cobblemon e Pixelmon</span>
+    </div>
+    {{if $.Encounters}}
+    <div class="enc-groups">
+      {{range $.Encounters}}
+      <div class="enc-group">
+        <div class="enc-src enc-src--{{lower .Source}}">{{.Source}}</div>
+        <ul class="enc-list">
+          {{range .Items}}
+          <li class="enc">
+            <span class="enc__rarity r{{.RarityRank}}" title="{{.Rarity}}">{{.Rarity}}</span>
+            <div class="enc__main">
+              <div class="enc__head">
+                <span class="enc__method">{{.Method}}</span>
+                {{if .Levels}}<span class="enc__lv">Lv {{.Levels}}</span>{{end}}
+              </div>
+              {{if .Biomes}}<div class="enc__tags">{{range .Biomes}}<span class="biome">{{.}}</span>{{end}}</div>{{end}}
+              {{if .Conditions}}<div class="enc__tags">{{range .Conditions}}<span class="cond">{{.}}</span>{{end}}</div>{{end}}
+            </div>
+          </li>
+          {{end}}
+        </ul>
+      </div>
+      {{end}}
+    </div>
+    {{else}}
+    <p class="muted">Não aparece na natureza nos dados dos mods — normalmente obtido por <strong>evolução</strong>, troca ou evento.</p>
+    {{end}}
+  </section>
+
   {{if $.Builds}}
   <section class="card card--wide">
     <h2 class="card__title">Natureza &amp; Builds</h2>

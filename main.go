@@ -27,12 +27,13 @@ func main() {
 	case "import":
 		fs := flag.NewFlagSet("import", flag.ExitOnError)
 		jar := fs.String("jar", os.Getenv("COBBLEMON_JAR"), "caminho do .jar do Cobblemon (auto-detecta se vazio)")
+		pixeljar := fs.String("pixeljar", os.Getenv("PIXELMON_JAR"), "caminho do .jar do Pixelmon (opcional, para spawns; auto-detecta)")
 		out := fs.String("data", "data", "pasta de saida dos JSON")
 		offline := fs.Bool("offline", false, "nao baixar stats de move do Showdown")
 		nosprites := fs.Bool("nosprites", false, "nao baixar os sprites pixelart")
 		_ = fs.Parse(os.Args[2:])
 
-		err := importer.Run(importer.Options{JarPath: *jar, OutDir: *out, Offline: *offline, Sprites: !*nosprites})
+		err := importer.Run(importer.Options{JarPath: *jar, PixelJar: *pixeljar, OutDir: *out, Offline: *offline, Sprites: !*nosprites})
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "erro na importacao:", err)
 			os.Exit(1)

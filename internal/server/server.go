@@ -99,18 +99,41 @@ type moveRow struct {
 
 type pokemonView struct {
 	Base
-	P        model.Pokemon
-	LevelUp  []moveRow
-	TM       []moveRow
-	Egg      []moveRow
-	Tutor    []moveRow
-	Weak     []typechart.Matchup
-	Resist   []typechart.Matchup
-	Immune   []typechart.Matchup
-	Family   *store.EvoNode
-	Line     []*store.EvoNode // familia linearizada (carrossel)
-	Variants []*model.Pokemon
-	Builds   []analysis.Build
+	P          model.Pokemon
+	LevelUp    []moveRow
+	TM         []moveRow
+	Egg        []moveRow
+	Tutor      []moveRow
+	Weak       []typechart.Matchup
+	Resist     []typechart.Matchup
+	Immune     []typechart.Matchup
+	Family     *store.EvoNode
+	Line       []*store.EvoNode // familia linearizada (carrossel)
+	Variants   []*model.Pokemon
+	Encounters []encGroup // "onde encontrar", agrupado por mod
+	Builds     []analysis.Build
+}
+
+// encGroup agrupa os encontros de um Pokemon por fonte (Cobblemon/Pixelmon).
+type encGroup struct {
+	Source string
+	Items  []model.Encounter
+}
+
+// groupEncounters agrupa por fonte preservando a ordem ja definida no importer.
+func groupEncounters(es []model.Encounter) []encGroup {
+	var groups []encGroup
+	byIdx := map[string]int{}
+	for _, e := range es {
+		i, ok := byIdx[e.Source]
+		if !ok {
+			byIdx[e.Source] = len(groups)
+			groups = append(groups, encGroup{Source: e.Source})
+			i = len(groups) - 1
+		}
+		groups[i].Items = append(groups[i].Items, e)
+	}
+	return groups
 }
 
 type moveDetailView struct {
@@ -137,19 +160,20 @@ func (s *Server) handlePokemon(w http.ResponseWriter, r *http.Request) {
 	weak, resist, immune := typechart.DefensiveProfile(p.Types)
 	family := s.st.EvolutionFamily(slug)
 	s.render(w, "pokemon", pokemonView{
-		Base:     s.base0(p.Name, "dex"),
-		P:        *p,
-		LevelUp:  s.levelRows(p.LevelMoves),
-		TM:       s.plainRows(p.TMMoves),
-		Egg:      s.plainRows(p.EggMoves),
-		Tutor:    s.plainRows(p.TutorMoves),
-		Weak:     weak,
-		Resist:   resist,
-		Immune:   immune,
-		Family:   family,
-		Line:     family.Flatten(),
-		Variants: s.st.Variants(slug),
-		Builds:   analysis.Suggest(*p, s.st.Move),
+		Base:       s.base0(p.Name, "dex"),
+		P:          *p,
+		LevelUp:    s.levelRows(p.LevelMoves),
+		TM:         s.plainRows(p.TMMoves),
+		Egg:        s.plainRows(p.EggMoves),
+		Tutor:      s.plainRows(p.TutorMoves),
+		Weak:       weak,
+		Resist:     resist,
+		Immune:     immune,
+		Family:     family,
+		Line:       family.Flatten(),
+		Variants:   s.st.Variants(slug),
+		Encounters: groupEncounters(p.Encounters),
+		Builds:     analysis.Suggest(*p, s.st.Move),
 	})
 }
 

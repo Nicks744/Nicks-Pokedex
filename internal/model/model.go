@@ -61,10 +61,24 @@ type Pokemon struct {
 	BaseSlug   string `json:"baseSlug,omitempty"`   // slug da especie/forma-base (para agrupar as variantes)
 	SpriteSlug string `json:"spriteSlug,omitempty"` // basename do sprite no Showdown (ex.: "vulpix-alola"); "" usa o sprite por Dex
 	BattleOnly bool   `json:"battleOnly,omitempty"` // forma so de batalha (mega/primal)
+
+	Encounters []Encounter `json:"encounters,omitempty"` // onde/como encontrar (Cobblemon + Pixelmon)
 }
 
 // IsForm indica se esta entrada e uma variante (forma alternativa) da especie.
 func (p Pokemon) IsForm() bool { return p.Aspect != "" || p.SpriteSlug != "" }
+
+// Encounter descreve uma forma de encontrar/obter o Pokemon na natureza, num dos
+// mods (Cobblemon ou Pixelmon).
+type Encounter struct {
+	Source     string   `json:"source"`     // "Cobblemon" | "Pixelmon"
+	Method     string   `json:"method"`     // "Natural", "Pesca", "Curry"...
+	Rarity     string   `json:"rarity"`     // "Comum" | "Incomum" | "Raro" | "Ultra-raro"
+	RarityRank int      `json:"rarityRank"` // 1=comum .. 4=ultra-raro (para ordenar/estilizar)
+	Levels     string   `json:"levels"`     // "5–30"
+	Biomes     []string `json:"biomes"`     // biomas ja traduzidos
+	Conditions []string `json:"conditions"` // "De noite", "Na chuva", "Superficie", "Nether"...
+}
 
 // Move e o metadado de um golpe (vindo do Pokemon Showdown).
 type Move struct {

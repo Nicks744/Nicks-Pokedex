@@ -19,6 +19,7 @@ go run . serve
 
 ```bash
 go run . import -jar "CAMINHO\Cobblemon-....jar"   # usar outro jar (senão, auto-detecta)
+go run . import -pixeljar "CAMINHO\Pixelmon-...jar" # spawns do Pixelmon (opcional; auto-detecta)
 go run . import -offline                            # sem baixar stats de move
 go run . serve  -addr :9000                         # outra porta
 go run . build  -out docs -base /Repo/             # gera o site estático
@@ -50,6 +51,9 @@ ou passe `-jar`. Depois da importação o app funciona **100% offline**.
     botão **Ver condições** que revela em que level/condição cada evolução acontece.
   - **Abas de forma** logo abaixo do nome para alternar entre as versões da espécie
     (ex.: Kanto ↔ Alola).
+  - **Onde encontrar**: onde/como conseguir o Pokémon, com seções separadas para
+    **Cobblemon** e **Pixelmon** — raridade, faixa de level, biomas (traduzidos) e
+    condições (dia/noite, chuva, Nether/End, pesca, curry, etc.).
   - **Natureza & Builds**: natureza que mais combina com base nas stats + builds
     sugeridas (papel, natureza, EVs e golpes tirados do que ele aprende).
 - **Página de golpe** (`/move/{slug}`): quem aprende e como.

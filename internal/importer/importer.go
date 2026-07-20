@@ -33,10 +33,11 @@ const (
 
 // Options controla a importacao.
 type Options struct {
-	JarPath string // caminho do .jar do Cobblemon
-	OutDir  string // pasta de saida (data/)
-	Offline bool   // se true, nao baixa stats de move do Showdown
-	Sprites bool   // se true, baixa os sprites pixelart do PokeAPI
+	JarPath  string // caminho do .jar do Cobblemon
+	PixelJar string // caminho do .jar do Pixelmon (opcional; so para spawns)
+	OutDir   string // pasta de saida (data/)
+	Offline  bool   // se true, nao baixa stats de move do Showdown
+	Sprites  bool   // se true, baixa os sprites pixelart do PokeAPI
 }
 
 // ---------- estruturas cruas (formato Cobblemon) ----------
@@ -130,6 +131,24 @@ func Run(opts Options) error {
 		return fmt.Errorf("lendo species: %w", err)
 	}
 	fmt.Printf("species: %d pokemon, %d moves referenciados\n", len(pokes), len(referenced))
+
+	// Onde encontrar: spawns do Cobblemon (mesmo jar) + Pixelmon (jar opcional).
+	bySlug := make(map[string]*model.Pokemon, len(pokes))
+	for i := range pokes {
+		bySlug[pokes[i].Slug] = &pokes[i]
+	}
+	attachCobblemonSpawns(zr, bySlug)
+	pixelJar := opts.PixelJar
+	if pixelJar == "" {
+		pixelJar = findPixelmonJar()
+	}
+	if pixelJar != "" {
+		fmt.Printf("jar Pixelmon: %s\n", pixelJar)
+	}
+	attachPixelmonSpawns(pixelJar, bySlug)
+	for i := range pokes {
+		pokes[i].Encounters = dedupeEncounters(pokes[i].Encounters)
+	}
 
 	var sd map[string]sdMove
 	if !opts.Offline {
@@ -321,6 +340,38 @@ func findCobblemonJar() string {
 		)
 	}
 
+	return newestMatch(patterns)
+}
+
+// findPixelmonJar procura o .jar do Pixelmon nos mesmos locais comuns.
+func findPixelmonJar() string {
+	var patterns []string
+	add := func(dirs ...string) {
+		for _, d := range dirs {
+			patterns = append(patterns, filepath.Join(d, "*ixelmon*.jar"))
+		}
+	}
+	if appdata := os.Getenv("APPDATA"); appdata != "" {
+		add(
+			filepath.Join(appdata, "PrismLauncher", "instances", "*", "minecraft", "mods"),
+			filepath.Join(appdata, ".minecraft", "mods"),
+			filepath.Join(appdata, "com.modrinth.theseus", "profiles", "*", "mods"),
+		)
+	}
+	if home := os.Getenv("USERPROFILE"); home != "" {
+		add(filepath.Join(home, "curseforge", "minecraft", "Instances", "*", "mods"))
+	}
+	if home := os.Getenv("HOME"); home != "" {
+		add(
+			filepath.Join(home, ".minecraft", "mods"),
+			filepath.Join(home, ".local", "share", "PrismLauncher", "instances", "*", "minecraft", "mods"),
+		)
+	}
+	return newestMatch(patterns)
+}
+
+// newestMatch retorna o arquivo mais recente entre os que casam com os padroes.
+func newestMatch(patterns []string) string {
 	var newest string
 	var newestMod time.Time
 	for _, pat := range patterns {
