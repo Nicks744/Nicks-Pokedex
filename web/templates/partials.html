@@ -42,8 +42,16 @@
      pois <a> dentro de <a> é HTML inválido e quebra o layout. */}}
 {{define "typechip"}}<span class="type" style="--type-color:{{typeColor .}}">{{title .}}</span>{{end}}
 
-{{/* Sprite de um Pokemon. Recebe um model.Pokemon (usa .Dex e .Name). */}}
-{{define "sprite"}}<img class="sprite" src="{{sprite .Dex}}" alt="{{.Name}}" loading="lazy" width="96" height="96" onerror="this.classList.add('sprite--missing')">{{end}}
+{{/* Sprite de um Pokemon/EvoNode. Usa .Dex, .SpriteSlug e .Name. Formas caem
+     no sprite da forma-base (Dex) se o arquivo nao existir. */}}
+{{define "sprite"}}<img class="sprite" src="{{sprite .Dex .SpriteSlug}}" alt="{{.Name}}" loading="lazy" width="96" height="96" onerror="this.onerror=null;this.src='{{sprite .Dex ""}}'">{{end}}
+
+{{/* Celula do carrossel evolutivo. Recebe um store.EvoNode. */}}
+{{define "evocell"}}<a class="evo-cell {{if .Current}}is-current{{end}}" href="pokemon/{{.Slug}}" title="{{.Name}}">
+  {{if .Condition}}<span class="evo-cell__cond" hidden>{{.Condition}}</span>{{end}}
+  {{template "sprite" .}}
+  <span class="evo-cell__name">{{.Name}}</span>
+</a>{{end}}
 
 {{/* Celulas de um golpe numa tabela de moves. Recebe um moveRow. */}}
 {{define "movecells"}}<td class="move__name"><a href="move/{{.Slug}}">{{.Name}}</a></td>
@@ -52,13 +60,3 @@
 <td class="num">{{if gt .Power 0}}{{.Power}}{{else}}—{{end}}</td>
 <td class="num">{{if gt .Accuracy 0}}{{.Accuracy}}{{else}}—{{end}}</td>
 <td class="num">{{if gt .PP 0}}{{.PP}}{{else}}—{{end}}</td>{{end}}
-
-{{/* No recursivo da linha evolutiva. Recebe um store.EvoNode. */}}
-{{define "evonode"}}<div class="evo-stage">
-  {{if .Condition}}<div class="evo-arrow"><span class="evo-arrow__ico">▶</span><span class="evo-cond">{{.Condition}}</span></div>{{end}}
-  <a class="evo-mon {{if .Current}}is-current{{end}}" href="pokemon/{{.Slug}}" title="{{.Name}}">
-    {{template "sprite" .}}
-    <span class="evo-mon__name">{{.Name}}</span>
-  </a>
-  {{if .Next}}<div class="evo-branches">{{range .Next}}{{template "evonode" .}}{{end}}</div>{{end}}
-</div>{{end}}

@@ -40,12 +40,16 @@ ou passe `-jar`. Depois da importação o app funciona **100% offline**.
 
 - **Pokédex** (`/`): busca em tempo real + filtros por tipo, geração e ordenação,
   com **sprite pixelart** em cada card e um **botão "+"** para adicionar ao time
-  sem sair da página.
+  sem sair da página. Inclui **todas as formas** — regionais (Alola/Galar/Hisui/
+  Paldea), Mega, Primal, Origin etc. —, cada uma como sua própria entrada.
 - **Wiki do Pokémon** (`/pokemon/{slug}`): sprite, tipos, base stats, habilidades,
   matchups defensivos e **golpes por level / TM / ovo / tutor** (com **gem do tipo**,
   categoria, poder, precisão e PP).
-  - **Linha evolutiva** completa (a família toda, com ramificações tipo Eevee) e
-    botão **Inspecionar** que revela em que level/condição cada evolução acontece.
+  - **Foco + carrossel evolutivo**: a foto grande é o centro, com setas ◀ ▶ e uma
+    tira de miniaturas para percorrer a família (com ramificações tipo Eevee) e um
+    botão **Ver condições** que revela em que level/condição cada evolução acontece.
+  - **Abas de forma** logo abaixo do nome para alternar entre as versões da espécie
+    (ex.: Kanto ↔ Alola).
   - **Natureza & Builds**: natureza que mais combina com base nas stats + builds
     sugeridas (papel, natureza, EVs e golpes tirados do que ele aprende).
 - **Página de golpe** (`/move/{slug}`): quem aprende e como.

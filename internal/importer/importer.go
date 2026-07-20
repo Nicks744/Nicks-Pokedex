@@ -25,6 +25,10 @@ const (
 	showdownMovesURL = "https://play.pokemonshowdown.com/data/moves.json"
 	spriteBaseURL    = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/%d.png"
 	shinyBaseURL     = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/%d.png"
+	// Sprites de formas (regionais/mega/origin...) vem do Showdown, que os nomeia
+	// por forma (ex.: vulpix-alola.png).
+	formSpriteURL = "https://play.pokemonshowdown.com/sprites/gen5/%s.png"
+	formShinyURL  = "https://play.pokemonshowdown.com/sprites/gen5-shiny/%s.png"
 )
 
 // Options controla a importacao.
@@ -48,8 +52,27 @@ type rawSpecies struct {
 	BaseStats             map[string]int `json:"baseStats"`
 	Moves                 []string       `json:"moves"`
 	Labels                []string       `json:"labels"`
+	Aspects               []string       `json:"aspects"`
 	Pokedex               []string       `json:"pokedex"`
 	Evolutions            []rawEvo       `json:"evolutions"`
+	Forms                 []rawForm      `json:"forms"`
+}
+
+// rawForm e uma variante da especie (regional, mega, origin...). Campos ausentes
+// sao herdados da especie base.
+type rawForm struct {
+	Name          string         `json:"name"`
+	PrimaryType   string         `json:"primaryType"`
+	SecondaryType string         `json:"secondaryType"`
+	Aspects       []string       `json:"aspects"`
+	Labels        []string       `json:"labels"`
+	Abilities     []string       `json:"abilities"`
+	EggGroups     []string       `json:"eggGroups"`
+	BaseStats     map[string]int `json:"baseStats"`
+	Moves         []string       `json:"moves"`
+	Pokedex       []string       `json:"pokedex"`
+	Evolutions    []rawEvo       `json:"evolutions"`
+	BattleOnly    bool           `json:"battleOnly"`
 }
 
 type rawEvo struct {
@@ -152,10 +175,29 @@ func downloadSprites(pokes []model.Pokemon, outDir string) error {
 		}
 	}
 
+	// Sprites de forma ficam em sprites/forms/ (normal) e sprites/forms/shiny/.
+	formDir := filepath.Join(dir, "forms")
+	formShinyDir := filepath.Join(formDir, "shiny")
+	for _, d := range []string{formDir, formShinyDir} {
+		if err := os.MkdirAll(d, 0o755); err != nil {
+			return err
+		}
+	}
+
 	type task struct{ url, path string }
 	var tasks []task
 	seen := map[int]bool{}
 	for _, p := range pokes {
+		if p.SpriteSlug != "" {
+			// Forma: sprite por nome no Showdown.
+			if norm := filepath.Join(formDir, p.SpriteSlug+".png"); !fileExists(norm) {
+				tasks = append(tasks, task{fmt.Sprintf(formSpriteURL, p.SpriteSlug), norm})
+			}
+			if shiny := filepath.Join(formShinyDir, p.SpriteSlug+".png"); !fileExists(shiny) {
+				tasks = append(tasks, task{fmt.Sprintf(formShinyURL, p.SpriteSlug), shiny})
+			}
+			continue
+		}
 		if p.Dex <= 0 || seen[p.Dex] {
 			continue
 		}
@@ -342,8 +384,19 @@ func readSpecies(zr *zip.ReadCloser, lang map[string]string) ([]model.Pokemon, m
 
 		slug := strings.TrimSuffix(path.Base(f.Name), ".json")
 		gen := generationLabel(f.Name)
-		p := buildPokemon(rs, slug, gen, lang, referenced)
-		pokes = append(pokes, p)
+		base := buildPokemon(rs, slug, gen, lang, referenced)
+
+		forms := meaningfulForms(rs)
+		if len(forms) > 0 {
+			// Rotula a base como uma "forma" tambem, para o seletor de formas.
+			base.Form = baseFormLabel(rs)
+			base.BaseSlug = slug
+		}
+		pokes = append(pokes, base)
+
+		for _, rf := range forms {
+			pokes = append(pokes, buildForm(base, rs, rf, slug, lang, referenced))
+		}
 	}
 
 	sort.Slice(pokes, func(i, j int) bool {
@@ -356,48 +409,146 @@ func readSpecies(zr *zip.ReadCloser, lang map[string]string) ([]model.Pokemon, m
 }
 
 func buildPokemon(rs rawSpecies, slug, gen string, lang map[string]string, referenced map[string]bool) model.Pokemon {
-	types := []string{}
-	if rs.PrimaryType != "" {
-		types = append(types, strings.ToLower(rs.PrimaryType))
-	}
-	if rs.SecondaryType != "" {
-		types = append(types, strings.ToLower(rs.SecondaryType))
-	}
-
 	p := model.Pokemon{
 		Dex:         rs.NationalPokedexNumber,
 		Name:        rs.Name,
 		Slug:        slug,
-		Types:       types,
-		BaseStats:   model.Stats{HP: rs.BaseStats["hp"], Attack: rs.BaseStats["attack"], Defence: rs.BaseStats["defence"], SpAttack: rs.BaseStats["special_attack"], SpDefence: rs.BaseStats["special_defence"], Speed: rs.BaseStats["speed"]},
+		Types:       parseTypes(rs.PrimaryType, rs.SecondaryType),
+		BaseStats:   parseStats(rs.BaseStats),
+		Abilities:   parseAbilities(rs.Abilities, lang),
 		EggGroups:   rs.EggGroups,
+		Description: parseDescription(rs.Pokedex, lang),
 		Generation:  gen,
 		Labels:      rs.Labels,
 		Implemented: rs.Implemented,
 	}
+	setMoves(&p, rs.Moves, referenced)
+	p.Evolutions = parseEvolutions(rs.Evolutions)
+	return p
+}
 
-	// Abilities
-	for _, a := range rs.Abilities {
+// buildForm monta uma entrada de forma a partir da base, herdando o que a forma
+// nao redefine (stats/moves/habilidades/tipos).
+func buildForm(base model.Pokemon, rs rawSpecies, rf rawForm, speciesSlug string, lang map[string]string, referenced map[string]bool) model.Pokemon {
+	aspect := aspectKey(rf)
+	p := model.Pokemon{
+		Dex:         base.Dex,
+		Name:        base.Name + " (" + prettify(rf.Name) + ")",
+		Slug:        speciesSlug + "-" + aspect,
+		Implemented: base.Implemented,
+		Form:        prettify(rf.Name),
+		Aspect:      aspect,
+		BaseSlug:    speciesSlug,
+		SpriteSlug:  speciesSlug + "-" + showdownSuffix(rf.Name),
+		BattleOnly:  rf.BattleOnly,
+	}
+
+	// Tipos: a forma quase sempre define os seus; senao herda.
+	if rf.PrimaryType != "" {
+		p.Types = parseTypes(rf.PrimaryType, rf.SecondaryType)
+	} else {
+		p.Types = base.Types
+	}
+	// Stats: se a forma nao traz, herda.
+	if len(rf.BaseStats) > 0 {
+		p.BaseStats = parseStats(rf.BaseStats)
+	} else {
+		p.BaseStats = base.BaseStats
+	}
+	// Habilidades.
+	if len(rf.Abilities) > 0 {
+		p.Abilities = parseAbilities(rf.Abilities, lang)
+	} else {
+		p.Abilities = base.Abilities
+	}
+	// Grupos de ovo.
+	if len(rf.EggGroups) > 0 {
+		p.EggGroups = rf.EggGroups
+	} else {
+		p.EggGroups = base.EggGroups
+	}
+	// Descricao.
+	if d := parseDescription(rf.Pokedex, lang); d != "" {
+		p.Description = d
+	} else {
+		p.Description = base.Description
+	}
+	// Geracao (a partir dos labels genN da forma).
+	if g := genFromLabels(rf.Labels); g != "" {
+		p.Generation = g
+	} else {
+		p.Generation = base.Generation
+	}
+	p.Labels = rf.Labels
+	// Moves: se a forma traz seu proprio moveset, usa; senao herda o da base.
+	if len(rf.Moves) > 0 {
+		setMoves(&p, rf.Moves, referenced)
+	} else {
+		p.LevelMoves, p.TMMoves, p.EggMoves, p.TutorMoves = base.LevelMoves, base.TMMoves, base.EggMoves, base.TutorMoves
+	}
+	// Evolucoes proprias da forma (se a chave existir, mesmo vazia).
+	p.Evolutions = parseEvolutions(rf.Evolutions)
+	return p
+}
+
+func parseTypes(primary, secondary string) []string {
+	types := []string{}
+	if primary != "" {
+		types = append(types, strings.ToLower(primary))
+	}
+	if secondary != "" {
+		types = append(types, strings.ToLower(secondary))
+	}
+	return types
+}
+
+func parseStats(m map[string]int) model.Stats {
+	return model.Stats{
+		HP: m["hp"], Attack: m["attack"], Defence: m["defence"],
+		SpAttack: m["special_attack"], SpDefence: m["special_defence"], Speed: m["speed"],
+	}
+}
+
+func parseAbilities(abilities []string, lang map[string]string) []model.Ability {
+	var out []model.Ability
+	for _, a := range abilities {
 		hidden := false
 		id := a
 		if strings.HasPrefix(a, "h:") {
 			hidden = true
 			id = strings.TrimPrefix(a, "h:")
 		}
-		p.Abilities = append(p.Abilities, model.Ability{Name: abilityName(id, lang), Hidden: hidden})
+		out = append(out, model.Ability{Name: abilityName(id, lang), Hidden: hidden})
 	}
+	return out
+}
 
-	// Descricao
-	var descLines []string
-	for _, key := range rs.Pokedex {
+func parseDescription(keys []string, lang map[string]string) string {
+	var lines []string
+	for _, key := range keys {
 		if v, ok := lang[key]; ok {
-			descLines = append(descLines, v)
+			lines = append(lines, v)
 		}
 	}
-	p.Description = strings.Join(descLines, " ")
+	return strings.Join(lines, " ")
+}
 
-	// Moves
-	for _, m := range rs.Moves {
+func parseEvolutions(evos []rawEvo) []model.Evolution {
+	var out []model.Evolution
+	for _, ev := range evos {
+		to, cond := summarizeEvo(ev)
+		if to == "" {
+			continue
+		}
+		out = append(out, model.Evolution{To: to, Condition: cond})
+	}
+	return out
+}
+
+// setMoves preenche os slices de golpes de p a partir do array cru do Cobblemon.
+func setMoves(p *model.Pokemon, moves []string, referenced map[string]bool) {
+	p.LevelMoves, p.TMMoves, p.EggMoves, p.TutorMoves = nil, nil, nil, nil
+	for _, m := range moves {
 		method, id, level := parseMoveEntry(m)
 		if id == "" {
 			continue
@@ -415,7 +566,7 @@ func buildPokemon(rs rawSpecies, slug, gen string, lang map[string]string, refer
 		case "tutor":
 			p.TutorMoves = append(p.TutorMoves, id)
 			referenced[id] = true
-			// legacy/special/form ignorados no v1
+			// legacy/special ignorados
 		}
 	}
 	sort.SliceStable(p.LevelMoves, func(i, j int) bool {
@@ -427,17 +578,173 @@ func buildPokemon(rs rawSpecies, slug, gen string, lang map[string]string, refer
 	sort.Strings(p.TMMoves)
 	sort.Strings(p.EggMoves)
 	sort.Strings(p.TutorMoves)
+}
 
-	// Evolucoes
-	for _, ev := range rs.Evolutions {
-		to, cond := summarizeEvo(ev)
-		if to == "" {
+// ---------- formas ----------
+
+// significantAspects sao aspectos sempre mantidos como forma propria, mesmo que
+// os stats/tipos coincidam com a base.
+var significantAspects = map[string]bool{
+	"alolan": true, "galarian": true, "hisuian": true, "paldean": true,
+	"mega": true, "mega_x": true, "mega_y": true, "primal": true, "origin": true,
+	"altered": true, "therian": true, "incarnate": true, "crowned": true,
+	"eternamax": true, "dawn_wings": true, "dusk_mane": true, "ultra": true,
+	"black": true, "white": true, "resolute": true, "pirouette": true,
+	"zen": true, "noice": true, "school": true, "hangry": true, "gulping": true,
+	"gorging": true, "ash": true, "starter": true, "sky": true, "unbound": true,
+	"complete": true, "10_percent": true, "blade": true, "sunshine": true,
+}
+
+// meaningfulForms retorna as formas que valem uma entrada propria (regionais,
+// megas, origins, e qualquer forma que mude tipo/stats/habilidade/evolucao),
+// descartando cosmeticas (letras do Unown, padroes de Vivillon...) e Gmax.
+func meaningfulForms(rs rawSpecies) []rawForm {
+	baseTypes := parseTypes(rs.PrimaryType, rs.SecondaryType)
+	var out []rawForm
+	for _, rf := range rs.Forms {
+		if rf.Name == "" || isGmax(rf) || isBias(rf) {
 			continue
 		}
-		p.Evolutions = append(p.Evolutions, model.Evolution{To: to, Condition: cond})
+		if formIsMeaningful(rs, rf, baseTypes) {
+			out = append(out, rf)
+		}
 	}
+	return out
+}
 
-	return p
+// isBias descarta as formas "bias" do Cobblemon (variantes internas de breeding
+// regional, ex.: "Cubone" com aspecto alolano) — nao sao formas de verdade.
+func isBias(rf rawForm) bool {
+	if strings.Contains(strings.ToLower(rf.Name), "bias") {
+		return true
+	}
+	for _, a := range rf.Aspects {
+		if strings.Contains(strings.ToLower(a), "bias") {
+			return true
+		}
+	}
+	return false
+}
+
+func isGmax(rf rawForm) bool {
+	if strings.EqualFold(rf.Name, "gmax") {
+		return true
+	}
+	for _, a := range rf.Aspects {
+		if strings.EqualFold(a, "gmax") {
+			return true
+		}
+	}
+	return false
+}
+
+func formIsMeaningful(rs rawSpecies, rf rawForm, baseTypes []string) bool {
+	for _, a := range rf.Aspects {
+		if significantAspects[strings.ToLower(a)] {
+			return true
+		}
+	}
+	if rf.PrimaryType != "" && !sameStrings(parseTypes(rf.PrimaryType, rf.SecondaryType), baseTypes) {
+		return true
+	}
+	if len(rf.BaseStats) > 0 && parseStats(rf.BaseStats) != parseStats(rs.BaseStats) {
+		return true
+	}
+	if len(rf.Abilities) > 0 && !sameStrings(rf.Abilities, rs.Abilities) {
+		return true
+	}
+	if len(rf.Evolutions) > 0 {
+		return true
+	}
+	return false
+}
+
+func sameStrings(a, b []string) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for i := range a {
+		if strings.ToLower(a[i]) != strings.ToLower(b[i]) {
+			return false
+		}
+	}
+	return true
+}
+
+// aspectKey deriva a chave interna do slug da forma (deve casar com os alvos de
+// evolucao, que usam a palavra do aspecto, ex.: "alolan").
+func aspectKey(rf rawForm) string {
+	if len(rf.Aspects) > 0 {
+		return strings.Join(lowerAll(rf.Aspects), "-")
+	}
+	return slugify(rf.Name)
+}
+
+// showdownSuffix deriva o sufixo do sprite no Showdown a partir do nome da forma.
+// O Showdown concatena os tokens da forma num unico bloco, sem hifens/espacos:
+// "Alola"->"alola", "Mega X"->"megax", "Paldea Combat"->"paldeacombat",
+// "Dawn Wings"->"dawnwings", "Pa'u"->"pau".
+func showdownSuffix(name string) string {
+	s := strings.ToLower(strings.TrimSpace(name))
+	repl := strings.NewReplacer(" ", "", "-", "", "'", "", "%", "", ".", "")
+	s = repl.Replace(s)
+	switch s {
+	case "bond": // Greninja: forma Battle Bond = Ash-Greninja no Showdown.
+		return "ash"
+	case "noiceface": // Eiscue.
+		return "noice"
+	case "10c":
+		return "10"
+	case "50c":
+		return "complete"
+	}
+	return s
+}
+
+// baseFormLabel rotula a forma-base para o seletor de formas (ex.: "Kanto").
+func baseFormLabel(rs rawSpecies) string {
+	for _, l := range rs.Labels {
+		if r := regionFromLabel(l); r != "" {
+			return r
+		}
+	}
+	return "Base"
+}
+
+func regionFromLabel(label string) string {
+	m := map[string]string{
+		"kantonian_form": "Kanto", "johtonian_form": "Johto", "hoennian_form": "Hoenn",
+		"sinnohan_form": "Sinnoh", "unovan_form": "Unova", "kalosian_form": "Kalos",
+		"alolan_form": "Alola", "galarian_form": "Galar", "hisuian_form": "Hisui",
+		"paldean_form": "Paldea",
+	}
+	return m[strings.ToLower(label)]
+}
+
+func genFromLabels(labels []string) string {
+	for _, l := range labels {
+		if strings.HasPrefix(l, "gen") {
+			if n := strings.TrimPrefix(l, "gen"); n != "" && n[0] >= '0' && n[0] <= '9' {
+				return "Gen " + n
+			}
+		}
+	}
+	return ""
+}
+
+func lowerAll(ss []string) []string {
+	out := make([]string, len(ss))
+	for i, s := range ss {
+		out[i] = strings.ToLower(s)
+	}
+	return out
+}
+
+func slugify(s string) string {
+	s = strings.ToLower(strings.TrimSpace(s))
+	s = strings.ReplaceAll(s, " ", "-")
+	s = strings.ReplaceAll(s, "_", "-")
+	return s
 }
 
 // parseMoveEntry separa "7:vinewhip" -> ("level","vinewhip",7) e
@@ -462,7 +769,9 @@ func summarizeEvo(ev rawEvo) (to, cond string) {
 	if len(fields) == 0 {
 		return "", ""
 	}
-	to = fields[0]
+	// "persian alolan" -> slug "persian-alolan" (especie + aspecto da forma);
+	// "charizard" -> "charizard". Casa com o slug gerado em buildForm.
+	to = strings.Join(fields, "-")
 
 	level := ""
 	var extras []string
@@ -510,9 +819,6 @@ func summarizeEvo(ev rawEvo) (to, cond string) {
 
 	parts := []string{base}
 	parts = append(parts, extras...)
-	if len(fields) > 1 {
-		parts = append(parts, "("+strings.Join(fields[1:], " ")+")")
-	}
 	return to, strings.Join(parts, ", ")
 }
 

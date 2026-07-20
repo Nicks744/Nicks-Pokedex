@@ -35,7 +35,8 @@ type Evolution struct {
 	Condition string `json:"condition"` // texto legivel (ex.: "Level 16")
 }
 
-// Pokemon e a entrada consolidada da pokedex.
+// Pokemon e a entrada consolidada da pokedex. Cada forma (base, regional, mega,
+// origin...) e uma entrada propria, com Slug unico e o mesmo Dex da especie.
 type Pokemon struct {
 	Dex         int         `json:"dex"`
 	Name        string      `json:"name"`
@@ -53,7 +54,17 @@ type Pokemon struct {
 	TutorMoves  []string    `json:"tutorMoves"`
 	Evolutions  []Evolution `json:"evolutions"`
 	Implemented bool        `json:"implemented"`
+
+	// Campos de forma (vazios na forma base sem variantes).
+	Form       string `json:"form,omitempty"`       // rotulo curto: "Alola", "Galar", "Mega"... ("" ou "Base" na base)
+	Aspect     string `json:"aspect,omitempty"`     // chave do aspecto Cobblemon (ex.: "alolan")
+	BaseSlug   string `json:"baseSlug,omitempty"`   // slug da especie/forma-base (para agrupar as variantes)
+	SpriteSlug string `json:"spriteSlug,omitempty"` // basename do sprite no Showdown (ex.: "vulpix-alola"); "" usa o sprite por Dex
+	BattleOnly bool   `json:"battleOnly,omitempty"` // forma so de batalha (mega/primal)
 }
+
+// IsForm indica se esta entrada e uma variante (forma alternativa) da especie.
+func (p Pokemon) IsForm() bool { return p.Aspect != "" || p.SpriteSlug != "" }
 
 // Move e o metadado de um golpe (vindo do Pokemon Showdown).
 type Move struct {

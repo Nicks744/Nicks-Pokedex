@@ -61,13 +61,21 @@
       portrait.appendChild(img);
     }
 
+    // Selo de forma no card (esconde o "Base" genérico; mostra Kanto/Alola/Mega…).
+    if (p.form && p.form !== "Base") {
+      const tag = document.createElement("span");
+      tag.className = "pcard__form" + (p.isForm ? " is-variant" : "");
+      tag.textContent = p.form;
+      portrait.appendChild(tag);
+    }
+
     const dex = document.createElement("span");
     dex.className = "pcard__dex";
     dex.textContent = "Nº " + String(p.dex).padStart(4, "0");
 
     const name = document.createElement("span");
     name.className = "pcard__name";
-    name.textContent = p.name;
+    name.textContent = p.form ? p.name.replace(/\s*\(.*\)\s*$/, "") : p.name;
 
     const types = document.createElement("div");
     types.className = "pcard__types";

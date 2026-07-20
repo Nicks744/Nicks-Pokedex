@@ -31,6 +31,7 @@ type Store struct {
 
 	Pokemon  []model.Pokemon
 	bySlug   map[string]*model.Pokemon
+	byDex    map[int][]*model.Pokemon // dex -> todas as formas (para o seletor de formas)
 	Moves    map[string]model.Move
 	Learners map[string][]Learner
 	preEvo   map[string][]string // slug -> pre-evolucoes (slugs dos "pais")
@@ -51,9 +52,11 @@ func Load(dataDir string) (*Store, error) {
 		return nil, fmt.Errorf("carregando moves.json: %w", err)
 	}
 
+	s.byDex = map[int][]*model.Pokemon{}
 	for i := range s.Pokemon {
 		p := &s.Pokemon[i]
 		s.bySlug[p.Slug] = p
+		s.byDex[p.Dex] = append(s.byDex[p.Dex], p)
 	}
 	s.buildLearners()
 	s.buildEvoIndex()
@@ -99,13 +102,46 @@ func (s *Store) buildEvoIndex() {
 
 // EvoNode e um no da arvore de evolucao (suporta ramificacoes, ex.: Eevee).
 type EvoNode struct {
-	Slug      string
-	Name      string
-	Dex       int
-	Types     []string
-	Condition string // condicao para chegar neste no vindo do pai ("" na raiz)
-	Current   bool
-	Next      []*EvoNode
+	Slug       string
+	Name       string
+	Dex        int
+	Types      []string
+	SpriteSlug string // basename do sprite de forma ("" usa o sprite por Dex)
+	Condition  string // condicao para chegar neste no vindo do pai ("" na raiz)
+	Current    bool
+	Next       []*EvoNode
+}
+
+// Flatten lineariza a arvore de evolucao em ordem (DFS), para o carrossel.
+func (n *EvoNode) Flatten() []*EvoNode {
+	var out []*EvoNode
+	var walk func(*EvoNode)
+	walk = func(x *EvoNode) {
+		if x == nil {
+			return
+		}
+		out = append(out, x)
+		for _, c := range x.Next {
+			walk(c)
+		}
+	}
+	walk(n)
+	return out
+}
+
+// Variants retorna todas as formas que compartilham a especie (mesmo Dex) do
+// slug dado, na ordem da pokedex. Usado no seletor de formas. Retorna nil se so
+// existe a forma base.
+func (s *Store) Variants(slug string) []*model.Pokemon {
+	p, ok := s.bySlug[slug]
+	if !ok {
+		return nil
+	}
+	group := s.byDex[p.Dex]
+	if len(group) <= 1 {
+		return nil
+	}
+	return group
 }
 
 // EvolutionFamily monta a linha evolutiva completa a partir de qualquer membro,
@@ -135,7 +171,7 @@ func (s *Store) buildEvoNode(cur, condition, current string, seen map[string]boo
 	}
 	seen[cur] = true
 	n := &EvoNode{
-		Slug: cur, Name: p.Name, Dex: p.Dex, Types: p.Types,
+		Slug: cur, Name: p.Name, Dex: p.Dex, Types: p.Types, SpriteSlug: p.SpriteSlug,
 		Condition: condition, Current: cur == current,
 	}
 	for _, e := range p.Evolutions {

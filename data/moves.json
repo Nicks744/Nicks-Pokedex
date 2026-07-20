@@ -309,6 +309,16 @@
   "pp": 15,
   "desc": "30% chance to make the target flinch."
  },
+ "astralbarrage": {
+  "slug": "astralbarrage",
+  "name": "Astral Barrage",
+  "type": "ghost",
+  "category": "Special",
+  "power": 120,
+  "accuracy": 100,
+  "pp": 5,
+  "desc": "No additional effect. Hits adjacent foes."
+ },
  "attackorder": {
   "slug": "attackorder",
   "name": "Attack Order",
@@ -549,6 +559,16 @@
   "pp": 10,
   "desc": "User recovers 50% of the damage dealt."
  },
+ "bittermalice": {
+  "slug": "bittermalice",
+  "name": "Bitter Malice",
+  "type": "ghost",
+  "category": "Special",
+  "power": 75,
+  "accuracy": 100,
+  "pp": 10,
+  "desc": "100% chance to lower the target's Attack by 1."
+ },
  "blastburn": {
   "slug": "blastburn",
   "name": "Blast Burn",
@@ -598,6 +618,16 @@
   "accuracy": 0,
   "pp": 5,
   "desc": "Prevents the target from switching out."
+ },
+ "bloodmoon": {
+  "slug": "bloodmoon",
+  "name": "Blood Moon",
+  "type": "normal",
+  "category": "Special",
+  "power": 140,
+  "accuracy": 100,
+  "pp": 5,
+  "desc": "Cannot be selected the turn after it's used."
  },
  "blueflare": {
   "slug": "blueflare",
@@ -899,6 +929,16 @@
   "pp": 20,
   "desc": "Lowers the foe(s) Sp. Atk by 2 if opposite gender."
  },
+ "ceaselessedge": {
+  "slug": "ceaselessedge",
+  "name": "Ceaseless Edge",
+  "type": "dark",
+  "category": "Physical",
+  "power": 65,
+  "accuracy": 90,
+  "pp": 15,
+  "desc": "Sets a layer of Spikes on the opposing side."
+ },
  "charge": {
   "slug": "charge",
   "name": "Charge",
@@ -968,6 +1008,16 @@
   "accuracy": 100,
   "pp": 20,
   "desc": "Ignores the target's stat stage changes."
+ },
+ "chloroblast": {
+  "slug": "chloroblast",
+  "name": "Chloroblast",
+  "type": "grass",
+  "category": "Special",
+  "power": 150,
+  "accuracy": 95,
+  "pp": 5,
+  "desc": "User loses 50% max HP."
  },
  "circlethrow": {
   "slug": "circlethrow",
@@ -1859,6 +1909,16 @@
   "pp": 15,
   "desc": "Lowers the target's Sp. Atk by 2."
  },
+ "eeriespell": {
+  "slug": "eeriespell",
+  "name": "Eerie Spell",
+  "type": "psychic",
+  "category": "Special",
+  "power": 80,
+  "accuracy": 100,
+  "pp": 5,
+  "desc": "Removes 3 PP from the target's last move."
+ },
  "eggbomb": {
   "slug": "eggbomb",
   "name": "Egg Bomb",
@@ -2008,6 +2068,16 @@
   "accuracy": 100,
   "pp": 5,
   "desc": "Less power as user's HP decreases. Hits foe(s)."
+ },
+ "esperwing": {
+  "slug": "esperwing",
+  "name": "Esper Wing",
+  "type": "psychic",
+  "category": "Special",
+  "power": 80,
+  "accuracy": 100,
+  "pp": 10,
+  "desc": "100% chance to raise user Speed by 1. High crit."
  },
  "eternabeam": {
   "slug": "eternabeam",
@@ -2188,6 +2258,16 @@
   "accuracy": 100,
   "pp": 10,
   "desc": "50% chance to raise the user's Sp. Atk by 1."
+ },
+ "fierywrath": {
+  "slug": "fierywrath",
+  "name": "Fiery Wrath",
+  "type": "dark",
+  "category": "Special",
+  "power": 90,
+  "accuracy": 100,
+  "pp": 10,
+  "desc": "20% chance to make the foe(s) flinch."
  },
  "filletaway": {
   "slug": "filletaway",
@@ -2559,6 +2639,26 @@
   "pp": 20,
   "desc": "10% chance to freeze. Super effective on Water."
  },
+ "freezeshock": {
+  "slug": "freezeshock",
+  "name": "Freeze Shock",
+  "type": "ice",
+  "category": "Physical",
+  "power": 140,
+  "accuracy": 90,
+  "pp": 5,
+  "desc": "Charges turn 1. Hits turn 2. 30% paralyze."
+ },
+ "freezingglare": {
+  "slug": "freezingglare",
+  "name": "Freezing Glare",
+  "type": "psychic",
+  "category": "Special",
+  "power": 90,
+  "accuracy": 100,
+  "pp": 10,
+  "desc": "10% chance to freeze the target."
+ },
  "frenzyplant": {
   "slug": "frenzyplant",
   "name": "Frenzy Plant",
@@ -2718,6 +2818,16 @@
   "accuracy": 100,
   "pp": 5,
   "desc": "Cannot be selected the turn after it's used."
+ },
+ "glaciallance": {
+  "slug": "glaciallance",
+  "name": "Glacial Lance",
+  "type": "ice",
+  "category": "Physical",
+  "power": 120,
+  "accuracy": 100,
+  "pp": 5,
+  "desc": "No additional effect. Hits adjacent foes."
  },
  "glaciate": {
   "slug": "glaciate",
@@ -3269,6 +3379,16 @@
   "pp": 15,
   "desc": "10% chance to make the target flinch."
  },
+ "hyperspacefury": {
+  "slug": "hyperspacefury",
+  "name": "Hyperspace Fury",
+  "type": "dark",
+  "category": "Physical",
+  "power": 100,
+  "accuracy": 0,
+  "pp": 5,
+  "desc": "Hoopa-U: Lowers user's Def by 1; breaks protect."
+ },
  "hyperspacehole": {
   "slug": "hyperspacehole",
   "name": "Hyperspace Hole",
@@ -3318,6 +3438,16 @@
   "accuracy": 100,
   "pp": 10,
   "desc": "10% chance to freeze the target."
+ },
+ "iceburn": {
+  "slug": "iceburn",
+  "name": "Ice Burn",
+  "type": "ice",
+  "category": "Special",
+  "power": 140,
+  "accuracy": 90,
+  "pp": 5,
+  "desc": "Charges turn 1. Hits turn 2. 30% burn."
  },
  "icefang": {
   "slug": "icefang",
@@ -3418,6 +3548,16 @@
   "accuracy": 100,
   "pp": 15,
   "desc": "Destroys the foe(s) Berry/Gem."
+ },
+ "infernalparade": {
+  "slug": "infernalparade",
+  "name": "Infernal Parade",
+  "type": "ghost",
+  "category": "Special",
+  "power": 60,
+  "accuracy": 100,
+  "pp": 15,
+  "desc": "30% burn. 2x power if target is already statused."
  },
  "inferno": {
   "slug": "inferno",
@@ -3758,6 +3898,16 @@
   "accuracy": 0,
   "pp": 10,
   "desc": "Heals the user and its allies by 1/4 their max HP."
+ },
+ "lightofruin": {
+  "slug": "lightofruin",
+  "name": "Light of Ruin",
+  "type": "fairy",
+  "category": "Special",
+  "power": 140,
+  "accuracy": 90,
+  "pp": 5,
+  "desc": "Has 1/2 recoil."
  },
  "lightscreen": {
   "slug": "lightscreen",
@@ -4358,6 +4508,16 @@
   "accuracy": 100,
   "pp": 15,
   "desc": "Poisons foes, frees user from hazards/bind/leech."
+ },
+ "mountaingale": {
+  "slug": "mountaingale",
+  "name": "Mountain Gale",
+  "type": "ice",
+  "category": "Physical",
+  "power": 100,
+  "accuracy": 85,
+  "pp": 10,
+  "desc": "30% chance to make the target flinch."
  },
  "mudbomb": {
   "slug": "mudbomb",
@@ -5929,6 +6089,16 @@
   "pp": 15,
   "desc": "20% chance to lower the target's Sp. Def by 1."
  },
+ "shadowbone": {
+  "slug": "shadowbone",
+  "name": "Shadow Bone",
+  "type": "ghost",
+  "category": "Physical",
+  "power": 85,
+  "accuracy": 100,
+  "pp": 10,
+  "desc": "20% chance to lower the target's Defense by 1."
+ },
  "shadowclaw": {
   "slug": "shadowclaw",
   "name": "Shadow Claw",
@@ -5999,6 +6169,16 @@
   "pp": 5,
   "desc": "OHKOs non-Ice targets. Fails if user's lower level."
  },
+ "shellsidearm": {
+  "slug": "shellsidearm",
+  "name": "Shell Side Arm",
+  "type": "poison",
+  "category": "Special",
+  "power": 90,
+  "accuracy": 100,
+  "pp": 10,
+  "desc": "20% psn. Physical+contact if it would be stronger."
+ },
  "shellsmash": {
   "slug": "shellsmash",
   "name": "Shell Smash",
@@ -6018,6 +6198,16 @@
   "accuracy": 100,
   "pp": 5,
   "desc": "User must take physical damage before moving."
+ },
+ "shelter": {
+  "slug": "shelter",
+  "name": "Shelter",
+  "type": "steel",
+  "category": "Status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 10,
+  "desc": "Raises the user's Defense by 2."
  },
  "shiftgear": {
   "slug": "shiftgear",
@@ -6298,6 +6488,16 @@
   "accuracy": 100,
   "pp": 20,
   "desc": "Lowers the target's accuracy by 1."
+ },
+ "snaptrap": {
+  "slug": "snaptrap",
+  "name": "Snap Trap",
+  "type": "grass",
+  "category": "Physical",
+  "power": 35,
+  "accuracy": 100,
+  "pp": 15,
+  "desc": "Traps and damages the target for 4-5 turns."
  },
  "snarl": {
   "slug": "snarl",
@@ -6729,6 +6929,16 @@
   "pp": 10,
   "desc": "Always results in a critical hit."
  },
+ "strangesteam": {
+  "slug": "strangesteam",
+  "name": "Strange Steam",
+  "type": "fairy",
+  "category": "Special",
+  "power": 90,
+  "accuracy": 95,
+  "pp": 10,
+  "desc": "20% chance to confuse the target."
+ },
  "strength": {
   "slug": "strength",
   "name": "Strength",
@@ -6888,6 +7098,16 @@
   "accuracy": 100,
   "pp": 15,
   "desc": "Hits adjacent Pokemon. Double damage on Dive."
+ },
+ "surgingstrikes": {
+  "slug": "surgingstrikes",
+  "name": "Surging Strikes",
+  "type": "water",
+  "category": "Physical",
+  "power": 25,
+  "accuracy": 100,
+  "pp": 5,
+  "desc": "Always results in a critical hit. Hits 3 times."
  },
  "swagger": {
   "slug": "swagger",
@@ -7289,6 +7509,16 @@
   "pp": 15,
   "desc": "10% chance to paralyze. 10% chance to flinch."
  },
+ "thunderouskick": {
+  "slug": "thunderouskick",
+  "name": "Thunderous Kick",
+  "type": "fighting",
+  "category": "Physical",
+  "power": 90,
+  "accuracy": 100,
+  "pp": 10,
+  "desc": "100% chance to lower the target's Defense by 1."
+ },
  "thunderpunch": {
   "slug": "thunderpunch",
   "name": "Thunder Punch",
@@ -7459,6 +7689,16 @@
   "pp": 5,
   "desc": "Goes last. For 5 turns, turn order is reversed."
  },
+ "triplearrows": {
+  "slug": "triplearrows",
+  "name": "Triple Arrows",
+  "type": "fighting",
+  "category": "Physical",
+  "power": 90,
+  "accuracy": 100,
+  "pp": 10,
+  "desc": "High crit. Target: 50% -1 Defense, 30% flinch."
+ },
  "tripleaxel": {
   "slug": "tripleaxel",
   "name": "Triple Axel",
@@ -7608,6 +7848,16 @@
   "accuracy": 100,
   "pp": 10,
   "desc": "Power doubles if the target is poisoned."
+ },
+ "victorydance": {
+  "slug": "victorydance",
+  "name": "Victory Dance",
+  "type": "fighting",
+  "category": "Status",
+  "power": 0,
+  "accuracy": 0,
+  "pp": 10,
+  "desc": "Raises the user's Attack, Defense, Speed by 1."
  },
  "vinewhip": {
   "slug": "vinewhip",

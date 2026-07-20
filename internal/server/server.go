@@ -99,16 +99,18 @@ type moveRow struct {
 
 type pokemonView struct {
 	Base
-	P       model.Pokemon
-	LevelUp []moveRow
-	TM      []moveRow
-	Egg     []moveRow
-	Tutor   []moveRow
-	Weak    []typechart.Matchup
-	Resist  []typechart.Matchup
-	Immune  []typechart.Matchup
-	Family  *store.EvoNode
-	Builds  []analysis.Build
+	P        model.Pokemon
+	LevelUp  []moveRow
+	TM       []moveRow
+	Egg      []moveRow
+	Tutor    []moveRow
+	Weak     []typechart.Matchup
+	Resist   []typechart.Matchup
+	Immune   []typechart.Matchup
+	Family   *store.EvoNode
+	Line     []*store.EvoNode // familia linearizada (carrossel)
+	Variants []*model.Pokemon
+	Builds   []analysis.Build
 }
 
 type moveDetailView struct {
@@ -133,18 +135,21 @@ func (s *Server) handlePokemon(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	weak, resist, immune := typechart.DefensiveProfile(p.Types)
+	family := s.st.EvolutionFamily(slug)
 	s.render(w, "pokemon", pokemonView{
-		Base:    s.base0(p.Name, "dex"),
-		P:       *p,
-		LevelUp: s.levelRows(p.LevelMoves),
-		TM:      s.plainRows(p.TMMoves),
-		Egg:     s.plainRows(p.EggMoves),
-		Tutor:   s.plainRows(p.TutorMoves),
-		Weak:    weak,
-		Resist:  resist,
-		Immune:  immune,
-		Family:  s.st.EvolutionFamily(slug),
-		Builds:  analysis.Suggest(*p, s.st.Move),
+		Base:     s.base0(p.Name, "dex"),
+		P:        *p,
+		LevelUp:  s.levelRows(p.LevelMoves),
+		TM:       s.plainRows(p.TMMoves),
+		Egg:      s.plainRows(p.EggMoves),
+		Tutor:    s.plainRows(p.TutorMoves),
+		Weak:     weak,
+		Resist:   resist,
+		Immune:   immune,
+		Family:   family,
+		Line:     family.Flatten(),
+		Variants: s.st.Variants(slug),
+		Builds:   analysis.Suggest(*p, s.st.Move),
 	})
 }
 
@@ -199,13 +204,16 @@ func (s *Server) handleHistory(w http.ResponseWriter, r *http.Request) {
 // ---------- API JSON ----------
 
 type apiPokemon struct {
-	Dex    int      `json:"dex"`
-	Name   string   `json:"name"`
-	Slug   string   `json:"slug"`
-	Types  []string `json:"types"`
-	Gen    string   `json:"gen"`
-	BST    int      `json:"bst"`
-	Sprite string   `json:"sprite"`
+	Dex         int      `json:"dex"`
+	Name        string   `json:"name"`
+	Slug        string   `json:"slug"`
+	Types       []string `json:"types"`
+	Gen         string   `json:"gen"`
+	BST         int      `json:"bst"`
+	Sprite      string   `json:"sprite"`
+	ShinySprite string   `json:"shiny"`
+	Form        string   `json:"form,omitempty"`
+	IsForm      bool     `json:"isForm,omitempty"`
 }
 
 func (s *Server) handleAPIPokemon(w http.ResponseWriter, r *http.Request) {
@@ -215,15 +223,30 @@ func (s *Server) handleAPIPokemon(w http.ResponseWriter, r *http.Request) {
 		out = append(out, apiPokemon{
 			Dex: p.Dex, Name: p.Name, Slug: p.Slug,
 			Types: p.Types, Gen: p.Generation, BST: p.BaseStats.Total(),
-			Sprite: spriteURL(p.Dex),
+			Sprite:      spriteURL(p.Dex, p.SpriteSlug),
+			ShinySprite: spriteShinyURL(p.Dex, p.SpriteSlug),
+			Form:        p.Form,
+			IsForm:      p.IsForm(),
 		})
 	}
 	writeJSON(w, out)
 }
 
-// spriteURL retorna o caminho RELATIVO do sprite (resolvido pelo <base href>).
-func spriteURL(dex int) string {
+// spriteURL retorna o caminho RELATIVO do sprite normal (resolvido pelo <base
+// href>). Formas usam o sprite por nome (Showdown) em sprites/forms/.
+func spriteURL(dex int, spriteSlug string) string {
+	if spriteSlug != "" {
+		return "sprites/forms/" + spriteSlug + ".png"
+	}
 	return fmt.Sprintf("sprites/%d.png", dex)
+}
+
+// spriteShinyURL e o equivalente shiny de spriteURL.
+func spriteShinyURL(dex int, spriteSlug string) string {
+	if spriteSlug != "" {
+		return "sprites/forms/shiny/" + spriteSlug + ".png"
+	}
+	return fmt.Sprintf("sprites/shiny/%d.png", dex)
 }
 
 func writeJSON(w http.ResponseWriter, v any) {
@@ -368,16 +391,17 @@ func copyDiskDir(src, dst string) error {
 
 func funcMap() template.FuncMap {
 	return template.FuncMap{
-		"typeColor": typeColor,
-		"title":     title,
-		"mult":      multStr,
-		"multClass": multClass,
-		"statPct":   func(v int) int { return min(v*100/255, 100) },
-		"statColor": statColor,
-		"lower":     strings.ToLower,
-		"dict":      dict,
-		"sprite":    spriteURL,
-		"typeGem":   func(t string) string { return "types/" + strings.ToLower(t) + ".png" },
+		"typeColor":   typeColor,
+		"title":       title,
+		"mult":        multStr,
+		"multClass":   multClass,
+		"statPct":     func(v int) int { return min(v*100/255, 100) },
+		"statColor":   statColor,
+		"lower":       strings.ToLower,
+		"dict":        dict,
+		"sprite":      spriteURL,
+		"spriteShiny": spriteShinyURL,
+		"typeGem":     func(t string) string { return "types/" + strings.ToLower(t) + ".png" },
 	}
 }
 

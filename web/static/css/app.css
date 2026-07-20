@@ -199,12 +199,71 @@ button { font: inherit; cursor: pointer; }
 .pill--sm { padding: 2px 8px; font-size: 12px; }
 .pill em { color: var(--muted); font-style: normal; }
 
-/* ---------- página do pokémon ---------- */
-.poke__head { text-align: center; padding: 8px 0 20px; }
+/* ---------- página do pokémon (hero: foco + info) ---------- */
+.poke__head {
+  display: grid; grid-template-columns: minmax(260px, 360px) 1fr;
+  gap: 28px; align-items: center; padding: 8px 0 22px;
+}
+.poke__focus { display: flex; flex-direction: column; align-items: center; gap: 14px; min-width: 0; }
+.poke__info { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; min-width: 0; }
 .poke__id { color: var(--muted); font-weight: 700; font-size: 13px; }
-.poke__name { font-size: clamp(26px, 5vw, 38px); font-weight: 850; margin: 4px 0 10px; }
-.poke__types { display: flex; gap: 8px; justify-content: center; margin-bottom: 14px; }
-.poke__desc { max-width: 620px; margin: 14px auto 0; color: var(--text-dim); }
+.poke__name { font-size: clamp(24px, 4.5vw, 36px); font-weight: 850; margin: 0; line-height: 1.1; }
+.poke__types { display: flex; gap: 8px; flex-wrap: wrap; }
+.poke__desc { margin: 6px 0 0; color: var(--text-dim); }
+.tag-battle { color: var(--accent-2); font-weight: 800; }
+
+/* abas de forma (Kanto / Alola / Galar...) */
+.form-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.form-tab {
+  padding: 5px 12px; border-radius: 999px; font-size: 13px; font-weight: 800;
+  border: 1px solid var(--border); background: var(--surface-2); color: var(--text-dim);
+  transition: transform var(--fast), background var(--fast), color var(--fast), border-color var(--fast);
+}
+.form-tab:hover { text-decoration: none; transform: translateY(-1px); color: var(--text); border-color: color-mix(in srgb, var(--accent-2) 55%, var(--border)); }
+.form-tab:active { transform: scale(.95); }
+.form-tab.is-active { background: var(--accent-2); border-color: var(--accent-2); color: #fff; }
+
+/* foco: setas ◀ ▶ ladeando a foto grande */
+.focus-stage { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; }
+.focus-nav {
+  flex: 0 0 auto; width: 38px; height: 38px; border-radius: 50%; font-size: 22px; line-height: 1;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform var(--fast), background var(--fast), border-color var(--fast), opacity var(--fast);
+}
+.focus-nav:hover:not(:disabled) { transform: scale(1.12); border-color: var(--accent-2); color: var(--accent-2); }
+.focus-nav:active:not(:disabled) { transform: scale(.9); }
+.focus-nav:disabled { opacity: .25; cursor: default; }
+.sprite--hero { width: 128px; height: 128px; }
+
+/* carrossel da linha evolutiva */
+.evo-carousel { width: 100%; display: flex; flex-direction: column; gap: 8px; }
+.evo-carousel__head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.evo-carousel__label { font-weight: 800; font-size: 13px; color: var(--text-dim); }
+.evo-strip {
+  display: flex; gap: 8px; overflow-x: auto; padding: 6px 2px 10px;
+  scroll-snap-type: x proximity; scrollbar-width: thin;
+}
+.evo-cell {
+  flex: 0 0 auto; scroll-snap-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  width: 92px; padding: 8px 6px; border-radius: var(--radius-sm);
+  border: 1px solid transparent; background: var(--surface-2); text-align: center;
+  transition: transform var(--fast), background var(--fast), border-color var(--fast);
+}
+.evo-cell:hover { text-decoration: none; transform: translateY(-2px); border-color: color-mix(in srgb, var(--accent-2) 45%, var(--border)); }
+.evo-cell:active { transform: scale(.96); }
+.evo-cell.is-current { border-color: var(--accent-2); background: color-mix(in srgb, var(--accent-2) 14%, transparent); }
+.evo-cell .sprite { width: 64px; height: 64px; }
+.evo-cell__name { font-weight: 700; font-size: 12px; line-height: 1.15; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
+.evo-cell__cond { font-size: 11px; font-weight: 700; color: var(--accent-2); line-height: 1.15; }
+.evo-strip.is-inspecting .evo-cell__cond { animation: pop .2s ease both; }
+
+@media (max-width: 720px) {
+  .poke__head { grid-template-columns: 1fr; gap: 18px; text-align: center; }
+  .poke__info { align-items: center; }
+  .form-tabs, .poke__types { justify-content: center; }
+}
 .poke__grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 8px; }
 .card--wide { grid-column: 1 / -1; }
 
@@ -305,6 +364,7 @@ button { font: inherit; cursor: pointer; }
 .sprite--missing { visibility: hidden; }
 
 .pcard__portrait {
+  position: relative;
   display: flex; align-items: center; justify-content: center;
   height: 88px; margin: -2px 0 2px;
   background: radial-gradient(circle at 50% 70%, color-mix(in srgb, var(--accent-2) 12%, transparent), transparent 70%);
@@ -312,6 +372,12 @@ button { font: inherit; cursor: pointer; }
 }
 .pcard__portrait .sprite { width: 80px; height: 80px; transition: transform var(--fast); }
 .pcard:hover .pcard__portrait .sprite { transform: scale(1.12); }
+.pcard__form {
+  position: absolute; top: 2px; right: 2px;
+  padding: 2px 7px; border-radius: 999px; font-size: 10px; font-weight: 800;
+  background: var(--surface-2); color: var(--muted); border: 1px solid var(--border);
+}
+.pcard__form.is-variant { background: var(--accent-2); color: #fff; border-color: var(--accent-2); }
 
 .poke__portrait {
   position: relative;
@@ -358,26 +424,11 @@ button { font: inherit; cursor: pointer; }
 .gem { image-rendering: pixelated; vertical-align: middle; width: 16px; height: 16px; }
 .move__type { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
 
-/* ---------- linha evolutiva ---------- */
+/* ---------- barra de título de card ---------- */
 .card__titlebar { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
 .card__titlebar .card__title { margin: 0; }
 .btn--sm { padding: 6px 13px; font-size: 13px; }
 .btn.is-active { background: var(--accent-2); color: #fff; border-color: var(--accent-2); }
-
-.evo-chain { display: flex; align-items: center; gap: 4px; overflow-x: auto; padding: 10px 2px; }
-.evo-stage { display: flex; align-items: center; gap: 6px; }
-.evo-branches { display: flex; flex-direction: column; gap: 10px; }
-.evo-arrow { display: flex; flex-direction: column; align-items: center; gap: 2px; color: var(--muted); min-width: 40px; transition: color var(--fast); }
-.evo-arrow__ico { font-size: 13px; }
-.evo-cond { display: none; font-size: 11px; font-weight: 700; color: var(--accent-2); text-align: center; max-width: 100px; line-height: 1.2; }
-.evo-chain.is-inspecting .evo-cond { display: block; animation: pop .2s ease both; }
-.evo-chain.is-inspecting .evo-arrow { color: var(--accent-2); }
-.evo-mon { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 8px; border-radius: var(--radius-sm); border: 1px solid transparent; transition: transform var(--fast), background var(--fast), border-color var(--fast); }
-.evo-mon:hover { text-decoration: none; background: var(--surface-2); transform: translateY(-2px); }
-.evo-mon:active { transform: scale(.96); }
-.evo-mon.is-current { border-color: var(--accent-2); background: color-mix(in srgb, var(--accent-2) 12%, transparent); }
-.evo-mon .sprite { width: 72px; height: 72px; }
-.evo-mon__name { font-weight: 700; font-size: 13px; }
 
 /* ---------- builds ---------- */
 .builds { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }

@@ -2,20 +2,52 @@
 {{with .P}}
 <article class="poke">
   <header class="poke__head">
-    <div class="poke__portrait">
-      {{template "sprite" .}}
-      <button id="shinyToggle" class="shiny-toggle" type="button" title="Ver shiny" aria-label="Alternar shiny">✨</button>
+    <div class="poke__focus">
+      <div class="focus-stage">
+        {{if gt (len $.Line) 1}}<button class="focus-nav focus-nav--prev" type="button" aria-label="Evolução anterior">‹</button>{{end}}
+        <div class="poke__portrait">
+          <img class="sprite sprite--hero" id="heroSprite"
+               src="{{sprite .Dex .SpriteSlug}}"
+               data-normal="{{sprite .Dex .SpriteSlug}}" data-shiny="{{spriteShiny .Dex .SpriteSlug}}"
+               alt="{{.Name}}" width="160" height="160"
+               onerror="this.onerror=null;this.src='{{sprite .Dex ""}}'">
+          <button id="shinyToggle" class="shiny-toggle" type="button" title="Ver shiny" aria-label="Alternar shiny">✨</button>
+        </div>
+        {{if gt (len $.Line) 1}}<button class="focus-nav focus-nav--next" type="button" aria-label="Próxima evolução">›</button>{{end}}
+      </div>
+
+      {{if gt (len $.Line) 1}}
+      <div class="evo-carousel">
+        <div class="evo-carousel__head">
+          <span class="evo-carousel__label">Linha evolutiva</span>
+          <button id="evoInspect" class="btn btn--ghost btn--sm" type="button">Ver condições</button>
+        </div>
+        <div id="evoStrip" class="evo-strip">
+          {{range $.Line}}{{template "evocell" .}}{{end}}
+        </div>
+      </div>
+      {{end}}
     </div>
-    <div class="poke__id">Nº {{printf "%04d" .Dex}} · {{.Generation}}</div>
-    <h1 class="poke__name">{{.Name}}</h1>
-    <div class="poke__types">
-      {{range .Types}}{{template "typebadge" .}}{{end}}
+
+    <div class="poke__info">
+      <div class="poke__id">Nº {{printf "%04d" .Dex}} · {{.Generation}}{{if .BattleOnly}} · <span class="tag-battle">só em batalha</span>{{end}}</div>
+      <h1 class="poke__name">{{.Name}}</h1>
+
+      {{if $.Variants}}
+      <div class="form-tabs" aria-label="Formas desta espécie">
+        {{range $.Variants}}<a class="form-tab {{if eq .Slug $.P.Slug}}is-active{{end}}" href="pokemon/{{.Slug}}">{{if .Form}}{{.Form}}{{else}}{{.Name}}{{end}}</a>{{end}}
+      </div>
+      {{end}}
+
+      <div class="poke__types">
+        {{range .Types}}{{template "typebadge" .}}{{end}}
+      </div>
+      <button class="btn team-toggle" data-slug="{{.Slug}}" aria-pressed="false">
+        <span class="team-toggle__add">＋ Adicionar ao time</span>
+        <span class="team-toggle__rem">✓ No time — remover</span>
+      </button>
+      {{if .Description}}<p class="poke__desc">{{.Description}}</p>{{end}}
     </div>
-    <button class="btn team-toggle" data-slug="{{.Slug}}" aria-pressed="false">
-      <span class="team-toggle__add">＋ Adicionar ao time</span>
-      <span class="team-toggle__rem">✓ No time — remover</span>
-    </button>
-    {{if .Description}}<p class="poke__desc">{{.Description}}</p>{{end}}
   </header>
 
   <div class="poke__grid">
@@ -52,16 +84,6 @@
       </div>
     </section>
   </div>
-
-  {{if and $.Family $.Family.Next}}
-  <section class="card card--wide">
-    <div class="card__titlebar">
-      <h2 class="card__title">Linha evolutiva</h2>
-      <button id="evoInspect" class="btn btn--ghost btn--sm" type="button">Inspecionar</button>
-    </div>
-    <div id="evoChain" class="evo-chain">{{template "evonode" $.Family}}</div>
-  </section>
-  {{end}}
 
   {{if $.Builds}}
   <section class="card card--wide">
