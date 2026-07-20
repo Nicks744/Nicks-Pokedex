@@ -30,6 +30,8 @@ jobs:
       - name: Configure Pages
         id: pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Build static site
         run: go run . build -out docs -base "${{ steps.pages.outputs.base_path }}"
