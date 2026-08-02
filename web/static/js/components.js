@@ -28,8 +28,8 @@
 
   const typeColor = (t) => TYPE_COLORS[t] || "#777";
   const title = (s) => (s ? s[0].toUpperCase() + s.slice(1) : s);
-  /* Caminho relativo do gem do tipo (resolvido pelo <base href>). */
-  const typeGem = (t) => "types/" + String(t).toLowerCase() + ".png";
+  /* Caminho relativo do ícone (redondo) do tipo — resolvido pelo <base href>. */
+  const typeGem = (t) => "static/img/types/" + String(t).toLowerCase() + ".svg";
 
   /* --- <TypeIcon /> : só o ícone (gem) do tipo --- */
   function typeIcon(t, size = 14) {

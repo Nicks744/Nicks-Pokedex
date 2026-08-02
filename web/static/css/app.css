@@ -113,9 +113,10 @@ button { font: inherit; cursor: pointer; }
   color: var(--text-dim); background: var(--surface); border: 1px solid var(--border);
   cursor: pointer; transition: all var(--fast); user-select: none;
 }
-.chip .type__gem { width: 15px; height: 15px; }
+.chip .type__gem { width: 16px; height: 16px; }
 .chip:hover { color: var(--text); border-color: var(--c); }
 .chip.is-on { color: #fff; background: var(--c); border-color: var(--c); box-shadow: 0 2px 10px color-mix(in srgb, var(--c) 45%, transparent); }
+.chip.is-on .type__gem { box-shadow: 0 0 0 1.5px rgba(255,255,255,.75); }
 
 /* ---------- botões ---------- */
 .btn {
@@ -162,19 +163,19 @@ button { font: inherit; cursor: pointer; }
 .pcard__foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; color: var(--text-dim); font-size: 12px; }
 @keyframes pop { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
-/* ---------- badges de tipo (ícone gem + rótulo) ---------- */
+/* ---------- badges de tipo (ícone redondo + rótulo) ---------- */
 .type {
   --type-color: #777;
-  display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px 3px 6px; border-radius: 999px;
+  display: inline-flex; align-items: center; gap: 6px; padding: 3px 11px 3px 4px; border-radius: 999px;
   font-size: 11.5px; font-weight: 800; letter-spacing: .3px; text-transform: uppercase;
-  color: #fff; background: var(--type-color);
-  text-shadow: 0 1px 1px rgba(0,0,0,.35);
+  color: var(--text);
+  background: color-mix(in srgb, var(--type-color) 15%, var(--surface-2));
+  border: 1px solid color-mix(in srgb, var(--type-color) 42%, var(--border));
+  transition: border-color var(--fast), background var(--fast);
 }
-.type:hover { text-decoration: none; filter: brightness(1.08); }
-.type__gem {
-  image-rendering: pixelated; width: 14px; height: 14px; flex: 0 0 auto;
-  filter: drop-shadow(0 1px 1px rgba(0,0,0,.4));
-}
+.type:hover { text-decoration: none; border-color: var(--type-color); background: color-mix(in srgb, var(--type-color) 22%, var(--surface-2)); }
+/* ícone: o SVG já é um círculo colorido com o símbolo em branco */
+.type__gem { width: 17px; height: 17px; flex: 0 0 auto; border-radius: 50%; }
 .type__label { line-height: 1; }
 
 /* categoria de golpe */
@@ -300,7 +301,7 @@ button { font: inherit; cursor: pointer; }
   font-size: 12.5px; font-weight: 700; border: 1px solid var(--type-color);
   color: var(--text);
 }
-.matchup .type__gem { filter: none; }
+.matchup .type__gem { width: 15px; height: 15px; }
 .matchup b { font-variant-numeric: tabular-nums; }
 .matchup.m0   { opacity: .75; border-style: dashed; }
 .matchup.m025 { background: color-mix(in srgb, var(--ok) 22%, transparent); }
@@ -512,8 +513,8 @@ body.modal-open { overflow: hidden; }
 .hist-card__types { display: flex; flex-wrap: wrap; gap: 4px; }
 .hist-card__when { flex: 0 0 auto; color: var(--muted); font-size: 12px; white-space: nowrap; }
 
-/* ---------- gems de tipo (nos golpes) ---------- */
-.gem { image-rendering: pixelated; vertical-align: middle; width: 16px; height: 16px; }
+/* ---------- ícone de tipo pequeno (ex.: nos move-pills das builds) ---------- */
+.gem { vertical-align: middle; width: 16px; height: 16px; border-radius: 50%; }
 .move__type { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
 
 /* ---------- barra de título de card ---------- */

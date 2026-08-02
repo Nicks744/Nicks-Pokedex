@@ -451,7 +451,7 @@ func funcMap() template.FuncMap {
 		"dict":        dict,
 		"sprite":      spriteURL,
 		"spriteShiny": spriteShinyURL,
-		"typeGem":     func(t string) string { return "types/" + strings.ToLower(t) + ".png" },
+		"typeGem":     func(t string) string { return "static/img/types/" + strings.ToLower(t) + ".svg" },
 	}
 }
 

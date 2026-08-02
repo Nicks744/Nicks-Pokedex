@@ -61,8 +61,9 @@ ou passe `-jar`. Depois da importação o app funciona **100% offline**.
   com os detalhes completos (poder, precisão, PP e efeito).
 - **Página de golpe** (`/move/{slug}`): quem aprende e como.
 - **Ícones de tipo**: sempre que um Pokémon ou golpe tem tipo, a interface mostra
-  o **ícone oficial (gem)** ao lado do rótulo — nos cards, badges, tabelas de
-  golpes, matchups e filtros.
+  o **ícone redondo do tipo** (círculo colorido + símbolo) ao lado do rótulo — nos
+  cards, badges, tabelas de golpes, matchups e filtros. Ícones vetoriais (SVG) em
+  `web/static/img/types/`, nítidos em qualquer tamanho.
 - **Meu Time** (`/team`): monte até 6 e veja a **matriz de cobertura defensiva**
   — quais tipos são o buraco do time. Salvo em `data/team.json`.
 - **Histórico** (`/history`): registra automaticamente os Pokémon que você abriu,
