@@ -166,7 +166,7 @@
 </div>{{end}}
 
 {{/* Chip de matchup defensivo. Recebe typechart.Matchup. */}}
-{{define "matchup"}}<span class="matchup {{multClass .Multiplier}}" style="--type-color:{{typeColor .Type}}">{{title .Type}} <b>{{mult .Multiplier}}×</b></span>{{end}}
+{{define "matchup"}}<span class="matchup {{multClass .Multiplier}}" style="--type-color:{{typeColor .Type}}"><img class="type__gem" src="{{typeGem .Type}}" alt="" width="14" height="14" loading="lazy">{{title .Type}} <b>{{mult .Multiplier}}×</b></span>{{end}}
 
 {{/* Secao de golpes sem level (TM/Egg/Tutor). Recebe dict Title/Rows. */}}
 {{define "movesection"}}{{if .Rows}}

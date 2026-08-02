@@ -5,7 +5,8 @@
 (function () {
   "use strict";
 
-  const { TYPES, typeColor, renderCard } = window.Poke;
+  const P = window.Poke;
+  const { TYPES, renderCard } = P;
 
   const els = {
     q: document.getElementById("q"),
@@ -23,20 +24,11 @@
   const state = { q: "", types: new Set(), gen: "", sort: "dex" };
   let all = [];
 
-  /* --- filtros de tipo (chips) --- */
+  /* --- filtros de tipo (chips): usa o builder compartilhado (ícone + rótulo) --- */
   function buildChips() {
-    TYPES.forEach((t) => {
-      const chip = document.createElement("button");
-      chip.type = "button";
-      chip.className = "chip";
-      chip.textContent = t.toUpperCase();
-      chip.style.setProperty("--c", typeColor(t));
-      chip.addEventListener("click", () => {
-        if (state.types.has(t)) { state.types.delete(t); chip.classList.remove("is-on"); }
-        else { state.types.add(t); chip.classList.add("is-on"); }
-        apply();
-      });
-      els.typeChips.appendChild(chip);
+    P.buildTypeChips(els.typeChips, (t, on) => {
+      if (on) state.types.add(t); else state.types.delete(t);
+      apply();
     });
   }
 
@@ -126,7 +118,7 @@
     const type = p.get("type");
     if (type && TYPES.includes(type)) {
       state.types.add(type);
-      const chip = [...els.typeChips.children].find((c) => c.textContent.toLowerCase() === type);
+      const chip = els.typeChips.querySelector('.chip[data-type="' + type + '"]');
       if (chip) chip.classList.add("is-on");
     }
     const q = p.get("q") || els.q.value;

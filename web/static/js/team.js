@@ -23,15 +23,20 @@
     i.onerror = () => i.classList.add("sprite--missing");
     return i;
   }
-  function chip(t) {
-    const s = document.createElement("span");
-    s.className = "type"; s.style.setProperty("--type-color", P.typeColor(t)); s.textContent = P.title(t);
-    return s;
-  }
+  // chip de tipo (sem link — o card já leva ao Pokémon): usa o componente único.
+  const chip = (t) => P.typeBadge(t, { link: false });
 
   function rosterCard(p) {
     const card = document.createElement("div");
     card.className = "roster-card";
+
+    // Botão remover: canto superior direito (posicionado via CSS, primeiro no
+    // DOM para receber foco cedo na navegação por teclado).
+    const rem = document.createElement("button");
+    rem.className = "roster-card__rem"; rem.type = "button"; rem.dataset.slug = p.slug;
+    rem.title = "Remover do time";
+    rem.setAttribute("aria-label", "Remover " + p.name + " do time");
+    rem.textContent = "✕";
 
     const id = document.createElement("div");
     id.className = "roster-card__id"; id.textContent = "Nº " + String(p.dex).padStart(4, "0");
@@ -46,11 +51,7 @@
     types.className = "roster-card__types";
     (p.types || []).forEach((t) => types.appendChild(chip(t)));
 
-    const rem = document.createElement("button");
-    rem.className = "roster-card__rem"; rem.type = "button"; rem.dataset.slug = p.slug;
-    rem.setAttribute("aria-label", "Remover"); rem.textContent = "✕";
-
-    card.append(id, port, name, types, rem);
+    card.append(rem, id, port, name, types);
     return card;
   }
 

@@ -29,18 +29,22 @@
     </a>
     <nav class="nav__links">
       <a href="{{.BaseURL}}" class="nav__link {{if eq .Active "dex"}}is-active{{end}}">Pokédex</a>
+      <a href="moves" class="nav__link {{if eq .Active "moves"}}is-active{{end}}">Ataques</a>
       <a href="team" class="nav__link {{if eq .Active "team"}}is-active{{end}}">Meu Time</a>
       <a href="history" class="nav__link {{if eq .Active "history"}}is-active{{end}}">Histórico</a>
     </nav>
   </div>
 </header>{{end}}
 
-{{/* Badge de tipo (link). Recebe a string do tipo (ex.: "grass"). */}}
-{{define "typebadge"}}<a class="type type--{{.}}" href="?type={{.}}" style="--type-color:{{typeColor .}}">{{title .}}</a>{{end}}
+{{/* Badge de tipo (link) com ícone oficial (gem) + rótulo. Recebe o tipo (ex.: "grass"). */}}
+{{define "typebadge"}}<a class="type type--{{.}}" href="?type={{.}}" style="--type-color:{{typeColor .}}"><img class="type__gem" src="{{typeGem .}}" alt="" width="14" height="14" loading="lazy"><span class="type__label">{{title .}}</span></a>{{end}}
 
-{{/* Chip de tipo (span, sem link). Use quando o elemento pai já é um <a>,
-     pois <a> dentro de <a> é HTML inválido e quebra o layout. */}}
-{{define "typechip"}}<span class="type" style="--type-color:{{typeColor .}}">{{title .}}</span>{{end}}
+{{/* Chip de tipo (span, sem link) com ícone. Use quando o elemento pai já é um
+     <a>, pois <a> dentro de <a> é HTML inválido e quebra o layout. */}}
+{{define "typechip"}}<span class="type" style="--type-color:{{typeColor .}}"><img class="type__gem" src="{{typeGem .}}" alt="" width="14" height="14" loading="lazy"><span class="type__label">{{title .}}</span></span>{{end}}
+
+{{/* Ícone (gem) de um tipo, sem rótulo. Recebe o tipo. */}}
+{{define "typeicon"}}<img class="type__gem" src="{{typeGem .}}" alt="{{title .}}" title="{{title .}}" width="16" height="16" loading="lazy">{{end}}
 
 {{/* Sprite de um Pokemon/EvoNode. Usa .Dex, .SpriteSlug e .Name. Formas caem
      no sprite da forma-base (Dex) se o arquivo nao existir. */}}
@@ -55,7 +59,7 @@
 
 {{/* Celulas de um golpe numa tabela de moves. Recebe um moveRow. */}}
 {{define "movecells"}}<td class="move__name"><a href="move/{{.Slug}}">{{.Name}}</a></td>
-<td class="move__type">{{if .Type}}<img class="gem" src="{{typeGem .Type}}" alt="" width="16" height="16" loading="lazy">{{template "typebadge" .Type}}{{end}}</td>
+<td class="move__type">{{if .Type}}{{template "typebadge" .Type}}{{end}}</td>
 <td><span class="cat cat--{{lower .Category}}">{{if .Category}}{{.Category}}{{else}}—{{end}}</span></td>
 <td class="num">{{if gt .Power 0}}{{.Power}}{{else}}—{{end}}</td>
 <td class="num">{{if gt .Accuracy 0}}{{.Accuracy}}{{else}}—{{end}}</td>

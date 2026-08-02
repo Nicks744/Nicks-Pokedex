@@ -11,6 +11,7 @@ import (
 	"net/http/httptest"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 
 	"nickspokedex/internal/analysis"
@@ -52,14 +53,17 @@ func (s *Server) mux(dataDir string, webFS fs.FS) *http.ServeMux {
 
 	mux.HandleFunc("GET /{$}", s.handleIndex)
 	mux.HandleFunc("GET /pokemon/{slug}", s.handlePokemon)
+	mux.HandleFunc("GET /moves", s.handleMoves)
 	mux.HandleFunc("GET /move/{slug}", s.handleMove)
 	mux.HandleFunc("GET /team", s.handleTeam)
 	mux.HandleFunc("GET /history", s.handleHistory)
 
 	// API JSON consumida pela busca no cliente. O caminho .json e o usado pela
-	// versao estatica (arquivo real em docs/api/pokemon.json).
+	// versao estatica (arquivo real em docs/api/*.json).
 	mux.HandleFunc("GET /api/pokemon", s.handleAPIPokemon)
 	mux.HandleFunc("GET /api/pokemon.json", s.handleAPIPokemon)
+	mux.HandleFunc("GET /api/moves", s.handleAPIMoves)
+	mux.HandleFunc("GET /api/moves.json", s.handleAPIMoves)
 	return mux
 }
 
@@ -201,6 +205,14 @@ func (s *Server) plainRows(slugs []string) []moveRow {
 	return rows
 }
 
+// handleMoves renderiza o shell do browser de ataques; a lista vem do
+// api/moves.json via moves.js (funciona tambem no site estatico).
+func (s *Server) handleMoves(w http.ResponseWriter, r *http.Request) {
+	b := s.base0("Ataques", "moves")
+	b.Query = r.URL.Query().Get("q")
+	s.render(w, "moves", indexView{Base: b})
+}
+
 func (s *Server) handleMove(w http.ResponseWriter, r *http.Request) {
 	slug := r.PathValue("slug")
 	mv, ok := s.st.Move(slug)
@@ -238,6 +250,17 @@ type apiPokemon struct {
 	ShinySprite string   `json:"shiny"`
 	Form        string   `json:"form,omitempty"`
 	IsForm      bool     `json:"isForm,omitempty"`
+}
+
+// handleAPIMoves serve todos os golpes (ordenados por nome) para o browser de
+// ataques. Reaproveita o model.Move (que ja tem as tags JSON corretas).
+func (s *Server) handleAPIMoves(w http.ResponseWriter, r *http.Request) {
+	out := make([]model.Move, 0, len(s.st.Moves))
+	for _, mv := range s.st.Moves {
+		out = append(out, mv)
+	}
+	sort.Slice(out, func(i, j int) bool { return out[i].Name < out[j].Name })
+	writeJSON(w, out)
 }
 
 func (s *Server) handleAPIPokemon(w http.ResponseWriter, r *http.Request) {
@@ -313,6 +336,7 @@ func BuildStatic(dataDir string, webFS fs.FS, outDir, base string) error {
 	// Paginas HTML (usa index.html dentro de cada pasta -> URLs limpas).
 	pages := map[string]string{
 		"/":        "index.html",
+		"/moves":   "moves/index.html",
 		"/team":    "team/index.html",
 		"/history": "history/index.html",
 	}
@@ -337,12 +361,14 @@ func BuildStatic(dataDir string, webFS fs.FS, outDir, base string) error {
 	fmt.Printf("paginas geradas: %d\n", n)
 
 	// API JSON estatica.
-	body, code := snapshot(h, "/api/pokemon.json")
-	if code != http.StatusOK {
-		return fmt.Errorf("gerando api: status %d", code)
-	}
-	if err := writeFile(filepath.Join(outDir, "api/pokemon.json"), body); err != nil {
-		return err
+	for _, api := range []string{"pokemon", "moves"} {
+		body, code := snapshot(h, "/api/"+api+".json")
+		if code != http.StatusOK {
+			return fmt.Errorf("gerando api %s: status %d", api, code)
+		}
+		if err := writeFile(filepath.Join(outDir, "api/"+api+".json"), body); err != nil {
+			return err
+		}
 	}
 
 	// 404 (GitHub Pages usa 404.html na raiz).

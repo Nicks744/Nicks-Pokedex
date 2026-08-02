@@ -105,13 +105,15 @@ button { font: inherit; cursor: pointer; }
 .select:focus { border-color: var(--accent-2); }
 .result-count { align-self: center; color: var(--muted); font-size: 13px; margin-left: auto; }
 
-/* chip de filtro de tipo */
+/* chip de filtro de tipo (ícone gem + rótulo) */
 .chip {
   --c: #777;
-  padding: 5px 12px; border-radius: 999px; font-size: 12.5px; font-weight: 700;
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 12px 5px 8px; border-radius: 999px; font-size: 12.5px; font-weight: 700;
   color: var(--text-dim); background: var(--surface); border: 1px solid var(--border);
   cursor: pointer; transition: all var(--fast); user-select: none;
 }
+.chip .type__gem { width: 15px; height: 15px; }
 .chip:hover { color: var(--text); border-color: var(--c); }
 .chip.is-on { color: #fff; background: var(--c); border-color: var(--c); box-shadow: 0 2px 10px color-mix(in srgb, var(--c) 45%, transparent); }
 
@@ -160,15 +162,20 @@ button { font: inherit; cursor: pointer; }
 .pcard__foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; color: var(--text-dim); font-size: 12px; }
 @keyframes pop { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
-/* ---------- badges de tipo ---------- */
+/* ---------- badges de tipo (ícone gem + rótulo) ---------- */
 .type {
   --type-color: #777;
-  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px 3px 6px; border-radius: 999px;
   font-size: 11.5px; font-weight: 800; letter-spacing: .3px; text-transform: uppercase;
   color: #fff; background: var(--type-color);
   text-shadow: 0 1px 1px rgba(0,0,0,.35);
 }
 .type:hover { text-decoration: none; filter: brightness(1.08); }
+.type__gem {
+  image-rendering: pixelated; width: 14px; height: 14px; flex: 0 0 auto;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,.4));
+}
+.type__label { line-height: 1; }
 
 /* categoria de golpe */
 .cat { font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 6px; text-transform: uppercase; }
@@ -293,6 +300,7 @@ button { font: inherit; cursor: pointer; }
   font-size: 12.5px; font-weight: 700; border: 1px solid var(--type-color);
   color: var(--text);
 }
+.matchup .type__gem { filter: none; }
 .matchup b { font-variant-numeric: tabular-nums; }
 .matchup.m0   { opacity: .75; border-style: dashed; }
 .matchup.m025 { background: color-mix(in srgb, var(--ok) 22%, transparent); }
@@ -353,18 +361,68 @@ button { font: inherit; cursor: pointer; }
 .tile { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; text-align: center; }
 .tile__label { display: block; color: var(--text-dim); font-size: 12px; text-transform: uppercase; letter-spacing: .4px; }
 .tile__val { display: block; font-size: 26px; font-weight: 850; margin-top: 4px; font-variant-numeric: tabular-nums; }
+.stat-tiles--compact { margin: 8px 0 4px; }
+.stat-tiles--compact .tile { padding: 12px; }
+.stat-tiles--compact .tile__val { font-size: 22px; }
+
+/* ---------- browser de ataques (grid + cards) ---------- */
+.mgrid { display: grid; gap: 12px; margin-top: 20px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+.mcard {
+  display: flex; flex-direction: column; gap: 8px; text-align: left; width: 100%;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 14px; color: inherit; transition: transform var(--fast), border-color var(--fast), box-shadow var(--fast);
+  animation: pop .28s ease both;
+}
+.mcard:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent-2) 60%, var(--border)); box-shadow: var(--shadow); }
+.mcard:active { transform: translateY(-1px) scale(.98); }
+.mcard__head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.mcard__name { font-weight: 800; font-size: 15.5px; }
+.mcard__meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.mcard__stat { color: var(--text-dim); font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.mcard__stat b { color: var(--text); font-weight: 800; }
+.mcard__desc { margin: 0; color: var(--text-dim); font-size: 12.5px; line-height: 1.4; }
+
+/* ---------- modal (detalhes do golpe) ---------- */
+body.modal-open { overflow: hidden; }
+.modal { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: 18px; }
+.modal__backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.55); backdrop-filter: blur(3px); }
+.modal__box {
+  position: relative; z-index: 1; width: 100%; max-width: 460px; max-height: 88vh; overflow-y: auto;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 22px; animation: modalIn .22s ease both;
+}
+@keyframes modalIn { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
+.modal__close {
+  position: absolute; top: 12px; right: 12px; width: 30px; height: 30px; border-radius: 50%;
+  border: 1px solid var(--border); background: var(--surface-2); color: var(--text-dim); font-weight: 800; line-height: 1;
+  display: flex; align-items: center; justify-content: center; transition: background var(--fast), color var(--fast);
+}
+.modal__close:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.modal__head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 4px; padding-right: 28px; }
+.modal__title { font-size: 22px; font-weight: 850; }
+.modal__tags { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.modal__desc { color: var(--text-dim); margin: 6px 0 14px; line-height: 1.5; }
+.modal__link { width: 100%; }
 
 /* ---------- time ---------- */
 .team-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
 .team-head form { margin: 0; }
 .team-roster { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-bottom: 20px; }
 .roster-card { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; }
-.roster-card__id { font-size: 11px; color: var(--muted); font-weight: 700; }
+/* espaço à direita do nº para o botão remover não sobrepor a numeração */
+.roster-card__id { font-size: 11px; color: var(--muted); font-weight: 700; padding-right: 30px; }
 .roster-card__name { display: block; font-weight: 800; font-size: 16px; margin: 2px 0 8px; }
 .roster-card__types { display: flex; flex-wrap: wrap; gap: 5px; }
-.roster-card form { position: absolute; top: 8px; right: 8px; margin: 0; }
-.roster-card__rem { width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--border); background: var(--surface-2); color: var(--muted); line-height: 1; }
-.roster-card__rem:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+/* botão remover — sempre no canto superior direito do card */
+.roster-card__rem {
+  position: absolute; top: 8px; right: 8px; z-index: 3;
+  width: 28px; height: 28px; border-radius: 50%; font-size: 14px; font-weight: 800; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border); background: var(--surface-2); color: var(--text-dim);
+  transition: background var(--fast), color var(--fast), border-color var(--fast), transform var(--fast);
+}
+.roster-card__rem:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: scale(1.1); }
+.roster-card__rem:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 2px; }
 
 /* matriz de cobertura */
 .matrix { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 520px; }

@@ -56,7 +56,13 @@ ou passe `-jar`. Depois da importação o app funciona **100% offline**.
     condições (dia/noite, chuva, Nether/End, pesca, curry, etc.).
   - **Natureza & Builds**: natureza que mais combina com base nas stats + builds
     sugeridas (papel, natureza, EVs e golpes tirados do que ele aprende).
+- **Ataques** (`/moves`): browser de todos os golpes — busca, filtro por **tipo**
+  (com ícone) e **categoria** (Físico/Especial/Status), ordenação e um **modal**
+  com os detalhes completos (poder, precisão, PP e efeito).
 - **Página de golpe** (`/move/{slug}`): quem aprende e como.
+- **Ícones de tipo**: sempre que um Pokémon ou golpe tem tipo, a interface mostra
+  o **ícone oficial (gem)** ao lado do rótulo — nos cards, badges, tabelas de
+  golpes, matchups e filtros.
 - **Meu Time** (`/team`): monte até 6 e veja a **matriz de cobertura defensiva**
   — quais tipos são o buraco do time. Salvo em `data/team.json`.
 - **Histórico** (`/history`): registra automaticamente os Pokémon que você abriu,

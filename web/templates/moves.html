@@ -1,0 +1,45 @@
+{{define "moves"}}{{template "head" .}}
+<section class="hero">
+  <h1 class="hero__title">Ataques</h1>
+  <p class="hero__sub">Todos os golpes da base — tipo, categoria, poder, precisão, PP e efeito.</p>
+  <div class="search">
+    <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 21l-4.3-4.3M11 19a8 8 0 100-16 8 8 0 000 16z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <input id="mq" class="search__input" type="search" placeholder="Buscar golpe…" value="{{.Query}}" autocomplete="off" spellcheck="false">
+  </div>
+</section>
+
+<section class="filters" aria-label="Filtros">
+  <div class="chips" id="mTypeChips"></div>
+  <div class="filters__row">
+    <label class="field">
+      <span class="field__label">Categoria</span>
+      <select id="mCat" class="select">
+        <option value="">Todas</option>
+        <option value="Physical">Físico</option>
+        <option value="Special">Especial</option>
+        <option value="Status">Status</option>
+      </select>
+    </label>
+    <label class="field">
+      <span class="field__label">Ordenar</span>
+      <select id="mSort" class="select">
+        <option value="name">Nome (A–Z)</option>
+        <option value="power">Poder</option>
+        <option value="accuracy">Precisão</option>
+        <option value="pp">PP</option>
+      </select>
+    </label>
+    <button id="mClear" class="btn btn--ghost" type="button">Limpar filtros</button>
+    <span class="result-count" id="mCount" aria-live="polite"></span>
+  </div>
+</section>
+
+<div id="mLoading" class="loading"><span class="spinner"></span> Carregando ataques…</div>
+<div id="mEmpty" class="empty" hidden>
+  <strong>Nenhum ataque encontrado.</strong>
+  <span>Tente outro nome ou limpe os filtros.</span>
+</div>
+<div id="mGrid" class="mgrid" aria-live="polite"></div>
+
+<script defer src="static/js/moves.js"></script>
+{{template "foot" .}}{{end}}
