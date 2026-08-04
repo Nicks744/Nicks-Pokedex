@@ -86,6 +86,7 @@ func buildPixelmonItems(jarPath, outDir string) []model.Item {
 		return nil
 	}
 	drops := readPixelmonDrops(zr) // id do item (sem "pixelmon:") -> fontes
+	juice := readJuiceIngredients(zr, lang) // suco -> berries que o produzem
 	tex := indexItemTextures(zr)   // basename minusculo -> textura no jar
 	iconDir := filepath.Join(outDir, "itemtex")
 	_ = os.MkdirAll(iconDir, 0o755)
@@ -119,6 +120,7 @@ func buildPixelmonItems(jarPath, outDir string) []model.Item {
 		items = append(items, model.Item{
 			ID: id, Name: name, Desc: desc, Category: cat,
 			EVStat: ev, IV: iv, Icon: icon, Drops: drops[id],
+			Ingredients: juice[id],
 		})
 	}
 	fmt.Printf("itens: %d texturas extraidas -> %s\n", nIcons, iconDir)
@@ -182,6 +184,62 @@ func extractItemIcon(tex map[string]*zip.File, id, dir string) bool {
 			return false
 		}
 		return true
+	}
+	return false
+}
+
+// juiceColors mapeia a cor (pasta da tag) para o id do item de suco.
+var juiceColors = map[string]string{
+	"red": "red_juice", "blue": "blue_juice", "pink": "pink_juice",
+	"purple": "purple_juice", "yellow": "yellow_juice", "green": "green_juice",
+}
+
+// readJuiceIngredients lê as tags `berries/juice/{cor}/{tier}` do jar e devolve,
+// para cada suco, as berries que o produzem (aquecendo na Cooking Pot), com o
+// tier (1..3). O pinap_juice vem da receita do infuser (uma berry só).
+func readJuiceIngredients(zr *zip.ReadCloser, lang map[string]string) map[string][]model.ItemIngredient {
+	out := map[string][]model.ItemIngredient{}
+	name := func(id string) string {
+		if n := lang["item.pixelmon."+id]; n != "" {
+			return n
+		}
+		return prettify(id)
+	}
+	for color, juice := range juiceColors {
+		for tier := 1; tier <= 3; tier++ {
+			var tag struct {
+				Values []string `json:"values"`
+			}
+			path := fmt.Sprintf("data/pixelmon/tags/items/berries/juice/%s/%d.json", color, tier)
+			if !readZipJSON(zr, path, &tag) {
+				continue
+			}
+			for _, v := range tag.Values {
+				if strings.HasPrefix(v, "#") { // ignora referencias a outras tags
+					continue
+				}
+				id := strings.TrimPrefix(v, "pixelmon:")
+				out[juice] = append(out[juice], model.ItemIngredient{ID: id, Name: name(id), Tier: tier})
+			}
+		}
+	}
+	out["pinap_juice"] = []model.ItemIngredient{{ID: "pinap_berry", Name: name("pinap_berry")}}
+	return out
+}
+
+// readZipJSON lê um arquivo (por nome exato) do jar e faz o Unmarshal em v.
+func readZipJSON(zr *zip.ReadCloser, name string, v any) bool {
+	for _, f := range zr.File {
+		if f.Name != name {
+			continue
+		}
+		rc, err := f.Open()
+		if err != nil {
+			return false
+		}
+		data, _ := io.ReadAll(rc)
+		rc.Close()
+		return json.Unmarshal(data, v) == nil
 	}
 	return false
 }

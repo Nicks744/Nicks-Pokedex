@@ -102,6 +102,16 @@ type Item struct {
 	IV       bool       `json:"iv,omitempty"`       // mexe com IV (bottle caps)
 	Icon     bool       `json:"icon,omitempty"`  // tem textura em itemtex/{id}.png
 	Drops    []ItemDrop `json:"drops,omitempty"` // de quais Pokemon dropa (com chance)
+	// Ingredients: para os sucos, as berries que o produzem (ao aquecer na Cooking Pot).
+	Ingredients []ItemIngredient `json:"ingredients,omitempty"`
+}
+
+// ItemIngredient e uma berry usada para produzir um item (ex.: suco). Tier e o
+// nivel da berry na receita (1..3); 0 quando nao ha niveis.
+type ItemIngredient struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+	Tier int    `json:"tier,omitempty"`
 }
 
 // ItemDrop e uma fonte de drop de um item (um Pokemon e a chance).

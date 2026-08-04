@@ -460,6 +460,22 @@ body.modal-open { overflow: hidden; }
 }
 .drops__none { margin: 6px 0 0; }
 
+/* receita de suco (berries que o produzem) */
+.recipe { margin: 4px 0 14px; }
+.berry-tier { display: flex; align-items: flex-start; gap: 10px; padding: 6px 0; }
+.berry-tier + .berry-tier { border-top: 1px dashed var(--border); }
+.tier-label {
+  flex: 0 0 auto; margin-top: 4px; font-size: 11px; font-weight: 800; text-transform: uppercase;
+  color: var(--accent-2); min-width: 52px;
+}
+.berry-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.berry-chip {
+  display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px 3px 4px;
+  border-radius: 999px; font-size: 12.5px; font-weight: 600;
+  background: var(--surface-2); border: 1px solid var(--border);
+}
+.item-ico--sm { width: 24px; height: 24px; padding: 2px; border-radius: 6px; }
+
 /* ---------- time ---------- */
 .team-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
 .team-head form { margin: 0; }

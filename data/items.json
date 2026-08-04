@@ -1987,7 +1987,49 @@
   "desc": "Increases a Pokémon's Special Attack EVs.",
   "category": "Suco",
   "evStat": "Ataque Esp.",
-  "icon": true
+  "icon": true,
+  "ingredients": [
+   {
+    "id": "oran_berry",
+    "name": "Oran Berry",
+    "tier": 1
+   },
+   {
+    "id": "passho_berry",
+    "name": "Passho Berry",
+    "tier": 2
+   },
+   {
+    "id": "yache_berry",
+    "name": "Yache Berry",
+    "tier": 2
+   },
+   {
+    "id": "coba_berry",
+    "name": "Coba Berry",
+    "tier": 2
+   },
+   {
+    "id": "kelpsy_berry",
+    "name": "Kelpsy Berry",
+    "tier": 3
+   },
+   {
+    "id": "apicot_berry",
+    "name": "Apicot Berry",
+    "tier": 3
+   },
+   {
+    "id": "maranga_berry",
+    "name": "Maranga Berry",
+    "tier": 3
+   },
+   {
+    "id": "rowap_berry",
+    "name": "Rowap Berry",
+    "tier": 3
+   }
+  ]
  },
  {
   "id": "green_juice",
@@ -1995,14 +2037,92 @@
   "desc": "Increases a Pokémon's Special Defense EVs.",
   "category": "Suco",
   "evStat": "Defesa Esp.",
-  "icon": true
+  "icon": true,
+  "ingredients": [
+   {
+    "id": "rawst_berry",
+    "name": "Rawst Berry",
+    "tier": 1
+   },
+   {
+    "id": "wepear_berry",
+    "name": "Wepear Berry",
+    "tier": 1
+   },
+   {
+    "id": "rabuta_berry",
+    "name": "Rabuta Berry",
+    "tier": 1
+   },
+   {
+    "id": "durin_berry",
+    "name": "Durin Berry",
+    "tier": 1
+   },
+   {
+    "id": "lum_berry",
+    "name": "Lum Berry",
+    "tier": 2
+   },
+   {
+    "id": "rindo_berry",
+    "name": "Rindo Berry",
+    "tier": 2
+   },
+   {
+    "id": "kebia_berry",
+    "name": "Kebia Berry",
+    "tier": 2
+   },
+   {
+    "id": "tanga_berry",
+    "name": "Tanga Berry",
+    "tier": 2
+   },
+   {
+    "id": "babiri_berry",
+    "name": "Babiri Berry",
+    "tier": 2
+   },
+   {
+    "id": "aguav_berry",
+    "name": "Aguav Berry",
+    "tier": 3
+   },
+   {
+    "id": "hondew_berry",
+    "name": "Hondew Berry",
+    "tier": 3
+   },
+   {
+    "id": "salac_berry",
+    "name": "Salac Berry",
+    "tier": 3
+   },
+   {
+    "id": "starf_berry",
+    "name": "Starf Berry",
+    "tier": 3
+   },
+   {
+    "id": "micle_berry",
+    "name": "Micle Berry",
+    "tier": 3
+   }
+  ]
  },
  {
   "id": "pinap_juice",
   "name": "Pinap Juice",
   "desc": "Restores 100 HP",
   "category": "Suco",
-  "icon": true
+  "icon": true,
+  "ingredients": [
+   {
+    "id": "pinap_berry",
+    "name": "Pinap Berry"
+   }
+  ]
  },
  {
   "id": "pink_juice",
@@ -2010,7 +2130,49 @@
   "desc": "Increases a Pokémon's Speed EVs.",
   "category": "Suco",
   "evStat": "Velocidade",
-  "icon": true
+  "icon": true,
+  "ingredients": [
+   {
+    "id": "pecha_berry",
+    "name": "Pecha Berry",
+    "tier": 1
+   },
+   {
+    "id": "nanab_berry",
+    "name": "Nanab Berry",
+    "tier": 1
+   },
+   {
+    "id": "magost_berry",
+    "name": "Magost Berry",
+    "tier": 1
+   },
+   {
+    "id": "watmel_berry",
+    "name": "Watmel Berry",
+    "tier": 1
+   },
+   {
+    "id": "persim_berry",
+    "name": "Persim Berry",
+    "tier": 2
+   },
+   {
+    "id": "mago_berry",
+    "name": "Mago Berry",
+    "tier": 3
+   },
+   {
+    "id": "petaya_berry",
+    "name": "Petaya Berry",
+    "tier": 3
+   },
+   {
+    "id": "roseli_berry",
+    "name": "Roseli Berry",
+    "tier": 3
+   }
+  ]
  },
  {
   "id": "purple_juice",
@@ -2018,7 +2180,64 @@
   "desc": "Increases a Pokémon's HP EVs.",
   "category": "Suco",
   "evStat": "HP",
-  "icon": true
+  "icon": true,
+  "ingredients": [
+   {
+    "id": "chesto_berry",
+    "name": "Chesto Berry",
+    "tier": 1
+   },
+   {
+    "id": "bluk_berry",
+    "name": "Bluk Berry",
+    "tier": 1
+   },
+   {
+    "id": "cornn_berry",
+    "name": "Cornn Berry",
+    "tier": 1
+   },
+   {
+    "id": "pamtre_berry",
+    "name": "Pamtre Berry",
+    "tier": 1
+   },
+   {
+    "id": "belue_berry",
+    "name": "Belue Berry",
+    "tier": 1
+   },
+   {
+    "id": "payapa_berry",
+    "name": "Payapa Berry",
+    "tier": 2
+   },
+   {
+    "id": "kasib_berry",
+    "name": "Kasib Berry",
+    "tier": 2
+   },
+   {
+    "id": "colbur_berry",
+    "name": "Colbur Berry",
+    "tier": 2
+   },
+   {
+    "id": "wiki_berry",
+    "name": "Wiki Berry",
+    "tier": 3
+   },
+   {
+    "id": "ganlon_berry",
+    "name": "Ganlon Berry",
+    "tier": 3
+   },
+   {
+    "id": "enigma_berry",
+    "name": "Enigma Berry",
+    "tier": 3
+   }
+  ]
  },
  {
   "id": "red_juice",
@@ -2026,7 +2245,74 @@
   "desc": "Increases a Pokémon's Attack EVs.",
   "category": "Suco",
   "evStat": "Ataque",
-  "icon": true
+  "icon": true,
+  "ingredients": [
+   {
+    "id": "cheri_berry",
+    "name": "Cheri Berry",
+    "tier": 1
+   },
+   {
+    "id": "leppa_berry",
+    "name": "Leppa Berry",
+    "tier": 1
+   },
+   {
+    "id": "razz_berry",
+    "name": "Razz Berry",
+    "tier": 1
+   },
+   {
+    "id": "spelon_berry",
+    "name": "Spelon Berry",
+    "tier": 1
+   },
+   {
+    "id": "occa_berry",
+    "name": "Occa Berry",
+    "tier": 2
+   },
+   {
+    "id": "chople_berry",
+    "name": "Chople Berry",
+    "tier": 2
+   },
+   {
+    "id": "haban_berry",
+    "name": "Haban Berry",
+    "tier": 2
+   },
+   {
+    "id": "figy_berry",
+    "name": "Figy Berry",
+    "tier": 3
+   },
+   {
+    "id": "pomeg_berry",
+    "name": "Pomeg Berry",
+    "tier": 3
+   },
+   {
+    "id": "tamato_berry",
+    "name": "Tamato Berry",
+    "tier": 3
+   },
+   {
+    "id": "liechi_berry",
+    "name": "Liechi Berry",
+    "tier": 3
+   },
+   {
+    "id": "lansat_berry",
+    "name": "Lansat Berry",
+    "tier": 3
+   },
+   {
+    "id": "custap_berry",
+    "name": "Custap Berry",
+    "tier": 3
+   }
+  ]
  },
  {
   "id": "yellow_juice",
@@ -2034,7 +2320,74 @@
   "desc": "Increases a Pokémon's Defense EVs.",
   "category": "Suco",
   "evStat": "Defesa",
-  "icon": true
+  "icon": true,
+  "ingredients": [
+   {
+    "id": "aspear_berry",
+    "name": "Aspear Berry",
+    "tier": 1
+   },
+   {
+    "id": "pinap_berry",
+    "name": "Pinap Berry",
+    "tier": 1
+   },
+   {
+    "id": "nomel_berry",
+    "name": "Nomel Berry",
+    "tier": 1
+   },
+   {
+    "id": "sitrus_berry",
+    "name": "Sitrus Berry",
+    "tier": 2
+   },
+   {
+    "id": "wacan_berry",
+    "name": "Wacan Berry",
+    "tier": 2
+   },
+   {
+    "id": "shuca_berry",
+    "name": "Shuca Berry",
+    "tier": 2
+   },
+   {
+    "id": "charti_berry",
+    "name": "Charti Berry",
+    "tier": 2
+   },
+   {
+    "id": "chilan_berry",
+    "name": "Chilan Berry",
+    "tier": 2
+   },
+   {
+    "id": "iapapa_berry",
+    "name": "Iapapa Berry",
+    "tier": 3
+   },
+   {
+    "id": "qualot_berry",
+    "name": "Qualot Berry",
+    "tier": 3
+   },
+   {
+    "id": "grepa_berry",
+    "name": "Grepa Berry",
+    "tier": 3
+   },
+   {
+    "id": "kee_berry",
+    "name": "Kee Berry",
+    "tier": 3
+   },
+   {
+    "id": "jaboca_berry",
+    "name": "Jaboca Berry",
+    "tier": 3
+   }
+  ]
  },
  {
   "id": "calcium",

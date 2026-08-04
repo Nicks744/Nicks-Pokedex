@@ -302,6 +302,7 @@
     card.innerHTML =
       `<div class="mcard__head"><span class="mcard__id">${itemIco(it, 32)}<span class="mcard__name">${esc(it.name)}</span></span>${evTag(it)}</div>` +
       `<div class="mcard__meta"><span class="item-cat">${esc(it.category)}</span>` +
+      (it.ingredients && it.ingredients.length ? `<span class="mcard__stat">🫐 ${it.ingredients.length} berries</span>` : "") +
       (it.drops && it.drops.length ? `<span class="mcard__stat">↓ dropa de ${it.drops.length} Pokémon</span>` : "") +
       `</div>` +
       (it.desc ? `<p class="mcard__desc">${esc(it.desc)}</p>` : "");
@@ -309,16 +310,31 @@
     return card;
   }
 
-  /* --- <ItemDetailsModal /> : desc completa + lista de drops (Pokémon + chance) --- */
+  /* seção de receita: berries que produzem um suco (agrupadas por nível). */
+  function recipeHTML(it) {
+    if (!(it.ingredients && it.ingredients.length)) return "";
+    const tiers = {};
+    it.ingredients.forEach((b) => { (tiers[b.tier || 0] = tiers[b.tier || 0] || []).push(b); });
+    const groups = Object.keys(tiers).sort().map((t) => {
+      const chips = tiers[t].map((b) =>
+        `<span class="berry-chip"><img class="item-ico item-ico--sm" src="itemtex/${b.id}.png" alt="" width="24" height="24" loading="lazy"><span>${esc(b.name)}</span></span>`).join("");
+      const label = Number(t) > 0 ? `<span class="tier-label">Nível ${t}</span>` : "";
+      return `<div class="berry-tier">${label}<div class="berry-row">${chips}</div></div>`;
+    }).join("");
+    return `<div class="recipe"><span class="drops__label">🔥 Feito com estas berries (aquecidas na Cooking Pot)</span>${groups}</div>`;
+  }
+
+  /* --- <ItemDetailsModal /> : desc + receita (sucos) + lista de drops --- */
   function itemDetail(it) {
     const el = document.createElement("div");
+    const recipe = recipeHTML(it);
     let drops = "";
     if (it.drops && it.drops.length) {
       const rows = it.drops.map((d) =>
         `<a class="drop" href="pokemon/${d.slug}"><span class="drop__mon">${esc(d.pokemon)}</span>` +
         `<span class="drop__qty">×${qty(d)}</span><span class="drop__chance">${pct(d.chance)}</span></a>`).join("");
       drops = `<div class="drops"><span class="drops__label">Dropa de</span><div class="drops__list">${rows}</div></div>`;
-    } else {
+    } else if (!recipe) {
       drops = `<p class="muted drops__none">Sem drop de Pokémon nos dados — obtido por loja, plantio, crafting ou baús.</p>`;
     }
     el.innerHTML =
@@ -326,7 +342,7 @@
       `<h2 class="modal__title">${esc(it.name)}</h2>` +
       `<div class="modal__tags"><span class="item-cat">${esc(it.category)}</span>${evTag(it)}</div></div></div>` +
       (it.desc ? `<p class="modal__desc">${esc(it.desc)}</p>` : `<p class="modal__desc muted">Sem descrição no mod.</p>`) +
-      drops;
+      recipe + drops;
     return el;
   }
   const ItemModal = { open: (it) => Modal.open(itemDetail(it)), close: Modal.close };
