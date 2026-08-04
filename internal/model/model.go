@@ -97,7 +97,9 @@ type Move struct {
 type Item struct {
 	ID       string     `json:"id"`             // slug (ex.: "rare_candy")
 	Name     string     `json:"name"`           // "Rare Candy"
-	Desc     string     `json:"desc"`           // tooltip do mod (o que faz)
+	NamePt   string     `json:"namePt,omitempty"` // nome em PT (jar pt_br), quando houver
+	Desc     string     `json:"desc"`           // tooltip do mod (o que faz), em inglês
+	DescPt   string     `json:"descPt,omitempty"` // descrição em português (traduzida)
 	Category string     `json:"category"`       // "Berry", "Suco", "Vitamina", "Cura"...
 	EVStat   string     `json:"evStat,omitempty"`   // stat afetada por EV (ex.: "Ataque"), quando aplicavel
 	IV       bool       `json:"iv,omitempty"`       // mexe com IV (bottle caps)

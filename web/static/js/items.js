@@ -52,13 +52,17 @@
     const seen = [];
     for (const it of all) if (!seen.includes(it.category)) seen.push(it.category);
     catOrder = seen.slice();
-    P.buildChips(els.chips, seen.map((c) => ({ value: c, label: c })), (c, on) => {
+    P.buildChips(els.chips, seen.map((c) => ({ value: c, label: P.itemCat(c) })), (c, on) => {
       if (on) state.cats.add(c); else state.cats.delete(c);
       apply();
     });
   }
 
   function wire() {
+    window.addEventListener("npdx:langchange", () => {
+      els.chips.querySelectorAll(".chip").forEach((ch) => { ch.textContent = P.itemCat(ch.dataset.val); });
+      apply();
+    });
     els.q.addEventListener("input", debounce(() => { state.q = els.q.value.trim().toLowerCase(); apply(); }, 90));
     els.sort.addEventListener("change", () => { state.sort = els.sort.value; apply(); });
     els.onlyDrop.addEventListener("change", () => { state.onlyDrop = els.onlyDrop.checked; apply(); });

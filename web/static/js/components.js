@@ -285,10 +285,25 @@
   const pct = (c) => (c >= 1 ? "100%" : c > 0 ? (c * 100).toFixed(c < 0.1 ? 1 : 0) + "%" : "—");
   const qty = (d) => (d.min === d.max ? String(d.min) : d.min + "–" + d.max);
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  /* --- i18n de itens: nome/descrição/categoria/EV conforme o idioma --- */
+  const tt = (en, pt) => (global.I18N ? global.I18N.t(en, pt) : pt);
+  const CAT_EN = {
+    "Suco": "Juice", "Vitamina / EV": "Vitamin / EV", "Pena / Asa (EV)": "Feather / Wing (EV)",
+    "Cura / Medicina": "Healing / Medicine", "Poké Bola": "Poké Ball", "Pedra evolutiva": "Evolution Stone",
+    "Item de evolução": "Evolution Item", "Equipável (held)": "Held item", "Placa (Plate)": "Plate",
+    "Gema de tipo": "Type Gem", "Incenso": "Incense", "Mint (natureza)": "Mint (nature)",
+    "Fóssil": "Fossil", "Outros": "Other",
+  };
+  const EVSTAT_EN = { "HP": "HP", "Ataque": "Attack", "Defesa": "Defense", "Ataque Esp.": "Sp. Atk", "Defesa Esp.": "Sp. Def", "Velocidade": "Speed" };
+  const itemName = (it) => (lang() === "pt" && it.namePt) ? it.namePt : it.name;
+  const itemDescL = (it) => (lang() === "en" ? it.desc : (it.descPt || it.desc)) || "";
+  const catItem = (c) => (lang() === "en" ? (CAT_EN[c] || c) : c);
+  const evStatL = (s) => (lang() === "en" ? (EVSTAT_EN[s] || s) : s);
+
   /* badge de EV/IV mostrado em cards/itens */
   function evTag(it) {
     if (it.iv) return '<span class="ev-tag ev-tag--iv">IV</span>';
-    if (it.evStat) return `<span class="ev-tag">EV ${esc(it.evStat)}</span>`;
+    if (it.evStat) return `<span class="ev-tag">EV ${esc(evStatL(it.evStat))}</span>`;
     return "";
   }
 
@@ -302,13 +317,14 @@
     card.type = "button";
     card.className = "mcard";
     card.dataset.id = it.id;
+    const d = itemDescL(it);
     card.innerHTML =
-      `<div class="mcard__head"><span class="mcard__id">${itemIco(it, 32)}<span class="mcard__name">${esc(it.name)}</span></span>${evTag(it)}</div>` +
-      `<div class="mcard__meta"><span class="item-cat">${esc(it.category)}</span>` +
+      `<div class="mcard__head"><span class="mcard__id">${itemIco(it, 32)}<span class="mcard__name">${esc(itemName(it))}</span></span>${evTag(it)}</div>` +
+      `<div class="mcard__meta"><span class="item-cat">${esc(catItem(it.category))}</span>` +
       (it.ingredients && it.ingredients.length ? `<span class="mcard__stat">🫐 ${it.ingredients.length} berries</span>` : "") +
-      (it.drops && it.drops.length ? `<span class="mcard__stat">↓ dropa de ${it.drops.length} Pokémon</span>` : "") +
+      (it.drops && it.drops.length ? `<span class="mcard__stat">↓ ${tt("from", "de")} ${it.drops.length} Pokémon</span>` : "") +
       `</div>` +
-      (it.desc ? `<p class="mcard__desc">${esc(it.desc)}</p>` : "");
+      (d ? `<p class="mcard__desc">${esc(d)}</p>` : "");
     card.addEventListener("click", () => onOpen(it));
     return card;
   }
@@ -321,10 +337,10 @@
     const groups = Object.keys(tiers).sort().map((t) => {
       const chips = tiers[t].map((b) =>
         `<span class="berry-chip"><img class="item-ico item-ico--sm" src="itemtex/${b.id}.png" alt="" width="24" height="24" loading="lazy"><span>${esc(b.name)}</span></span>`).join("");
-      const label = Number(t) > 0 ? `<span class="tier-label">Nível ${t}</span>` : "";
+      const label = Number(t) > 0 ? `<span class="tier-label">${tt("Level", "Nível")} ${t}</span>` : "";
       return `<div class="berry-tier">${label}<div class="berry-row">${chips}</div></div>`;
     }).join("");
-    return `<div class="recipe"><span class="drops__label">🔥 Feito com estas berries (aquecidas na Cooking Pot)</span>${groups}</div>`;
+    return `<div class="recipe"><span class="drops__label">🔥 ${tt("Made from these berries (heated in the Cooking Pot)", "Feito com estas berries (aquecidas na Cooking Pot)")}</span>${groups}</div>`;
   }
 
   /* --- <ItemDetailsModal /> : desc + receita (sucos) + lista de drops --- */
@@ -336,15 +352,16 @@
       const rows = it.drops.map((d) =>
         `<a class="drop" href="pokemon/${d.slug}"><span class="drop__mon">${esc(d.pokemon)}</span>` +
         `<span class="drop__qty">×${qty(d)}</span><span class="drop__chance">${pct(d.chance)}</span></a>`).join("");
-      drops = `<div class="drops"><span class="drops__label">Dropa de</span><div class="drops__list">${rows}</div></div>`;
+      drops = `<div class="drops"><span class="drops__label">${tt("Drops from", "Dropa de")}</span><div class="drops__list">${rows}</div></div>`;
     } else if (!recipe) {
-      drops = `<p class="muted drops__none">Sem drop de Pokémon nos dados — obtido por loja, plantio, crafting ou baús.</p>`;
+      drops = `<p class="muted drops__none">${tt("No Pokémon drop in the data — obtained from shops, planting, crafting or chests.", "Sem drop de Pokémon nos dados — obtido por loja, plantio, crafting ou baús.")}</p>`;
     }
+    const d = itemDescL(it);
     el.innerHTML =
       `<div class="modal__head modal__head--item">${itemIco(it, 44)}<div class="modal__headmain">` +
-      `<h2 class="modal__title">${esc(it.name)}</h2>` +
-      `<div class="modal__tags"><span class="item-cat">${esc(it.category)}</span>${evTag(it)}</div></div></div>` +
-      (it.desc ? `<p class="modal__desc">${esc(it.desc)}</p>` : `<p class="modal__desc muted">Sem descrição no mod.</p>`) +
+      `<h2 class="modal__title">${esc(itemName(it))}</h2>` +
+      `<div class="modal__tags"><span class="item-cat">${esc(catItem(it.category))}</span>${evTag(it)}</div></div></div>` +
+      (d ? `<p class="modal__desc">${esc(d)}</p>` : `<p class="modal__desc muted">${tt("No description in the mod.", "Sem descrição no mod.")}</p>`) +
       recipe + drops;
     return el;
   }
@@ -353,6 +370,6 @@
   global.Poke = {
     TYPES, TYPE_COLORS, CATEGORIES, CAT_PT,
     typeColor, title, typeGem, typeIcon, typeBadge, typesRow, buildTypeChips, buildChips,
-    renderCard, moveCard, itemCard, Modal, MoveModal, ItemModal, catClass, catLabel,
+    renderCard, moveCard, itemCard, Modal, MoveModal, ItemModal, catClass, catLabel, itemCat: catItem,
   };
 })(window);

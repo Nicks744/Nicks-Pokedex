@@ -85,6 +85,7 @@ func buildPixelmonItems(jarPath, outDir string) []model.Item {
 	if len(lang) == 0 {
 		return nil
 	}
+	langPt := readPixelmonLangFile(zr, "assets/pixelmon/lang/pt_br.json") // nomes em PT (item.{id})
 	drops := readPixelmonDrops(zr) // id do item (sem "pixelmon:") -> fontes
 	juice := readJuiceIngredients(zr, lang) // suco -> berries que o produzem
 	tex := indexItemTextures(zr)   // basename minusculo -> textura no jar
@@ -118,7 +119,8 @@ func buildPixelmonItems(jarPath, outDir string) []model.Item {
 			nIcons++
 		}
 		items = append(items, model.Item{
-			ID: id, Name: name, Desc: desc, Category: cat,
+			ID: id, Name: name, NamePt: langPt["item."+id],
+			Desc: desc, DescPt: translateItemDescPt(desc), Category: cat,
 			EVStat: ev, IV: iv, Icon: icon, Drops: drops[id],
 			Ingredients: juice[id],
 		})
@@ -245,8 +247,12 @@ func readZipJSON(zr *zip.ReadCloser, name string, v any) bool {
 }
 
 func readPixelmonLang(zr *zip.ReadCloser) map[string]string {
+	return readPixelmonLangFile(zr, "assets/pixelmon/lang/en_us.json")
+}
+
+func readPixelmonLangFile(zr *zip.ReadCloser, name string) map[string]string {
 	for _, f := range zr.File {
-		if f.Name != "assets/pixelmon/lang/en_us.json" {
+		if f.Name != name {
 			continue
 		}
 		rc, err := f.Open()

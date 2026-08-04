@@ -39,12 +39,16 @@
 
   async function init() {
     els.q.addEventListener("input", debounce(() => { state.q = els.q.value.trim().toLowerCase(); apply(); }, 90));
+    window.addEventListener("npdx:langchange", () => {
+      els.chips.querySelectorAll(".chip").forEach((ch) => { ch.textContent = P.itemCat(ch.dataset.val); });
+      apply();
+    });
     try {
       const items = await (await fetch("api/items.json")).json();
       all = items.filter((it) => CATS.includes(it.category));
     } catch (e) { els.loading.textContent = "Falha ao carregar."; return; }
     if (!all.length) { els.loading.textContent = "Nenhuma berry na base (rode `import-items`)."; return; }
-    P.buildChips(els.chips, CATS.map((c) => ({ value: c, label: c })), (c, on) => {
+    P.buildChips(els.chips, CATS.map((c) => ({ value: c, label: P.itemCat(c) })), (c, on) => {
       if (on) state.cats.add(c); else state.cats.delete(c);
       apply();
     });
