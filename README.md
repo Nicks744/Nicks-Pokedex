@@ -52,14 +52,20 @@ ou passe `-jar`. Depois da importação o app funciona **100% offline**.
   - **Abas de forma** logo abaixo do nome para alternar entre as versões da espécie
     (ex.: Kanto ↔ Alola).
   - **Onde encontrar**: onde/como conseguir o Pokémon, com seções separadas para
-    **Cobblemon** e **Pixelmon** — raridade, faixa de level, biomas (traduzidos) e
-    condições (dia/noite, chuva, Nether/End, pesca, curry, etc.).
+    **Cobblemon** e **Pixelmon** — raridade, faixa de level, **biomas (em inglês,
+    como no jogo)** e condições (dia/noite, chuva, Nether/End, pesca, curry, etc.).
   - **Natureza & Builds**: natureza que mais combina com base nas stats + builds
     sugeridas (papel, natureza, EVs e golpes tirados do que ele aprende).
 - **Ataques** (`/moves`): browser de todos os golpes — busca, filtro por **tipo**
   (com ícone) e **categoria** (Físico/Especial/Status), ordenação e um **modal**
   com os detalhes completos (poder, precisão, PP e efeito).
 - **Página de golpe** (`/move/{slug}`): quem aprende e como.
+- **Itens** (`/items`): catálogo dos itens do **Pixelmon** — o que cada um faz
+  (tooltip do mod) e **de quais Pokémon dropa, com a chance** (de `pokedrops.json`).
+  Busca, filtro por categoria e "só com drop".
+- **Berries & Sucos** (`/berries`): todas as berries e o que fazem, com foco em
+  **EV/IV** — sucos e vitaminas (EV), penas/asas (+1 EV), berries que reduzem EV
+  e **Bottle Caps** (Hyper Training de IV), com um guia rápido de como treinar.
 - **Ícones de tipo**: sempre que um Pokémon ou golpe tem tipo, a interface mostra
   o **ícone redondo do tipo** (círculo colorido + símbolo) ao lado do rótulo — nos
   cards, badges, tabelas de golpes, matchups e filtros. Ícones vetoriais (SVG) em

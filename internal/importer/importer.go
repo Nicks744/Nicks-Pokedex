@@ -170,6 +170,17 @@ func Run(opts Options) error {
 	}
 	fmt.Printf("gerado: %s/pokedex.json e %s/moves.json\n", opts.OutDir, opts.OutDir)
 
+	// Itens do Pixelmon (nome + o que faz + drops). Só gera se o jar existir;
+	// senão mantém o items.json versionado. Fica embutido em data/.
+	if items := buildPixelmonItems(pixelJar); len(items) > 0 {
+		if err := writeJSON(filepath.Join(opts.OutDir, "items.json"), items); err != nil {
+			return err
+		}
+		fmt.Printf("gerado: %s/items.json (%d itens)\n", opts.OutDir, len(items))
+	} else {
+		fmt.Println("itens: jar do Pixelmon ausente — mantendo items.json versionado")
+	}
+
 	if err := extractTypeGems(zr, opts.OutDir); err != nil {
 		fmt.Printf("aviso: falha ao extrair type gems (%v)\n", err)
 	}

@@ -170,32 +170,14 @@ func cobDimension(biomes []string) string {
 	return ""
 }
 
-// cobBiome traduz uma tag de bioma do Cobblemon.
+// cobBiome devolve a tag de bioma do Cobblemon em inglês (sem tradução), apenas
+// limpando o namespace/prefixo. Ex.: "#cobblemon:is_forest" -> "Forest".
 func cobBiome(tag string) string {
 	key := biomeKey(tag) // ex.: "is_forest", "nether/is_forest"
 	nether := strings.HasPrefix(key, "nether/")
 	key = strings.TrimPrefix(key, "nether/")
 	key = strings.TrimPrefix(key, "is_")
-	m := map[string]string{
-		"overworld": "Superfície (geral)", "freezing": "Gelados", "ocean": "Oceano",
-		"jungle": "Selva", "swamp": "Pântano", "forest": "Floresta", "freshwater": "Água doce",
-		"lush": "Exuberante", "coast": "Litoral", "arid": "Árido", "hills": "Colinas",
-		"deep_dark": "Deep Dark", "tropical_island": "Ilha tropical", "spooky": "Sombrio",
-		"frozen_ocean": "Oceano congelado", "taiga": "Taiga", "magical": "Mágico",
-		"mountain": "Montanha", "badlands": "Mesa / Badlands", "temperate": "Temperado",
-		"savanna": "Savana", "floral": "Floral", "cold_ocean": "Oceano frio", "tundra": "Tundra",
-		"warm_ocean": "Oceano quente", "desert": "Deserto", "beach": "Praia", "sky": "Altitude",
-		"volcanic": "Vulcânico", "grassland": "Campos", "plains": "Planícies", "mushroom": "Cogumelo",
-		"dripstone": "Cavernas de dripstone", "snowy_forest": "Floresta nevada", "end": "The End",
-		"bamboo": "Bambuzal", "island": "Ilha", "river": "Rio", "thermal": "Termal",
-		"deep_ocean": "Oceano profundo", "lukewarm_ocean": "Oceano morno", "snowy": "Nevado",
-		"cherry_blossom": "Cerejeiras", "sandy": "Arenoso", "peak": "Picos", "cold": "Frio",
-		"glacial": "Glacial", "wet": "Úmido", "cave": "Caverna", "snowy_taiga": "Taiga nevada",
-	}
-	name := m[key]
-	if name == "" {
-		name = prettify(key)
-	}
+	name := prettify(key)
 	if nether {
 		name += " (Nether)"
 	}
@@ -396,28 +378,14 @@ func pxTimes(times []string) string {
 	return strings.Join(out, " / ")
 }
 
-// pxBiome traduz uma tag/bioma do Pixelmon.
+// pxBiome devolve a tag/bioma do Pixelmon em inglês (sem tradução), usando só a
+// parte final da tag. Ex.: "#pixelmon:spawning/forests" -> "Forests".
 func pxBiome(tag string) string {
 	if !strings.HasPrefix(tag, "#") {
 		// bioma especifico (namespace:bioma) — usa so a parte final.
 		return prettify(lastPath(tag))
 	}
-	key := lastPath(biomeKey(tag)) // "spawning/forests" -> "forests"
-	m := map[string]string{
-		"swamps": "Pântanos", "jungles": "Selvas", "mesas": "Mesas", "mountainous": "Montanhas",
-		"plains": "Planícies", "roofed": "Floresta densa", "savannas": "Savanas", "lakes": "Lagos",
-		"arid": "Árido", "flowery": "Floridos", "birches": "Bétulas", "taigas": "Taigas",
-		"forests": "Florestas", "beaches": "Praias", "redwoods": "Sequoias", "rivers": "Rios",
-		"freezing_forests": "Florestas geladas", "magical": "Mágico", "evil": "Sombrio",
-		"all_forests": "Florestas", "oceanic": "Oceano", "freezing": "Gelados",
-		"mountainous_forests": "Florestas de montanha", "volcanic": "Vulcânico",
-		"freezing_mountains": "Montanhas geladas", "hills": "Colinas", "mushroom": "Cogumelo",
-		"hellish": "Nether", "end": "The End", "ultra_space": "Ultra Space", "drowned": "Submerso",
-	}
-	if v, ok := m[key]; ok {
-		return v
-	}
-	return prettify(key)
+	return prettify(lastPath(biomeKey(tag))) // "spawning/forests" -> "Forests"
 }
 
 // ---------- helpers comuns ----------

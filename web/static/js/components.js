@@ -86,6 +86,24 @@
     });
   }
 
+  /* --- builder genérico de chips de filtro (rótulo simples, sem ícone).
+     values: [{value,label,color?}]; onToggle(value,on,chip). --- */
+  function buildChips(container, values, onToggle) {
+    values.forEach((v) => {
+      const chip = document.createElement("button");
+      chip.type = "button";
+      chip.className = "chip";
+      chip.dataset.val = v.value;
+      if (v.color) chip.style.setProperty("--c", v.color);
+      chip.textContent = v.label;
+      chip.addEventListener("click", () => {
+        const on = chip.classList.toggle("is-on");
+        onToggle(v.value, on, chip);
+      });
+      container.appendChild(chip);
+    });
+  }
+
   /* Web Component: <type-badge type="grass"> (light DOM, usa o CSS global).
      Mantido para compatibilidade; delega no factory typeBadge(). */
   class TypeBadge extends HTMLElement {
@@ -205,11 +223,10 @@
     return card;
   }
 
-  /* --- <MoveDetailsModal /> : diálogo com os detalhes completos do golpe.
-     Singleton reutilizável; open(move) preenche e mostra. --- */
-  const MoveModal = (function () {
+  /* --- <Modal /> : diálogo genérico reutilizável (singleton). open(node) troca
+     o conteúdo e mostra; Esc / backdrop / ✕ fecham. --- */
+  const Modal = (function () {
     let root, box, closeBtn, lastFocus;
-
     function ensure() {
       if (root) return;
       root = document.createElement("div");
@@ -217,7 +234,7 @@
       root.hidden = true;
       root.innerHTML =
         '<div class="modal__backdrop" data-close></div>' +
-        '<div class="modal__box" role="dialog" aria-modal="true" aria-label="Detalhes do golpe">' +
+        '<div class="modal__box" role="dialog" aria-modal="true" aria-label="Detalhes">' +
         '<button class="modal__close" type="button" aria-label="Fechar" data-close>✕</button>' +
         '<div class="modal__body"></div></div>';
       document.body.appendChild(root);
@@ -226,22 +243,10 @@
       root.addEventListener("click", (e) => { if (e.target.dataset.close != null) close(); });
       document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !root.hidden) close(); });
     }
-
-    function open(mv) {
+    function open(node) {
       ensure();
       lastFocus = document.activeElement;
-      const typeBit = mv.type ? typeBadge(mv.type, { link: false }).outerHTML : "";
-      box.innerHTML =
-        `<div class="modal__head">` +
-        `<h2 class="modal__title">${mv.name}</h2>` +
-        `<div class="modal__tags">${typeBit}` +
-        `<span class="${catClass(mv.category)}">${catLabel(mv.category)}</span></div></div>` +
-        `<div class="stat-tiles stat-tiles--compact">` +
-        `<div class="tile"><span class="tile__label">Poder</span><span class="tile__val">${numOrDash(mv.power)}</span></div>` +
-        `<div class="tile"><span class="tile__label">Precisão</span><span class="tile__val">${accOrInf(mv.accuracy)}</span></div>` +
-        `<div class="tile"><span class="tile__label">PP</span><span class="tile__val">${numOrDash(mv.pp)}</span></div></div>` +
-        (mv.desc ? `<p class="modal__desc">${mv.desc}</p>` : "") +
-        `<a class="btn btn--sm modal__link" href="move/${mv.slug}">Ver quem aprende →</a>`;
+      if (typeof node === "string") box.innerHTML = node; else box.replaceChildren(node);
       root.hidden = false;
       document.body.classList.add("modal-open");
       closeBtn.focus();
@@ -255,9 +260,75 @@
     return { open, close };
   })();
 
+  /* --- <MoveDetailsModal /> --- */
+  function moveDetail(mv) {
+    const el = document.createElement("div");
+    const typeBit = mv.type ? typeBadge(mv.type, { link: false }).outerHTML : "";
+    el.innerHTML =
+      `<div class="modal__head"><h2 class="modal__title">${mv.name}</h2>` +
+      `<div class="modal__tags">${typeBit}` +
+      `<span class="${catClass(mv.category)}">${catLabel(mv.category)}</span></div></div>` +
+      `<div class="stat-tiles stat-tiles--compact">` +
+      `<div class="tile"><span class="tile__label">Poder</span><span class="tile__val">${numOrDash(mv.power)}</span></div>` +
+      `<div class="tile"><span class="tile__label">Precisão</span><span class="tile__val">${accOrInf(mv.accuracy)}</span></div>` +
+      `<div class="tile"><span class="tile__label">PP</span><span class="tile__val">${numOrDash(mv.pp)}</span></div></div>` +
+      (mv.desc ? `<p class="modal__desc">${mv.desc}</p>` : "") +
+      `<a class="btn btn--sm modal__link" href="move/${mv.slug}">Ver quem aprende →</a>`;
+    return el;
+  }
+  const MoveModal = { open: (mv) => Modal.open(moveDetail(mv)), close: Modal.close };
+
+  /* --- helpers de item --- */
+  const pct = (c) => (c >= 1 ? "100%" : c > 0 ? (c * 100).toFixed(c < 0.1 ? 1 : 0) + "%" : "—");
+  const qty = (d) => (d.min === d.max ? String(d.min) : d.min + "–" + d.max);
+  const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  /* badge de EV/IV mostrado em cards/itens */
+  function evTag(it) {
+    if (it.iv) return '<span class="ev-tag ev-tag--iv">IV</span>';
+    if (it.evStat) return `<span class="ev-tag">EV ${esc(it.evStat)}</span>`;
+    return "";
+  }
+
+  /* --- <ItemCard /> : card de item (Itens/Berries). onOpen(item) abre o modal. --- */
+  function itemCard(it, onOpen) {
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = "mcard";
+    card.dataset.id = it.id;
+    card.innerHTML =
+      `<div class="mcard__head"><span class="mcard__name">${esc(it.name)}</span>${evTag(it)}</div>` +
+      `<div class="mcard__meta"><span class="item-cat">${esc(it.category)}</span>` +
+      (it.drops && it.drops.length ? `<span class="mcard__stat">↓ dropa de ${it.drops.length} Pokémon</span>` : "") +
+      `</div>` +
+      (it.desc ? `<p class="mcard__desc">${esc(it.desc)}</p>` : "");
+    card.addEventListener("click", () => onOpen(it));
+    return card;
+  }
+
+  /* --- <ItemDetailsModal /> : desc completa + lista de drops (Pokémon + chance) --- */
+  function itemDetail(it) {
+    const el = document.createElement("div");
+    let drops = "";
+    if (it.drops && it.drops.length) {
+      const rows = it.drops.map((d) =>
+        `<a class="drop" href="pokemon/${d.slug}"><span class="drop__mon">${esc(d.pokemon)}</span>` +
+        `<span class="drop__qty">×${qty(d)}</span><span class="drop__chance">${pct(d.chance)}</span></a>`).join("");
+      drops = `<div class="drops"><span class="drops__label">Dropa de</span><div class="drops__list">${rows}</div></div>`;
+    } else {
+      drops = `<p class="muted drops__none">Sem drop de Pokémon nos dados — obtido por loja, plantio, crafting ou baús.</p>`;
+    }
+    el.innerHTML =
+      `<div class="modal__head"><h2 class="modal__title">${esc(it.name)}</h2>` +
+      `<div class="modal__tags"><span class="item-cat">${esc(it.category)}</span>${evTag(it)}</div></div>` +
+      (it.desc ? `<p class="modal__desc">${esc(it.desc)}</p>` : `<p class="modal__desc muted">Sem descrição no mod.</p>`) +
+      drops;
+    return el;
+  }
+  const ItemModal = { open: (it) => Modal.open(itemDetail(it)), close: Modal.close };
+
   global.Poke = {
     TYPES, TYPE_COLORS, CATEGORIES, CAT_PT,
-    typeColor, title, typeGem, typeIcon, typeBadge, typesRow, buildTypeChips,
-    renderCard, moveCard, MoveModal, catClass, catLabel,
+    typeColor, title, typeGem, typeIcon, typeBadge, typesRow, buildTypeChips, buildChips,
+    renderCard, moveCard, itemCard, Modal, MoveModal, ItemModal, catClass, catLabel,
   };
 })(window);

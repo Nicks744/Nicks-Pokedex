@@ -1,0 +1,31 @@
+{{define "berries"}}{{template "head" .}}
+<section class="hero">
+  <h1 class="hero__title">Berries &amp; Sucos</h1>
+  <p class="hero__sub">Todas as berries e o que fazem — com foco em <strong>EVs</strong> e <strong>IVs</strong>.</p>
+  <div class="search">
+    <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 21l-4.3-4.3M11 19a8 8 0 100-16 8 8 0 000 16z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <input id="bq" class="search__input" type="search" placeholder="Buscar berry ou item…" autocomplete="off" spellcheck="false">
+  </div>
+</section>
+
+<section class="card card--wide info-card">
+  <h2 class="card__title">Como treinar EVs e IVs</h2>
+  <ul class="info-list">
+    <li><strong>EVs (esforço):</strong> os <em>Sucos</em> coloridos e as <em>Vitaminas</em> (Protein, Iron, Calcium, Zinc, Carbos, HP Up) aumentam os EVs de uma stat; as <em>Penas/Asas</em> dão +1 EV.</li>
+    <li><strong>Reduzir EVs:</strong> as berries <em>Pomeg, Kelpsy, Qualot, Hondew, Grepa e Tamato</em> diminuem o EV de uma stat (e aumentam a felicidade).</li>
+    <li><strong>IVs:</strong> os <em>Bottle Caps</em> fazem Hyper Training — o Gold treina todos os IVs, o Silver treina um.</li>
+    <li><strong>Vitamina a partir de berry:</strong> infundir 10 berries "in a pinch" numa Asa vira a Vitamina correspondente (ex.: 10 Liechi + Muscle Wing → Protein).</li>
+  </ul>
+</section>
+
+<section class="filters" aria-label="Filtros">
+  <div class="chips" id="bChips"></div>
+  <span class="result-count" id="bCount" aria-live="polite"></span>
+</section>
+
+<div id="bLoading" class="loading"><span class="spinner"></span> Carregando berries…</div>
+<div id="bEmpty" class="empty" hidden><strong>Nada encontrado.</strong></div>
+<div id="bGrid" class="mgrid" aria-live="polite"></div>
+
+<script defer src="static/js/berries.js"></script>
+{{template "foot" .}}{{end}}

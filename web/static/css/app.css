@@ -69,7 +69,7 @@ button { font: inherit; cursor: pointer; }
   background: radial-gradient(circle at 50% 38%, #fff 0 18%, var(--accent) 19% 100%);
   box-shadow: inset 0 0 0 2px #111, 0 0 0 2px var(--accent);
 }
-.nav__links { display: flex; gap: 6px; }
+.nav__links { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
 .nav__link { padding: 7px 13px; border-radius: 999px; color: var(--text-dim); font-weight: 600; font-size: 14px; }
 .nav__link:hover { color: var(--text); background: var(--surface); text-decoration: none; }
 .nav__link.is-active { color: #fff; background: var(--accent); }
@@ -404,6 +404,51 @@ body.modal-open { overflow: hidden; }
 .modal__tags { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .modal__desc { color: var(--text-dim); margin: 6px 0 14px; line-height: 1.5; }
 .modal__link { width: 100%; }
+
+/* ---------- itens / berries ---------- */
+.item-cat {
+  display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 11px; font-weight: 800;
+  background: var(--surface-2); border: 1px solid var(--border); color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: .3px;
+}
+.ev-tag {
+  display: inline-flex; align-items: center; padding: 2px 9px; border-radius: 999px;
+  font-size: 11px; font-weight: 800; white-space: nowrap;
+  background: color-mix(in srgb, var(--accent-2) 20%, transparent);
+  color: var(--accent-2); border: 1px solid color-mix(in srgb, var(--accent-2) 45%, transparent);
+}
+.ev-tag--iv { background: color-mix(in srgb, #f59e0b 20%, transparent); color: #f59e0b; border-color: color-mix(in srgb, #f59e0b 45%, transparent); }
+
+/* filtro checkbox (ex.: "Só com drop") */
+.field--check { flex-direction: row; align-items: center; gap: 7px; font-weight: 600; color: var(--text-dim); cursor: pointer; }
+.field--check input { width: 16px; height: 16px; accent-color: var(--accent-2); cursor: pointer; }
+
+/* card explicativo (EV/IV) */
+.info-card { margin-bottom: 8px; }
+.info-list { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 8px; color: var(--text-dim); }
+.info-list strong { color: var(--text); }
+.info-list em { color: var(--accent-2); font-style: normal; font-weight: 700; }
+
+/* lista de drops no modal do item */
+.drops { margin-top: 6px; }
+.drops__label { display: block; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .4px; color: var(--text-dim); margin-bottom: 8px; }
+.drops__list { display: flex; flex-direction: column; gap: 6px; }
+.drop {
+  display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 10px;
+  padding: 8px 12px; border-radius: var(--radius-sm);
+  background: var(--surface-2); border: 1px solid var(--border); color: inherit;
+  transition: border-color var(--fast), transform var(--fast);
+}
+.drop:hover { text-decoration: none; border-color: color-mix(in srgb, var(--accent-2) 55%, var(--border)); transform: translateX(2px); }
+.drop__mon { font-weight: 700; }
+.drop__qty { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.drop__chance {
+  font-weight: 800; font-variant-numeric: tabular-nums; font-size: 13px;
+  padding: 2px 9px; border-radius: 999px; min-width: 52px; text-align: center;
+  background: color-mix(in srgb, var(--ok) 18%, transparent); color: var(--ok);
+  border: 1px solid color-mix(in srgb, var(--ok) 40%, transparent);
+}
+.drops__none { margin: 6px 0 0; }
 
 /* ---------- time ---------- */
 .team-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }

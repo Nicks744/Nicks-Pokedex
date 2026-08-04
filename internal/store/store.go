@@ -33,6 +33,7 @@ type Store struct {
 	bySlug   map[string]*model.Pokemon
 	byDex    map[int][]*model.Pokemon // dex -> todas as formas (para o seletor de formas)
 	Moves    map[string]model.Move
+	Items    []model.Item // itens do Pixelmon (opcional)
 	Learners map[string][]Learner
 	preEvo   map[string][]string // slug -> pre-evolucoes (slugs dos "pais")
 
@@ -61,7 +62,8 @@ func Load(dataDir string) (*Store, error) {
 	s.buildLearners()
 	s.buildEvoIndex()
 
-	// team.json e history.json sao opcionais.
+	// items.json (Pixelmon), team.json e history.json sao opcionais.
+	_ = readJSON(filepath.Join(dataDir, "items.json"), &s.Items)
 	_ = readJSON(filepath.Join(dataDir, "team.json"), &s.team)
 	_ = readJSON(filepath.Join(dataDir, "history.json"), &s.history)
 

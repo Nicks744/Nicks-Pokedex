@@ -39,6 +39,17 @@ func main() {
 			os.Exit(1)
 		}
 
+	case "import-items":
+		fs := flag.NewFlagSet("import-items", flag.ExitOnError)
+		pixeljar := fs.String("pixeljar", os.Getenv("PIXELMON_JAR"), "caminho do .jar do Pixelmon (auto-detecta se vazio)")
+		out := fs.String("data", "data", "pasta de saida dos JSON")
+		_ = fs.Parse(os.Args[2:])
+
+		if err := importer.RunItems(*pixeljar, *out); err != nil {
+			fmt.Fprintln(os.Stderr, "erro ao gerar itens:", err)
+			os.Exit(1)
+		}
+
 	case "serve":
 		fs := flag.NewFlagSet("serve", flag.ExitOnError)
 		addr := fs.String("addr", ":8080", "endereco de escuta")

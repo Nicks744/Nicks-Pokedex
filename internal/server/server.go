@@ -55,6 +55,8 @@ func (s *Server) mux(dataDir string, webFS fs.FS) *http.ServeMux {
 	mux.HandleFunc("GET /pokemon/{slug}", s.handlePokemon)
 	mux.HandleFunc("GET /moves", s.handleMoves)
 	mux.HandleFunc("GET /move/{slug}", s.handleMove)
+	mux.HandleFunc("GET /items", s.handleItems)
+	mux.HandleFunc("GET /berries", s.handleBerries)
 	mux.HandleFunc("GET /team", s.handleTeam)
 	mux.HandleFunc("GET /history", s.handleHistory)
 
@@ -64,6 +66,8 @@ func (s *Server) mux(dataDir string, webFS fs.FS) *http.ServeMux {
 	mux.HandleFunc("GET /api/pokemon.json", s.handleAPIPokemon)
 	mux.HandleFunc("GET /api/moves", s.handleAPIMoves)
 	mux.HandleFunc("GET /api/moves.json", s.handleAPIMoves)
+	mux.HandleFunc("GET /api/items", s.handleAPIItems)
+	mux.HandleFunc("GET /api/items.json", s.handleAPIItems)
 	return mux
 }
 
@@ -213,6 +217,17 @@ func (s *Server) handleMoves(w http.ResponseWriter, r *http.Request) {
 	s.render(w, "moves", indexView{Base: b})
 }
 
+// handleItems e handleBerries renderizam shells; a lista vem de api/items.json.
+func (s *Server) handleItems(w http.ResponseWriter, r *http.Request) {
+	b := s.base0("Itens", "items")
+	b.Query = r.URL.Query().Get("q")
+	s.render(w, "items", indexView{Base: b})
+}
+
+func (s *Server) handleBerries(w http.ResponseWriter, r *http.Request) {
+	s.render(w, "berries", indexView{Base: s.base0("Berries & Sucos", "berries")})
+}
+
 func (s *Server) handleMove(w http.ResponseWriter, r *http.Request) {
 	slug := r.PathValue("slug")
 	mv, ok := s.st.Move(slug)
@@ -261,6 +276,15 @@ func (s *Server) handleAPIMoves(w http.ResponseWriter, r *http.Request) {
 	}
 	sort.Slice(out, func(i, j int) bool { return out[i].Name < out[j].Name })
 	writeJSON(w, out)
+}
+
+// handleAPIItems serve o catalogo de itens do Pixelmon (ja ordenado no import).
+func (s *Server) handleAPIItems(w http.ResponseWriter, r *http.Request) {
+	items := s.st.Items
+	if items == nil {
+		items = []model.Item{}
+	}
+	writeJSON(w, items)
 }
 
 func (s *Server) handleAPIPokemon(w http.ResponseWriter, r *http.Request) {
@@ -337,6 +361,8 @@ func BuildStatic(dataDir string, webFS fs.FS, outDir, base string) error {
 	pages := map[string]string{
 		"/":        "index.html",
 		"/moves":   "moves/index.html",
+		"/items":   "items/index.html",
+		"/berries": "berries/index.html",
 		"/team":    "team/index.html",
 		"/history": "history/index.html",
 	}
@@ -361,7 +387,7 @@ func BuildStatic(dataDir string, webFS fs.FS, outDir, base string) error {
 	fmt.Printf("paginas geradas: %d\n", n)
 
 	// API JSON estatica.
-	for _, api := range []string{"pokemon", "moves"} {
+	for _, api := range []string{"pokemon", "moves", "items"} {
 		body, code := snapshot(h, "/api/"+api+".json")
 		if code != http.StatusOK {
 			return fmt.Errorf("gerando api %s: status %d", api, code)

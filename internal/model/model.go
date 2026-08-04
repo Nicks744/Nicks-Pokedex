@@ -92,6 +92,26 @@ type Move struct {
 	Desc     string `json:"desc"`
 }
 
+// Item e um item do Pixelmon: o que ele faz (Desc) e onde obter (Drops).
+type Item struct {
+	ID       string     `json:"id"`             // slug (ex.: "rare_candy")
+	Name     string     `json:"name"`           // "Rare Candy"
+	Desc     string     `json:"desc"`           // tooltip do mod (o que faz)
+	Category string     `json:"category"`       // "Berry", "Suco", "Vitamina", "Cura"...
+	EVStat   string     `json:"evStat,omitempty"`   // stat afetada por EV (ex.: "Ataque"), quando aplicavel
+	IV       bool       `json:"iv,omitempty"`       // mexe com IV (bottle caps)
+	Drops    []ItemDrop `json:"drops,omitempty"` // de quais Pokemon dropa (com chance)
+}
+
+// ItemDrop e uma fonte de drop de um item (um Pokemon e a chance).
+type ItemDrop struct {
+	Pokemon string  `json:"pokemon"` // nome do Pokemon que dropa
+	Slug    string  `json:"slug"`    // slug para link
+	Chance  float64 `json:"chance"`  // 0..1
+	Min     int     `json:"min"`
+	Max     int     `json:"max"`
+}
+
 // Team e o time pessoal salvo em disco.
 type Team struct {
 	Name    string   `json:"name"`

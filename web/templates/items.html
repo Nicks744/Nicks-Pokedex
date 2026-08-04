@@ -1,0 +1,38 @@
+{{define "items"}}{{template "head" .}}
+<section class="hero">
+  <h1 class="hero__title">Itens do Pixelmon</h1>
+  <p class="hero__sub">O que cada item faz e de quais Pokémon ele dropa (com a chance).</p>
+  <div class="search">
+    <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 21l-4.3-4.3M11 19a8 8 0 100-16 8 8 0 000 16z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <input id="iq" class="search__input" type="search" placeholder="Buscar item…" value="{{.Query}}" autocomplete="off" spellcheck="false">
+  </div>
+</section>
+
+<section class="filters" aria-label="Filtros">
+  <div class="chips" id="iCatChips"></div>
+  <div class="filters__row">
+    <label class="field">
+      <span class="field__label">Ordenar</span>
+      <select id="iSort" class="select">
+        <option value="cat">Categoria</option>
+        <option value="name">Nome (A–Z)</option>
+        <option value="drop">Mais fácil de dropar</option>
+      </select>
+    </label>
+    <label class="field field--check">
+      <input type="checkbox" id="iOnlyDrop"> <span>Só com drop</span>
+    </label>
+    <button id="iClear" class="btn btn--ghost" type="button">Limpar filtros</button>
+    <span class="result-count" id="iCount" aria-live="polite"></span>
+  </div>
+</section>
+
+<div id="iLoading" class="loading"><span class="spinner"></span> Carregando itens…</div>
+<div id="iEmpty" class="empty" hidden>
+  <strong>Nenhum item encontrado.</strong>
+  <span>Tente outro nome ou limpe os filtros.</span>
+</div>
+<div id="iGrid" class="mgrid" aria-live="polite"></div>
+
+<script defer src="static/js/items.js"></script>
+{{template "foot" .}}{{end}}
