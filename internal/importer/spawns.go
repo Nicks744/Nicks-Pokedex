@@ -84,7 +84,7 @@ func cobEncounter(sp cobSpawn) model.Encounter {
 	// Biomas (traduzidos, dedup, cap).
 	e.Biomes = translateBiomes(sp.Condition.Biomes, cobBiome, 8)
 
-	// Condicoes.
+	// Condicoes (em inglês, como no jogo).
 	var c []string
 	if d := cobDimension(sp.Condition.Biomes); d != "" {
 		c = append(c, d)
@@ -93,25 +93,25 @@ func cobEncounter(sp cobSpawn) model.Encounter {
 		c = append(c, t)
 	}
 	if sp.Condition.IsThundering != nil && *sp.Condition.IsThundering {
-		c = append(c, "Tempestade")
+		c = append(c, "Thunderstorm")
 	} else if sp.Condition.IsRaining != nil && *sp.Condition.IsRaining {
-		c = append(c, "Na chuva")
+		c = append(c, "Raining")
 	}
 	if sp.Condition.CanSeeSky != nil {
 		if *sp.Condition.CanSeeSky {
-			c = append(c, "A céu aberto")
+			c = append(c, "Open sky")
 		} else {
-			c = append(c, "Subterrâneo")
+			c = append(c, "Underground")
 		}
 	}
 	if len(sp.Condition.Structures) > 0 {
-		c = append(c, "Estrutura: "+prettify(lastPath(sp.Condition.Structures[0])))
+		c = append(c, "Structure: "+prettify(lastPath(sp.Condition.Structures[0])))
 	}
 	if len(sp.Condition.NeededNearbyBlocks) > 0 {
-		c = append(c, "Perto de "+prettify(lastPath(sp.Condition.NeededNearbyBlocks[0])))
+		c = append(c, "Near "+prettify(lastPath(sp.Condition.NeededNearbyBlocks[0])))
 	}
 	if sp.Condition.MaxY != nil && *sp.Condition.MaxY <= 0 {
-		c = append(c, "Fundo das cavernas")
+		c = append(c, "Deep caves")
 	}
 	e.Conditions = c
 	return e
@@ -128,32 +128,32 @@ func cobMethod(presets []string) string {
 	}
 	switch {
 	case has("fishing"):
-		return "Pesca"
+		return "Fishing"
 	case has("water"):
-		return "Na água"
+		return "In water"
 	case has("treetop"):
-		return "Topo das árvores"
+		return "Treetops"
 	case has("urban"):
-		return "Vilas / urbano"
+		return "Villages / urban"
 	case has("mansion"), has("trail_ruins"), has("jungle_pyramid"), has("derelict"), has("ruined_portal"):
-		return "Em estrutura"
+		return "In structure"
 	default:
-		return "Natural (grama alta)"
+		return "Grass (land)"
 	}
 }
 
 func cobRarity(bucket string) (string, int) {
 	switch bucket {
 	case "common":
-		return "Comum", 1
+		return "Common", 1
 	case "uncommon":
-		return "Incomum", 2
+		return "Uncommon", 2
 	case "rare":
-		return "Raro", 3
+		return "Rare", 3
 	case "ultra-rare":
-		return "Ultra-raro", 4
+		return "Ultra-rare", 4
 	default:
-		return "Comum", 1
+		return "Common", 1
 	}
 }
 
@@ -298,16 +298,16 @@ func pxEncounter(in pxInfo, method string) model.Encounter {
 	for _, w := range in.Condition.Weathers {
 		switch strings.ToUpper(w) {
 		case "RAIN":
-			c = append(c, "Na chuva")
+			c = append(c, "Raining")
 		case "STORM", "THUNDER":
-			c = append(c, "Tempestade")
+			c = append(c, "Thunderstorm")
 		}
 	}
-	if hasStr(in.StringLocationTypes, "Water") && method != "Pesca" {
-		c = append(c, "Na água")
+	if hasStr(in.StringLocationTypes, "Water") && method != "Fishing" {
+		c = append(c, "In water")
 	}
 	if hasStr(in.StringLocationTypes, "Air") {
-		c = append(c, "No ar")
+		c = append(c, "In air")
 	}
 	e.Conditions = c
 	return e
@@ -315,10 +315,10 @@ func pxEncounter(in pxInfo, method string) model.Encounter {
 
 func pxMethod(folder string) string {
 	m := map[string]string{
-		"standard": "Natural (grama)", "grass": "Natural (grama)", "fishing": "Pesca",
-		"curry": "Curry (acampamento)", "sweetscent": "Sweet Scent", "headbutt": "Headbutt (árvores)",
-		"rocksmash": "Rock Smash", "caverock": "Rochas de caverna", "forage": "Forrageio",
-		"legendaries": "Lendário", "megas": "Mega", "npcs": "NPC",
+		"standard": "Grass", "grass": "Grass", "fishing": "Fishing",
+		"curry": "Curry (camp)", "sweetscent": "Sweet Scent", "headbutt": "Headbutt (trees)",
+		"rocksmash": "Rock Smash", "caverock": "Cave rocks", "forage": "Foraging",
+		"legendaries": "Legendary", "megas": "Mega", "npcs": "NPC",
 	}
 	if v, ok := m[folder]; ok {
 		return v
@@ -327,18 +327,18 @@ func pxMethod(folder string) string {
 }
 
 func pxRarity(r float64, method string) (string, int) {
-	if method == "Lendário" {
-		return "Lendário", 4
+	if method == "Legendary" {
+		return "Legendary", 4
 	}
 	switch {
 	case r >= 40:
-		return "Comum", 1
+		return "Common", 1
 	case r >= 15:
-		return "Incomum", 2
+		return "Uncommon", 2
 	case r >= 3:
-		return "Raro", 3
+		return "Rare", 3
 	default:
-		return "Ultra-raro", 4
+		return "Ultra-rare", 4
 	}
 }
 
@@ -364,16 +364,16 @@ func pxTimes(times []string) string {
 	}
 	var out []string
 	if set["dia"] {
-		out = append(out, "De dia")
+		out = append(out, "Day")
 	}
 	if set["noite"] {
-		out = append(out, "De noite")
+		out = append(out, "Night")
 	}
 	if set["amanhecer"] {
-		out = append(out, "Amanhecer")
+		out = append(out, "Dawn")
 	}
 	if set["anoitecer"] {
-		out = append(out, "Anoitecer")
+		out = append(out, "Dusk")
 	}
 	return strings.Join(out, " / ")
 }
@@ -431,19 +431,19 @@ func lastPath(s string) string {
 func timeLabel(tr string) string {
 	switch strings.ToLower(tr) {
 	case "day":
-		return "De dia"
+		return "Day"
 	case "night":
-		return "De noite"
+		return "Night"
 	case "twilight":
-		return "Amanhecer / anoitecer"
+		return "Dawn / dusk"
 	case "dawn":
-		return "Amanhecer"
+		return "Dawn"
 	case "dusk":
-		return "Anoitecer"
+		return "Dusk"
 	case "noon":
-		return "Meio-dia"
+		return "Noon"
 	case "midnight":
-		return "Meia-noite"
+		return "Midnight"
 	default:
 		return ""
 	}
