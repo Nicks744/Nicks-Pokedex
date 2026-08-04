@@ -289,6 +289,10 @@
     return "";
   }
 
+  /* ícone (textura do item) — só quando existe itemtex/{id}.png */
+  const itemIco = (it, size) =>
+    it.icon ? `<img class="item-ico" src="itemtex/${it.id}.png" alt="" width="${size}" height="${size}" loading="lazy">` : "";
+
   /* --- <ItemCard /> : card de item (Itens/Berries). onOpen(item) abre o modal. --- */
   function itemCard(it, onOpen) {
     const card = document.createElement("button");
@@ -296,7 +300,7 @@
     card.className = "mcard";
     card.dataset.id = it.id;
     card.innerHTML =
-      `<div class="mcard__head"><span class="mcard__name">${esc(it.name)}</span>${evTag(it)}</div>` +
+      `<div class="mcard__head"><span class="mcard__id">${itemIco(it, 32)}<span class="mcard__name">${esc(it.name)}</span></span>${evTag(it)}</div>` +
       `<div class="mcard__meta"><span class="item-cat">${esc(it.category)}</span>` +
       (it.drops && it.drops.length ? `<span class="mcard__stat">↓ dropa de ${it.drops.length} Pokémon</span>` : "") +
       `</div>` +
@@ -318,8 +322,9 @@
       drops = `<p class="muted drops__none">Sem drop de Pokémon nos dados — obtido por loja, plantio, crafting ou baús.</p>`;
     }
     el.innerHTML =
-      `<div class="modal__head"><h2 class="modal__title">${esc(it.name)}</h2>` +
-      `<div class="modal__tags"><span class="item-cat">${esc(it.category)}</span>${evTag(it)}</div></div>` +
+      `<div class="modal__head modal__head--item">${itemIco(it, 44)}<div class="modal__headmain">` +
+      `<h2 class="modal__title">${esc(it.name)}</h2>` +
+      `<div class="modal__tags"><span class="item-cat">${esc(it.category)}</span>${evTag(it)}</div></div></div>` +
       (it.desc ? `<p class="modal__desc">${esc(it.desc)}</p>` : `<p class="modal__desc muted">Sem descrição no mod.</p>`) +
       drops;
     return el;

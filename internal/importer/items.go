@@ -8,6 +8,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"os"
 	"path/filepath"
 	"regexp"
 	"sort"
@@ -29,7 +30,7 @@ func RunItems(pixelJar, outDir string) error {
 		return fmt.Errorf("jar do Pixelmon nao encontrado; passe -pixeljar CAMINHO ou defina PIXELMON_JAR")
 	}
 	fmt.Printf("jar Pixelmon: %s\n", pixelJar)
-	items := buildPixelmonItems(pixelJar)
+	items := buildPixelmonItems(pixelJar, outDir)
 	if len(items) == 0 {
 		return fmt.Errorf("nenhum item lido do jar %q", pixelJar)
 	}
@@ -67,9 +68,10 @@ func (d pxDropItem) itemID() string {
 	return ""
 }
 
-// buildPixelmonItems abre o jar do Pixelmon e monta o catalogo de itens. Retorna
-// nil se o jar for vazio/ilegivel (Pixelmon é opcional).
-func buildPixelmonItems(jarPath string) []model.Item {
+// buildPixelmonItems abre o jar do Pixelmon e monta o catalogo de itens, extraindo
+// tambem a textura de cada item para outDir/itemtex/{id}.png. Retorna nil se o jar
+// for vazio/ilegivel (Pixelmon é opcional).
+func buildPixelmonItems(jarPath, outDir string) []model.Item {
 	if jarPath == "" {
 		return nil
 	}
@@ -84,6 +86,10 @@ func buildPixelmonItems(jarPath string) []model.Item {
 		return nil
 	}
 	drops := readPixelmonDrops(zr) // id do item (sem "pixelmon:") -> fontes
+	tex := indexItemTextures(zr)   // basename minusculo -> textura no jar
+	iconDir := filepath.Join(outDir, "itemtex")
+	_ = os.MkdirAll(iconDir, 0o755)
+	nIcons := 0
 
 	var items []model.Item
 	for key, name := range lang {
@@ -106,11 +112,16 @@ func buildPixelmonItems(jarPath string) []model.Item {
 				cat = "Outros"
 			}
 		}
+		icon := extractItemIcon(tex, id, iconDir)
+		if icon {
+			nIcons++
+		}
 		items = append(items, model.Item{
 			ID: id, Name: name, Desc: desc, Category: cat,
-			EVStat: ev, IV: iv, Drops: drops[id],
+			EVStat: ev, IV: iv, Icon: icon, Drops: drops[id],
 		})
 	}
+	fmt.Printf("itens: %d texturas extraidas -> %s\n", nIcons, iconDir)
 
 	sort.Slice(items, func(i, j int) bool {
 		if items[i].Category != items[j].Category {
@@ -119,6 +130,60 @@ func buildPixelmonItems(jarPath string) []model.Item {
 		return items[i].Name < items[j].Name
 	})
 	return items
+}
+
+// texAlias cobre itens cujo id nao bate com o nome do arquivo de textura.
+var texAlias = map[string]string{
+	"gold_bottle_cap":   "golden_bottlecap",
+	"silver_bottle_cap": "silver_bottlecap",
+}
+
+// indexItemTextures mapeia o basename minusculo (sem .png) -> textura, para todas
+// as texturas em assets/pixelmon/textures/items/** (primeira ocorrencia vence).
+func indexItemTextures(zr *zip.ReadCloser) map[string]*zip.File {
+	const prefix = "assets/pixelmon/textures/items/"
+	out := map[string]*zip.File{}
+	for _, f := range zr.File {
+		if !strings.HasPrefix(f.Name, prefix) || !strings.HasSuffix(f.Name, ".png") {
+			continue
+		}
+		base := strings.ToLower(f.Name)
+		base = base[strings.LastIndex(base, "/")+1:]
+		base = strings.TrimSuffix(base, ".png")
+		if _, ok := out[base]; !ok {
+			out[base] = f
+		}
+	}
+	return out
+}
+
+// extractItemIcon copia a textura do item (id, id sem "_", ou alias) para
+// dir/{id}.png. Retorna true se encontrou e escreveu.
+func extractItemIcon(tex map[string]*zip.File, id, dir string) bool {
+	cands := []string{id, strings.ReplaceAll(id, "_", "")}
+	if a := texAlias[id]; a != "" {
+		cands = append([]string{a}, cands...)
+	}
+	for _, c := range cands {
+		f := tex[c]
+		if f == nil {
+			continue
+		}
+		rc, err := f.Open()
+		if err != nil {
+			return false
+		}
+		data, err := io.ReadAll(rc)
+		rc.Close()
+		if err != nil {
+			return false
+		}
+		if os.WriteFile(filepath.Join(dir, id+".png"), data, 0o644) != nil {
+			return false
+		}
+		return true
+	}
+	return false
 }
 
 func readPixelmonLang(zr *zip.ReadCloser) map[string]string {

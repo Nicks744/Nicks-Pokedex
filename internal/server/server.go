@@ -50,6 +50,7 @@ func (s *Server) mux(dataDir string, webFS fs.FS) *http.ServeMux {
 	// Sprites e type gems gerados pela importacao.
 	mux.Handle("GET /sprites/", http.StripPrefix("/sprites/", http.FileServer(http.Dir(filepath.Join(dataDir, "sprites")))))
 	mux.Handle("GET /types/", http.StripPrefix("/types/", http.FileServer(http.Dir(filepath.Join(dataDir, "types")))))
+	mux.Handle("GET /itemtex/", http.StripPrefix("/itemtex/", http.FileServer(http.Dir(filepath.Join(dataDir, "itemtex")))))
 
 	mux.HandleFunc("GET /{$}", s.handleIndex)
 	mux.HandleFunc("GET /pokemon/{slug}", s.handlePokemon)
@@ -406,7 +407,7 @@ func BuildStatic(dataDir string, webFS fs.FS, outDir, base string) error {
 	if err := copyFSDir(webFS, "static", filepath.Join(outDir, "static")); err != nil {
 		return err
 	}
-	for _, d := range []string{"sprites", "types"} {
+	for _, d := range []string{"sprites", "types", "itemtex"} {
 		if err := copyDiskDir(filepath.Join(dataDir, d), filepath.Join(outDir, d)); err != nil {
 			return err
 		}

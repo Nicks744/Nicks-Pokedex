@@ -3,13 +3,15 @@
   "id": "aguav_berry",
   "name": "Aguav Berry",
   "desc": "Restores 12.5% of maximum HP, confuses Pokémon with Special Defense-lowering Natures.",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "apicot_berry",
   "name": "Apicot Berry",
   "desc": "Raises Sp. Defense in a pinch. 10x infused into a Clever Wing will create a Zinc.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Latias",
@@ -31,13 +33,15 @@
   "id": "aspear_berry",
   "name": "Aspear Berry",
   "desc": "Cures freeze",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "babiri_berry",
   "name": "Babiri Berry",
   "desc": "Reduces the effect of a super-effective Steel move by 50%. Can be infused into a Crystal Block to make a Steel Gem.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Registeel",
@@ -60,6 +64,7 @@
   "name": "Belue Berry",
   "desc": "Infuse 3x into an Incense Burner to make an Odd Incense.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Audino",
@@ -80,13 +85,15 @@
   "id": "bluk_berry",
   "name": "Bluk Berry",
   "desc": "",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "charti_berry",
   "name": "Charti Berry",
   "desc": "Reduces the effect of a super-effective Rock move by 50%. Can be infused into a Crystal Block to make a Rock Gem.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Regirock",
@@ -102,6 +109,7 @@
   "name": "Cheri Berry",
   "desc": "Cures Paralysis",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Cherrim",
@@ -138,6 +146,7 @@
   "name": "Chesto Berry",
   "desc": "Cures Sleep",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Snorlax",
@@ -167,6 +176,7 @@
   "name": "Chilan Berry",
   "desc": "Reduces the effect of a Normal move by 50%. Can be infused into a Crystal Block to make a Normal Gem.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Mothim",
@@ -196,6 +206,7 @@
   "name": "Chople Berry",
   "desc": "Reduces the effect of a super-effective Fighting move by 50%. Can be infused into a Crystal Block to make a Fighting Gem.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Bidoof",
@@ -232,6 +243,7 @@
   "name": "Coba Berry",
   "desc": "Reduces the effect of a super-effective Flying move by 50%. Can be infused into a Crystal Block to make a Flying Gem.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Heracross",
@@ -275,6 +287,7 @@
   "name": "Colbur Berry",
   "desc": "Reduces the effect of a super-effective Dark move by 50%. Can be infused into a Crystal Block to make a Dark Gem.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Metagross",
@@ -310,19 +323,22 @@
   "id": "cornn_berry",
   "name": "Cornn Berry",
   "desc": "Infuse 3x into an Incense Burner to make a Lax Incense.",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "custap_berry",
   "name": "Custap Berry",
   "desc": "Lets the holder move first once in a pinch",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "drash_berry",
   "name": "Drash Berry",
   "desc": "Cures Poison",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Tangela",
@@ -337,13 +353,15 @@
   "id": "durin_berry",
   "name": "Durin Berry",
   "desc": "Infuse 3x into an Incense Burner to make a Full Incense.",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "eggant_berry",
   "name": "Eggant Berry",
   "desc": "Cures infatuation",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Kecleon",
@@ -359,6 +377,7 @@
   "name": "Enigma Berry",
   "desc": "Restores 25% of maximum HP when hit by a super effective attack.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Medicham",
@@ -401,6 +420,7 @@
   "name": "Ganlon Berry",
   "desc": "Raises Defense in a pinch. 10x infused into a Resist Wing will create an Iron.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Wobbuffet",
@@ -415,7 +435,8 @@
   "id": "ginema_berry",
   "name": "Ginema Berry",
   "desc": "Cures stat drops",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "grepa_berry",
@@ -423,6 +444,7 @@
   "desc": "Lowers Sp. Defense and increases Happiness",
   "category": "Berry",
   "evStat": "Defesa Esp.",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Blissey",
@@ -452,6 +474,7 @@
   "name": "Haban Berry",
   "desc": "Reduces the effect of a super-effective Dragon move by 50%. Can be infused into a Crystal Block to make a Dragon Gem.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Dragonite",
@@ -510,6 +533,7 @@
   "desc": "Lowers Sp. Attack and increases Happiness",
   "category": "Berry",
   "evStat": "Ataque Esp.",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Delphox",
@@ -532,6 +556,7 @@
   "name": "Iapapa Berry",
   "desc": "Restores 12.5% of maximum HP, confuses Pokémon with Defense-lowering Natures.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Furret",
@@ -546,13 +571,15 @@
   "id": "jaboca_berry",
   "name": "Jaboca Berry",
   "desc": "When hit by a physical attack, the attacker will lose 1/8 of its max HP.",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "kasib_berry",
   "name": "Kasib Berry",
   "desc": "Reduces the effect of a super-effective Ghost move by 50%. Can be infused into a Crystal Block to make a Ghost Gem.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Abra",
@@ -582,6 +609,7 @@
   "name": "Kebia Berry",
   "desc": "Reduces the effect of a super-effective Poison move by 50%. Can be infused into a Crystal Block to make a Poison Gem.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Aromatisse",
@@ -674,6 +702,7 @@
   "name": "Kee Berry",
   "desc": "Increase Defense when hit with a Physical Move",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Wynaut",
@@ -690,6 +719,7 @@
   "desc": "Lowers Attack and increases Happiness",
   "category": "Berry",
   "evStat": "Ataque",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Hitmonlee",
@@ -718,31 +748,36 @@
   "id": "kuo_berry",
   "name": "Kuo Berry",
   "desc": "",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "lansat_berry",
   "name": "Lansat Berry",
   "desc": "Sharply Raises Critical Hit Ratio in a pinch",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "leppa_berry",
   "name": "Leppa Berry",
   "desc": "Restores 10 PP",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "liechi_berry",
   "name": "Liechi Berry",
   "desc": "Raises Attack in a pinch. 10x infused into a Muscle Wing will create a Protein.",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "lum_berry",
   "name": "Lum Berry",
   "desc": "Cures paralysis, poison, burn, sleep, freeze, confusion, or infatuation",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Exeggutor",
@@ -772,6 +807,7 @@
   "name": "Mago Berry",
   "desc": "Restores 12.5% of maximum HP, confuses Pokémon with Speed-lowering Natures.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Ambipom",
@@ -787,6 +823,7 @@
   "name": "Magost Berry",
   "desc": "Infuse 3x into an Incense Burner to make a Wave Incense.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Tsareena",
@@ -816,6 +853,7 @@
   "name": "Maranga Berry",
   "desc": "Increase Sp. Defense when hit with a Special Move",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Wynaut",
@@ -837,6 +875,7 @@
   "name": "Micle Berry",
   "desc": "Raises the next move's accuracy by 20% in a pinch",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Venomoth",
@@ -859,6 +898,7 @@
   "name": "Nanab Berry",
   "desc": "",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Aipom",
@@ -936,13 +976,15 @@
   "id": "niniku_berry",
   "name": "Niniku Berry",
   "desc": "",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "nomel_berry",
   "name": "Nomel Berry",
   "desc": "Infuse 3x into an Incense Burner to make a Pure Incense.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Indeedee",
@@ -957,13 +999,15 @@
   "id": "nutpea_berry",
   "name": "Nutpea Berry",
   "desc": "",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "occa_berry",
   "name": "Occa Berry",
   "desc": "Reduces the effect of a super-effective Fire move by 50%. Can be infused into a Crystal Block to make a Fire Gem.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Cacnea",
@@ -1035,6 +1079,7 @@
   "name": "Oran Berry",
   "desc": "Restores 10 HP",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Shuckle",
@@ -1070,13 +1115,15 @@
   "id": "pamtre_berry",
   "name": "Pamtre Berry",
   "desc": "Infuse 3x into an Incense Burner to make a Luck Incense.",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "passho_berry",
   "name": "Passho Berry",
   "desc": "Reduces the effect of a super-effective Water move by 50%. Can be infused into a Crystal Block to make a Water Gem.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Blaziken",
@@ -1120,6 +1167,7 @@
   "name": "Payapa Berry",
   "desc": "Reduces the effect of a super-effective Psychic move by 50%. Can be infused into a Crystal Block to make a Psychic Gem.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Roselia",
@@ -1163,6 +1211,7 @@
   "name": "Pecha Berry",
   "desc": "Cures Poison",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Venonat",
@@ -1178,6 +1227,7 @@
   "name": "Persim Berry",
   "desc": "Cures confusion",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Drampa",
@@ -1193,6 +1243,7 @@
   "name": "Petaya Berry",
   "desc": "Raises Sp. Attack in a pinch. 10x infused into a Genius Wing will create a Calcium.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Latios",
@@ -1208,6 +1259,7 @@
   "name": "Pinap Berry",
   "desc": "",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Oranguru",
@@ -1231,6 +1283,7 @@
   "desc": "Lowers Max HP and increases Happiness",
   "category": "Berry",
   "evStat": "HP",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Lilligant",
@@ -1252,7 +1305,8 @@
   "id": "pumkin_berry",
   "name": "Pumkin Berry",
   "desc": "Cures freeze",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "qualot_berry",
@@ -1260,6 +1314,7 @@
   "desc": "Lowers Defense and increases Happiness",
   "category": "Berry",
   "evStat": "Defesa",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Hitmonchan",
@@ -1274,19 +1329,22 @@
   "id": "rabuta_berry",
   "name": "Rabuta Berry",
   "desc": "Infuse 3x into an Incense Burner to make a Rose Incense.",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "rawst_berry",
   "name": "Rawst Berry",
   "desc": "Cures Burn",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "razz_berry",
   "name": "Razz Berry",
   "desc": "",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Greedent",
@@ -1309,6 +1367,7 @@
   "name": "Rindo Berry",
   "desc": "Reduces the effect of a super-effective Grass move by 50%. Can be infused into a Crystal Block to make a Grass Gem.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Swampert",
@@ -1338,6 +1397,7 @@
   "name": "Roseli Berry",
   "desc": "Reduces the effect of a super-effective Fairy move by 50%. Can be infused into a Crystal Block to make a Fairy Gem.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Absol",
@@ -1395,6 +1455,7 @@
   "name": "Rowap Berry",
   "desc": "When hit by a special attack, the attacker will lose 1/8 of its max HP.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Grafaiai",
@@ -1410,6 +1471,7 @@
   "name": "Salac Berry",
   "desc": "Raises Speed in a pinch. 10x infused into a Swift Wing will create a Carbos.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Yanmega",
@@ -1432,6 +1494,7 @@
   "name": "Shuca Berry",
   "desc": "Reduces the effect of a super-effective Ground move by 50%. Can be infused into a Crystal Block to make a Ground Gem.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Gligar",
@@ -1482,6 +1545,7 @@
   "name": "Sitrus Berry",
   "desc": "Restores 25% of Max HP. 10x infused into a Health Wing will create an HP Up.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Crabominable",
@@ -1524,13 +1588,15 @@
   "id": "spelon_berry",
   "name": "Spelon Berry",
   "desc": "Infuse 3x into an Incense Burner to make a Rock Incense.",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "starf_berry",
   "name": "Starf Berry",
   "desc": "Sharply raises a random stat in a pinch",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Tyrogue",
@@ -1545,7 +1611,8 @@
   "id": "strib_berry",
   "name": "Strib Berry",
   "desc": "",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "tamato_berry",
@@ -1553,6 +1620,7 @@
   "desc": "Lowers Speed and increases Happiness",
   "category": "Berry",
   "evStat": "Velocidade",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Annihilape",
@@ -1603,6 +1671,7 @@
   "name": "Tanga Berry",
   "desc": "Reduces the effect of a super-effective Bug move by 50%. Can be infused into a Crystal Block to make a Bug Gem.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Reuniclus",
@@ -1645,13 +1714,15 @@
   "id": "topo_berry",
   "name": "Topo Berry",
   "desc": "",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "touga_berry",
   "name": "Touga Berry",
   "desc": "Cures Confusion",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Capsakid",
@@ -1681,6 +1752,7 @@
   "name": "Wacan Berry",
   "desc": "Reduces the effect of a super-effective Electric move by 50%. Can be infused into a Crystal Block to make a Electric Gem.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Bibarel",
@@ -1730,19 +1802,22 @@
   "id": "watmel_berry",
   "name": "Watmel Berry",
   "desc": "Infuse 3x into an Incense Burner to make a Sea Incense.",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "wepear_berry",
   "name": "Wepear Berry",
   "desc": "",
-  "category": "Berry"
+  "category": "Berry",
+  "icon": true
  },
  {
   "id": "wiki_berry",
   "name": "Wiki Berry",
   "desc": "Restores 12.5% of maximum HP, confuses Pokémon with Special Attack-lowering Natures.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Gastrodon",
@@ -1772,6 +1847,7 @@
   "name": "Yache Berry",
   "desc": "Reduces the effect of a super-effective Ice move by 50%. Can be infused into a Crystal Block to make a Ice Gem.",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Noibat",
@@ -1864,6 +1940,7 @@
   "name": "Yago Berry",
   "desc": "Cures Burn",
   "category": "Berry",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Nuzleaf",
@@ -1893,6 +1970,7 @@
   "name": "Berry Juice",
   "desc": "",
   "category": "Suco",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Shuckle",
@@ -1908,62 +1986,71 @@
   "name": "Blue Juice",
   "desc": "Increases a Pokémon's Special Attack EVs.",
   "category": "Suco",
-  "evStat": "Ataque Esp."
+  "evStat": "Ataque Esp.",
+  "icon": true
  },
  {
   "id": "green_juice",
   "name": "Green Juice",
   "desc": "Increases a Pokémon's Special Defense EVs.",
   "category": "Suco",
-  "evStat": "Defesa Esp."
+  "evStat": "Defesa Esp.",
+  "icon": true
  },
  {
   "id": "pinap_juice",
   "name": "Pinap Juice",
   "desc": "Restores 100 HP",
-  "category": "Suco"
+  "category": "Suco",
+  "icon": true
  },
  {
   "id": "pink_juice",
   "name": "Pink Juice",
   "desc": "Increases a Pokémon's Speed EVs.",
   "category": "Suco",
-  "evStat": "Velocidade"
+  "evStat": "Velocidade",
+  "icon": true
  },
  {
   "id": "purple_juice",
   "name": "Purple Juice",
   "desc": "Increases a Pokémon's HP EVs.",
   "category": "Suco",
-  "evStat": "HP"
+  "evStat": "HP",
+  "icon": true
  },
  {
   "id": "red_juice",
   "name": "Red Juice",
   "desc": "Increases a Pokémon's Attack EVs.",
   "category": "Suco",
-  "evStat": "Ataque"
+  "evStat": "Ataque",
+  "icon": true
  },
  {
   "id": "yellow_juice",
   "name": "Yellow Juice",
   "desc": "Increases a Pokémon's Defense EVs.",
   "category": "Suco",
-  "evStat": "Defesa"
+  "evStat": "Defesa",
+  "icon": true
  },
  {
   "id": "calcium",
   "name": "Calcium",
   "desc": "Boosts a Pokémon's Special Attack EVs by 10. Can be obtained by infusing a Genius Wing with 10 Petaya Berries.",
   "category": "Vitamina / EV",
-  "evStat": "Ataque Esp."
+  "evStat": "Ataque Esp.",
+  "icon": true
  },
  {
   "id": "carbos",
   "name": "Carbos",
   "desc": "Boosts a Pokémon's Speed EVs by 10. Can be obtained by infusing a Swift Wing with 10 Salac Berries.",
   "category": "Vitamina / EV",
-  "evStat": "Velocidade"
+  "evStat": "Velocidade",
+  "icon": true
  },
  {
   "id": "clever_feather",
@@ -1971,6 +2058,7 @@
   "desc": "Increases the Special Defense EV of a Pokémon by 1. Can be infused with 10 Apicot Berries to create a Zinc.",
   "category": "Vitamina / EV",
   "evStat": "Defesa Esp.",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Cramorant",
@@ -2001,6 +2089,7 @@
   "desc": "Increases the Special Attack EV of a Pokémon by 1. Can be infused with 10 Petaya Berries to create a Calcium.",
   "category": "Vitamina / EV",
   "evStat": "Ataque Esp.",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Espathra",
@@ -2044,7 +2133,8 @@
   "name": "HP Up",
   "desc": "Boosts a Pokémon's HP EVs by 10. Can be obtained by infusing a Health Wing with 10 Sitrus Berries.",
   "category": "Vitamina / EV",
-  "evStat": "HP"
+  "evStat": "HP",
+  "icon": true
  },
  {
   "id": "health_feather",
@@ -2052,6 +2142,7 @@
   "desc": "Increases the HP EV of a Pokémon by 1. Can be infused with 10 Sitrus Berries to create an HP Up.",
   "category": "Vitamina / EV",
   "evStat": "HP",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Cresselia",
@@ -2088,7 +2179,8 @@
   "name": "Iron",
   "desc": "Boosts a Pokémon's Defense EVs by 10. Can be obtained by infusing a Resist Wing with 10 Ganlon Berries.",
   "category": "Vitamina / EV",
-  "evStat": "Defesa"
+  "evStat": "Defesa",
+  "icon": true
  },
  {
   "id": "muscle_feather",
@@ -2096,6 +2188,7 @@
   "desc": "Increases the Attack EV of a Pokémon by 1. Can be infused with 10 Liechi Berries to create a Protein.",
   "category": "Vitamina / EV",
   "evStat": "Ataque",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Sirfetchd",
@@ -2131,26 +2224,30 @@
   "id": "pp_max",
   "name": "PP Max",
   "desc": "",
-  "category": "Vitamina / EV"
+  "category": "Vitamina / EV",
+  "icon": true
  },
  {
   "id": "pp_up",
   "name": "PP Up",
   "desc": "",
-  "category": "Vitamina / EV"
+  "category": "Vitamina / EV",
+  "icon": true
  },
  {
   "id": "protein",
   "name": "Protein",
   "desc": "Boosts a Pokémon's Attack EVs by 10. Can be obtained by infusing a Muscle Wing with 10 Liechi Berries.",
   "category": "Vitamina / EV",
-  "evStat": "Ataque"
+  "evStat": "Ataque",
+  "icon": true
  },
  {
   "id": "rare_candy",
   "name": "Rare Candy",
   "desc": "A candy that is packed with energy. When consumed, it will instantly raise the level of a single Pokémon by one.",
-  "category": "Vitamina / EV"
+  "category": "Vitamina / EV",
+  "icon": true
  },
  {
   "id": "resist_feather",
@@ -2158,6 +2255,7 @@
   "desc": "Increases the Defense EV of a Pokémon by 1. Can be infused with 10 Ganlon Berries to create an Iron.",
   "category": "Vitamina / EV",
   "evStat": "Defesa",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Corviknight",
@@ -2195,6 +2293,7 @@
   "desc": "Increases the Speed EV of a Pokémon by 1. Can be infused with 10 Salac Berries to create a Carbos.",
   "category": "Vitamina / EV",
   "evStat": "Velocidade",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Hawlucha",
@@ -2238,111 +2337,129 @@
   "name": "Zinc",
   "desc": "Boosts a Pokémon's Special Defense EVs by 10. Can be obtained by infusing a Clever Wing with 10 Apicot Berries.",
   "category": "Vitamina / EV",
-  "evStat": "Defesa Esp."
+  "evStat": "Defesa Esp.",
+  "icon": true
  },
  {
   "id": "clever_wing",
   "name": "Clever Wing",
   "desc": "Can be sold to shopkeepers.",
-  "category": "Pena / Asa (EV)"
+  "category": "Pena / Asa (EV)",
+  "icon": true
  },
  {
   "id": "genius_wing",
   "name": "Genius Wing",
   "desc": "Can be sold to shopkeepers.",
-  "category": "Pena / Asa (EV)"
+  "category": "Pena / Asa (EV)",
+  "icon": true
  },
  {
   "id": "health_wing",
   "name": "Health Wing",
   "desc": "Can be sold to shopkeepers.",
-  "category": "Pena / Asa (EV)"
+  "category": "Pena / Asa (EV)",
+  "icon": true
  },
  {
   "id": "lunar_wing",
   "name": "Lunar Wing",
   "desc": "",
-  "category": "Pena / Asa (EV)"
+  "category": "Pena / Asa (EV)",
+  "icon": true
  },
  {
   "id": "muscle_wing",
   "name": "Muscle Wing",
   "desc": "Can be sold to shopkeepers.",
-  "category": "Pena / Asa (EV)"
+  "category": "Pena / Asa (EV)",
+  "icon": true
  },
  {
   "id": "pretty_feather",
   "name": "Pretty Feather",
   "desc": "Can be sold to shopkeepers.",
-  "category": "Pena / Asa (EV)"
+  "category": "Pena / Asa (EV)",
+  "icon": true
  },
  {
   "id": "pretty_wing",
   "name": "Pretty Wing",
   "desc": "Can be sold to shopkeepers.",
-  "category": "Pena / Asa (EV)"
+  "category": "Pena / Asa (EV)",
+  "icon": true
  },
  {
   "id": "rainbow_wing",
   "name": "Rainbow Wing",
   "desc": "Can be used to turn certain Pokémon into their rainbow forms.",
-  "category": "Pena / Asa (EV)"
+  "category": "Pena / Asa (EV)",
+  "icon": true
  },
  {
   "id": "resist_wing",
   "name": "Resist Wing",
   "desc": "Can be sold to shopkeepers.",
-  "category": "Pena / Asa (EV)"
+  "category": "Pena / Asa (EV)",
+  "icon": true
  },
  {
   "id": "silver_wing",
   "name": "Silver Wing",
   "desc": "",
-  "category": "Pena / Asa (EV)"
+  "category": "Pena / Asa (EV)",
+  "icon": true
  },
  {
   "id": "swift_wing",
   "name": "Swift Wing",
   "desc": "Can be sold to shopkeepers.",
-  "category": "Pena / Asa (EV)"
+  "category": "Pena / Asa (EV)",
+  "icon": true
  },
  {
   "id": "gold_bottle_cap",
   "name": "Gold Bottle Cap",
   "desc": "A beautiful bottle cap that gives off a golden gleam. Hyper Trains all the IVs of a Pokémon.",
   "category": "IV (Bottle Cap)",
-  "iv": true
+  "iv": true,
+  "icon": true
  },
  {
   "id": "silver_bottle_cap",
   "name": "Silver Bottle Cap",
   "desc": "A beautiful bottle cap that gives off a silver gleam. Hyper Trains a single IV of a Pokémon.",
   "category": "IV (Bottle Cap)",
-  "iv": true
+  "iv": true,
+  "icon": true
  },
  {
   "id": "antidote",
   "name": "Antidote",
   "desc": "Cures poison.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "awakening",
   "name": "Awakening",
   "desc": "Cures sleep.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "burn_heal",
   "name": "Burn Heal",
   "desc": "Cures burn.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "casteliacone",
   "name": "Casteliacone",
   "desc": "Castelia City's specialty, soft-serve ice cream. It can be used once to heal all the status conditions of a Pokémon",
   "category": "Cura / Medicina",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Vanillish",
@@ -2371,19 +2488,22 @@
   "id": "elixir",
   "name": "Elixir",
   "desc": "Restores 10 PP of all moves.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "energy_powder",
   "name": "Energy Powder",
   "desc": "A very bitter medicinal powder. It can be used to restore 60 HP to a single Pokémon.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "energy_root",
   "name": "Energy Root",
   "desc": "An extremely bitter medicinal root. It can be used to restore 120 HP to a single Pokémon.",
   "category": "Cura / Medicina",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Tangrowth",
@@ -2398,13 +2518,15 @@
   "id": "ether",
   "name": "Ether",
   "desc": "Restores 10 PP of one move.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "fresh_water",
   "name": "Fresh Water",
   "desc": "Restores 30 HP.",
   "category": "Cura / Medicina",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Azumarill",
@@ -2496,73 +2618,85 @@
   "id": "full_heal",
   "name": "Full Heal",
   "desc": "Cures status effects.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "full_restore",
   "name": "Full Restore",
   "desc": "Fully restores HP \u0026 cures status effects.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "heal_powder",
   "name": "Heal Powder",
   "desc": "A very bitter medicinal powder. It can be used once to heal all the status conditions of a Pokémon.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "hyper_potion",
   "name": "Hyper Potion",
   "desc": "Restores 120 HP.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "ice_heal",
   "name": "Ice Heal",
   "desc": "Cures freeze.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "lava_cookie",
   "name": "Lava Cookie",
   "desc": "Lavaridge Town's local specialty. It can be used once to heal all the status conditions of a Pokémon.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "lemonade",
   "name": "Lemonade",
   "desc": "Restores 70 HP.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "max_elixir",
   "name": "Max Elixir",
   "desc": "Fully restores PP of all moves.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "max_ether",
   "name": "Max Ether",
   "desc": "Fully restores PP of one move.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "max_potion",
   "name": "Max Potion",
   "desc": "Fully restores HP.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "max_revive",
   "name": "Max Revive",
   "desc": "Restores a fainted Pokémon to full HP.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "moomoo_milk",
   "name": "Moomoo Milk",
   "desc": "Restores 100 HP.",
   "category": "Cura / Medicina",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Miltank",
@@ -2577,247 +2711,288 @@
   "id": "old_gateau",
   "name": "Old Gateau",
   "desc": "The Old Chateau's hidden specialty. It can be used once to heal all the status conditions of a Pokémon.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "paralyze_heal",
   "name": "Paralyze Heal",
   "desc": "Cures paralysis.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "potion",
   "name": "Potion",
   "desc": "Restores 20 HP.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "rage_candy_bar",
   "name": "Rage Candy Bar",
   "desc": "Mahogany Town's famous candy. It can be used once to heal all the status conditions of a Pokémon.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "revival_herb",
   "name": "Revival Herb",
   "desc": "A terribly bitter medicinal herb. It revives a fainted Pokémon and fully restores its max HP.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "revive",
   "name": "Revive",
   "desc": "Restores a fainted Pokémon to 50% HP.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "soda_pop",
   "name": "Soda Pop",
   "desc": "Restores 50 HP.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "super_potion",
   "name": "Super Potion",
   "desc": "Restores 60 HP.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "sweet_heart",
   "name": "Sweet Heart",
   "desc": "Restores 20 HP.",
-  "category": "Cura / Medicina"
+  "category": "Cura / Medicina",
+  "icon": true
  },
  {
   "id": "ancient_great_ball",
   "name": "Ancient Great Ball",
   "desc": "Can be used to catch Pokémon. 1.5x catch rate.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "ancient_heavy_ball",
   "name": "Ancient Heavy Ball",
   "desc": "",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "ancient_poke_ball",
   "name": "Ancient Poké Ball",
   "desc": "Can be used to catch Pokémon.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "ancient_ultra_ball",
   "name": "Ancient Ultra Ball",
   "desc": "Can be used to catch Pokémon. 2x catch rate.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "beast_ball",
   "name": "Beast Ball",
   "desc": "Can be used to catch Pokémon. 5x catch rate when used on Ultra Beasts. 0.1x catch rate for everything else.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "cherish_ball",
   "name": "Cherish Ball",
   "desc": "Can be used to catch Pokémon.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "christmas_ball",
   "name": "Christmas Poké Ball",
   "desc": "Ho ho ho",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "dive_ball",
   "name": "Dive Ball",
   "desc": "Can be used to catch Pokémon. 3.5x catch rate if the Pokémon is in water.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "dream_ball",
   "name": "Dream Ball",
   "desc": "Can be used to catch Pokémon. 4x catch rate on Sleeping Pokémon.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "dusk_ball",
   "name": "Dusk Ball",
   "desc": "Can be used to catch Pokémon. 3.0x catch rate in dark places.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "fast_ball",
   "name": "Fast Ball",
   "desc": "Can be used to catch Pokémon. Increased catch rate on fast Pokémon.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "feather_ball",
   "name": "Feather Ball",
   "desc": "",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "friend_ball",
   "name": "Friend Ball",
   "desc": "Can be used to catch Pokémon. Greatly boosts the captured Pokémon's happiness.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "gs_ball",
   "name": "GS Ball",
   "desc": "Can be used to catch Pokémon.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "gigaton_ball",
   "name": "Gigaton Ball",
   "desc": "",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "great_ball",
   "name": "Great Ball",
   "desc": "Can be used to catch Pokémon. 1.5x catch rate.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "heal_ball",
   "name": "Heal Ball",
   "desc": "Can be used to catch Pokémon. Fully heals HP and status of captured Pokémon.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "heavy_ball",
   "name": "Heavy Ball",
   "desc": "Can be used to catch Pokémon. Increased catch rate on heavy Pokémon.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "jet_ball",
   "name": "Jet Ball",
   "desc": "",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "leaden_ball",
   "name": "Leaden Ball",
   "desc": "",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "level_ball",
   "name": "Level Ball",
   "desc": "Can be used to catch Pokémon. Increased catch rate the lower the wild Pokémon's level is compared to the player's active Pokémon.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "light_ball",
   "name": "Light Ball",
   "desc": "An item to be held by Pikachu. It's a puzzling orb that boosts its Attack and Sp. Atk stats.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "love_ball",
   "name": "Love Ball",
   "desc": "Can be used to catch Pokémon. 8x catch rate if the Pokémon is the same species and opposite gender of the trainer's active Pokémon.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "lure_ball",
   "name": "Lure Ball",
   "desc": "Can be used to catch Pokémon. 5x catch rate on Pokémon encountered by fishing",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "luxury_ball",
   "name": "Luxury Ball",
   "desc": "Can be used to catch Pokémon. Causes captured Pokémon to gain happiness faster.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "master_ball",
   "name": "Master Ball",
   "desc": "Can be used to catch Pokémon. Will never fail.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "moon_ball",
   "name": "Moon Ball",
   "desc": "Can be used to catch Pokémon. 4x catch rate if the Pokémon's evolution line involves a moon stone.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "nest_ball",
   "name": "Nest Ball",
   "desc": "Can be used to catch Pokémon. Increased catch rate on low-leveled Pokémon.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "net_ball",
   "name": "Net Ball",
   "desc": "Can be used to catch Pokémon. 3x catch rate on Bug- and Water-type Pokémon.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "origin_ball",
   "name": "Origin Ball",
   "desc": "",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "park_ball",
   "name": "Park Ball",
   "desc": "Can be used to catch Pokémon. Will never fail.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "poke_ball",
   "name": "Poké Ball",
   "desc": "Can be used to catch Pokémon.",
   "category": "Poké Bola",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Blacephalon",
@@ -2909,31 +3084,36 @@
   "id": "premier_ball",
   "name": "Premier Ball",
   "desc": "Can be used to catch Pokémon. Captured Pokémon emit a red particle effect when sent out.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "quick_ball",
   "name": "Quick Ball",
   "desc": "Can be used to catch Pokémon. 5x catch rate if used on the first turn of battle. Standard rate if thrown outside of battle.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "repeat_ball",
   "name": "Repeat Ball",
   "desc": "Can be used to catch Pokémon. 3x catch rate on species the trainer has already caught.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "safari_ball",
   "name": "Safari Ball",
   "desc": "Can be used to catch Pokémon. 1.5x catch rate in Plains.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "smoke_ball",
   "name": "Smoke Ball",
   "desc": "An item to be held by a Pokémon. It enables the holder to flee from any wild Pokémon encounter without fail.",
   "category": "Poké Bola",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Skuntank",
@@ -2969,49 +3149,57 @@
   "id": "sport_ball",
   "name": "Sport Ball",
   "desc": "Can be used to catch Pokémon. 1.5x catch rate on Bug-type Pokémon.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "strange_ball",
   "name": "Strange Ball",
   "desc": "Can be used to catch Pokémon.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "timer_ball",
   "name": "Timer Ball",
   "desc": "Can be used to catch Pokémon. Increased catch rate based on battle duration.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "ultra_ball",
   "name": "Ultra Ball",
   "desc": "Can be used to catch Pokémon. 2x catch rate.",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "wing_ball",
   "name": "Wing Ball",
   "desc": "",
-  "category": "Poké Bola"
+  "category": "Poké Bola",
+  "icon": true
  },
  {
   "id": "common_stone",
   "name": "Common Stone",
   "desc": "",
-  "category": "Pedra evolutiva"
+  "category": "Pedra evolutiva",
+  "icon": true
  },
  {
   "id": "dark_stone",
   "name": "Dark Stone",
   "desc": "",
-  "category": "Pedra evolutiva"
+  "category": "Pedra evolutiva",
+  "icon": true
  },
  {
   "id": "dawn_stone",
   "name": "Dawn Stone",
   "desc": "A peculiar stone that can make certain species of Pokémon evolve. It sparkles like a glittering eye.",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Espeon",
@@ -3041,6 +3229,7 @@
   "name": "Dawn Stone Shard",
   "desc": "",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Gallade",
@@ -3084,6 +3273,7 @@
   "name": "Dusk Stone",
   "desc": "A peculiar stone that can make certain species of Pokémon evolve. It holds shadows as dark as can be.",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Zoroark",
@@ -3134,6 +3324,7 @@
   "name": "Dusk Stone Shard",
   "desc": "",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Necrozma",
@@ -3190,13 +3381,15 @@
   "id": "enigma_stone",
   "name": "Enigma Stone",
   "desc": "",
-  "category": "Pedra evolutiva"
+  "category": "Pedra evolutiva",
+  "icon": true
  },
  {
   "id": "ever_stone",
   "name": "Everstone",
   "desc": "An item to be held by a Pokémon. A Pokémon holding this peculiar stone is prevented from evolving.",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Blissey",
@@ -3212,6 +3405,7 @@
   "name": "Fire Stone",
   "desc": "A peculiar stone that can make certain species of Pokémon evolve. The stone has a fiery orange heart.",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Magmortar",
@@ -3269,6 +3463,7 @@
   "name": "Fire Stone Shard",
   "desc": "",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Magmar",
@@ -3326,6 +3521,7 @@
   "name": "Float Stone",
   "desc": "An item to be held by a Pokémon. This very light stone reduces the weight of a Pokémon when held.",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Drifblim",
@@ -3376,6 +3572,7 @@
   "name": "Hard Stone",
   "desc": "An item to be held by a Pokémon. It's a durable stone that boosts the power of Rock-type moves.",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Stonjourner",
@@ -3461,6 +3658,7 @@
   "name": "Ice Stone",
   "desc": "A peculiar stone that can make certain species of Pokémon evolve. It has an unmistakable snowflake pattern.",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Articuno",
@@ -3504,6 +3702,7 @@
   "name": "Ice Stone Shard",
   "desc": "",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Sandshrew (Alolan)",
@@ -3553,19 +3752,22 @@
   "id": "intriguing_stone",
   "name": "Intriguing Stone",
   "desc": "",
-  "category": "Pedra evolutiva"
+  "category": "Pedra evolutiva",
+  "icon": true
  },
  {
   "id": "key_stone",
   "name": "Key Stone",
   "desc": "",
-  "category": "Pedra evolutiva"
+  "category": "Pedra evolutiva",
+  "icon": true
  },
  {
   "id": "leaf_stone",
   "name": "Leaf Stone",
   "desc": "A peculiar stone that can make certain species of Pokémon evolve. It has an unmistakable leaf pattern.",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Leafeon",
@@ -3588,6 +3790,7 @@
   "name": "Leaf Stone Shard",
   "desc": "",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Leafeon",
@@ -3630,19 +3833,22 @@
   "id": "light_stone",
   "name": "Light Stone",
   "desc": "",
-  "category": "Pedra evolutiva"
+  "category": "Pedra evolutiva",
+  "icon": true
  },
  {
   "id": "magma_stone",
   "name": "Magma Stone",
   "desc": "",
-  "category": "Pedra evolutiva"
+  "category": "Pedra evolutiva",
+  "icon": true
  },
  {
   "id": "moon_stone",
   "name": "Moon Stone",
   "desc": "A peculiar stone that can make certain species of Pokémon evolve. It is as black as the night sky.",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Cresselia",
@@ -3686,6 +3892,7 @@
   "name": "Moon Stone Shard",
   "desc": "",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Cosmoem",
@@ -3743,6 +3950,7 @@
   "name": "Oval Stone",
   "desc": "A peculiar stone that can make certain species of Pokémon evolve. It's as round as a Pokémon Egg.",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Happiny",
@@ -3758,6 +3966,7 @@
   "name": "Shiny Stone",
   "desc": "A peculiar stone that can make certain species of Pokémon evolve. It shines with a dazzling light.",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Honchkrow",
@@ -3787,6 +3996,7 @@
   "name": "Shiny Stone Shard",
   "desc": "",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Honchkrow",
@@ -3822,13 +4032,15 @@
   "id": "sparkling_stone",
   "name": "Sparkling Stone",
   "desc": "",
-  "category": "Pedra evolutiva"
+  "category": "Pedra evolutiva",
+  "icon": true
  },
  {
   "id": "sun_stone",
   "name": "Sun Stone",
   "desc": "A peculiar stone that can make certain species of Pokémon evolve. It burns as red as the evening sun.",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Solgaleo",
@@ -3844,6 +4056,7 @@
   "name": "Sun Stone Shard",
   "desc": "",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Cosmoem",
@@ -3873,6 +4086,7 @@
   "name": "Thunder Stone",
   "desc": "A peculiar stone that can make certain species of Pokémon evolve. It has a distinct thunderbolt pattern.",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Electivire",
@@ -3909,6 +4123,7 @@
   "name": "Thunder Stone Shard",
   "desc": "",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Electabuzz",
@@ -3987,6 +4202,7 @@
   "name": "Water Stone",
   "desc": "A peculiar stone that can make certain species of Pokémon evolve. It is the blue of a pool of clear water.",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Simipour",
@@ -4016,6 +4232,7 @@
   "name": "Water Stone Shard",
   "desc": "",
   "category": "Pedra evolutiva",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Poliwhirl",
@@ -4080,6 +4297,7 @@
   "name": "Auspicious Armor",
   "desc": "A peculiar set of armor that can make a certain species of Pokémon evolve. Auspicious wishes live within it.",
   "category": "Item de evolução",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Armarouge",
@@ -4095,6 +4313,7 @@
   "name": "Black Augurite",
   "desc": "",
   "category": "Item de evolução",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Kleavor",
@@ -4109,19 +4328,22 @@
   "id": "chipped_pot",
   "name": "Chipped Pot",
   "desc": "A peculiar teapot that can make a certain species of Pokémon evolve. It may be chipped, but tea poured from it is delicious.",
-  "category": "Item de evolução"
+  "category": "Item de evolução",
+  "icon": true
  },
  {
   "id": "cracked_pot",
   "name": "Cracked Pot",
   "desc": "A peculiar teapot that can make a certain species of Pokémon evolve. It may be cracked, but tea poured from it is delicious.",
-  "category": "Item de evolução"
+  "category": "Item de evolução",
+  "icon": true
  },
  {
   "id": "deep_sea_scale",
   "name": "Deep Sea Scale",
   "desc": "An item to be held by Clamperl. This scale shines with a faint pink and raises the holder's Sp. Def stat.",
   "category": "Item de evolução",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Gorebyss",
@@ -4137,6 +4359,7 @@
   "name": "Deep Sea Tooth",
   "desc": "An item to be held by Clamperl. This fang gleams a sharp silver and raises the holder's Sp. Atk stat.",
   "category": "Item de evolução",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Feraligatr",
@@ -4173,6 +4396,7 @@
   "name": "Dragon Scale",
   "desc": "A very tough and inflexible scale. Dragon-type Pokémon may be holding this item when caught.",
   "category": "Item de evolução",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Kommo-o",
@@ -4223,6 +4447,7 @@
   "name": "Dubious Disc",
   "desc": "A transparent device overflowing with dubious data. Its producer is unknown.",
   "category": "Item de evolução",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Porygon-Z",
@@ -4238,6 +4463,7 @@
   "name": "Electirizer",
   "desc": "A box packed with a tremendous amount of electric energy. It's loved by a certain Pokémon.",
   "category": "Item de evolução",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Electivire",
@@ -4252,19 +4478,22 @@
   "id": "galarica_wreath",
   "name": "Galarica Wreath",
   "desc": "A wreath made from woven-together Galarica Twigs. Placing it on the head of a Galarian Slowpoke makes the Pokémon very happy.",
-  "category": "Item de evolução"
+  "category": "Item de evolução",
+  "icon": true
  },
  {
   "id": "linking_cord",
   "name": "Linking Cord",
   "desc": "A string exuding a mysterious energy that makes you feel a strange sense of connection. It’s loved by certain Pokémon.",
-  "category": "Item de evolução"
+  "category": "Item de evolução",
+  "icon": true
  },
  {
   "id": "magmarizer",
   "name": "Magmarizer",
   "desc": "A box packed with a tremendous amount of magma energy. It's loved by a certain Pokémon.",
   "category": "Item de evolução",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Magmortar",
@@ -4280,6 +4509,7 @@
   "name": "Malicious Armor",
   "desc": "A peculiar set of armor that can make a certain species of Pokémon evolve. Malicious will lurks within it.",
   "category": "Item de evolução",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Ceruledge",
@@ -4295,6 +4525,7 @@
   "name": "Metal Coat",
   "desc": "An item to be held by a Pokémon. It's a special metallic film that can boost the power of Steel-type moves.",
   "category": "Item de evolução",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Kingambit",
@@ -4352,6 +4583,7 @@
   "name": "Prism Scale",
   "desc": "A mysterious scale that causes a certain Pokémon to evolve. It shines in rainbow colors.",
   "category": "Item de evolução",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Milotic",
@@ -4367,6 +4599,7 @@
   "name": "Protector",
   "desc": "A protective item of some sort. It is extremely stiff and heavy. It's loved by a certain Pokémon.",
   "category": "Item de evolução",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Rhyperior",
@@ -4382,6 +4615,7 @@
   "name": "Razor Fang",
   "desc": "An item to be held by a Pokémon. When the holder successfully inflicts damage, the target may also flinch.",
   "category": "Item de evolução",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Crobat",
@@ -4460,6 +4694,7 @@
   "name": "Reaper Cloth",
   "desc": "A cloth imbued with horrifyingly strong spiritual energy. It's loved by a certain Pokémon.",
   "category": "Item de evolução",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Mimikyu",
@@ -4503,6 +4738,7 @@
   "name": "Sachet",
   "desc": "A sachet filled with fragrant perfumes that are just slightly too overwhelming. Yet it's loved by a certain Pokémon.",
   "category": "Item de evolução",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Aromatisse",
@@ -4517,19 +4753,22 @@
   "id": "sweet_apple",
   "name": "Sweet Apple",
   "desc": "A peculiar apple that can make a certain species of Pokémon evolve. It's exceptionally sweet.",
-  "category": "Item de evolução"
+  "category": "Item de evolução",
+  "icon": true
  },
  {
   "id": "tart_apple",
   "name": "Tart Apple",
   "desc": "A peculiar apple that can make a certain species of Pokémon evolve. It's exceptionally tart.",
-  "category": "Item de evolução"
+  "category": "Item de evolução",
+  "icon": true
  },
  {
   "id": "whipped_dream",
   "name": "Whipped Dream",
   "desc": "A soft and sweet treat made of fluffy, puffy, whipped and whirled cream. It's loved by a certain Pokémon.",
   "category": "Item de evolução",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Slurpuff",
@@ -4545,6 +4784,7 @@
   "name": "Absorb Bulb",
   "desc": "An item to be held by a Pokémon. It boosts Sp. Atk if the holder is hit with a Water-type attack.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Ferrothorn",
@@ -4566,13 +4806,15 @@
   "id": "adrenaline_orb",
   "name": "Adrenaline Orb",
   "desc": "If held by a Pokémon, it boosts Speed when intimidated.",
-  "category": "Equipável (held)"
+  "category": "Equipável (held)",
+  "icon": true
  },
  {
   "id": "air_balloon",
   "name": "Air Balloon",
   "desc": "An item to be held by a Pokémon. The holder will float in the air until hit. Once the holder is hit, this item will burst.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Drifblim",
@@ -4595,6 +4837,7 @@
   "name": "Amulet Coin",
   "desc": "An item to be held by a Pokémon that increases any prize money received if the holding Pokémon joins a battle.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Meowth",
@@ -4624,6 +4867,7 @@
   "name": "Assault Vest",
   "desc": "An item to be held by a Pokémon. This offensive vest raises Sp. Def but prevents the use of status moves.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Rhyperior",
@@ -4660,6 +4904,7 @@
   "name": "Big Root",
   "desc": "An item to be held by a Pokémon. It boosts the amount of HP the holder restores from HP-stealing moves.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Arboliva",
@@ -4731,6 +4976,7 @@
   "name": "Binding Band",
   "desc": "An item to be held by a Pokémon. It's a band that increases the power of binding moves used by the holder.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Inteleon",
@@ -4802,6 +5048,7 @@
   "name": "Black Sludge",
   "desc": "An item to be held by a Pokémon. It gradually restores HP to Poison-type Pokémon. It damages any other type.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Swalot",
@@ -4830,13 +5077,15 @@
   "id": "blunder_policy",
   "name": "Blunder Policy",
   "desc": "A held item that raises Speed sharply when a Pokémon misses with a move because of accuracy.",
-  "category": "Equipável (held)"
+  "category": "Equipável (held)",
+  "icon": true
  },
  {
   "id": "bright_powder",
   "name": "Bright Powder",
   "desc": "An item to be held by a Pokémon. It casts a tricky glare that lowers the opposing Pokémon's accuracy.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Articuno",
@@ -4915,6 +5164,7 @@
   "name": "Cell Battery",
   "desc": "An item to be held by a Pokémon. It boosts Attack if the holder is hit with an Electric-type attack.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Elekid",
@@ -4986,6 +5236,7 @@
   "name": "Choice Band",
   "desc": "An item to be held by a Pokémon. This curious headband boosts Attack but only allows the use of one move.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Chesnaught",
@@ -5001,6 +5252,7 @@
   "name": "Choice Scarf",
   "desc": "An item to be held by a Pokémon. This curious scarf boosts Speed but only allows the use of one move.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Greninja",
@@ -5016,6 +5268,7 @@
   "name": "Choice Specs",
   "desc": "An item to be held by a Pokémon. These curious glasses boost Sp. Atk but only allow the use of one move.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Delphox",
@@ -5031,6 +5284,7 @@
   "name": "Cleanse Tag",
   "desc": "An item to be held by a Pokémon that helps keep wild Pokémon away if the holder is the head of the party.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Chimecho",
@@ -5046,6 +5300,7 @@
   "name": "Damp Rock",
   "desc": "An item to be held by a Pokémon. It extends the duration of the move Rain Dance when used by the holder.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Kyogre",
@@ -5096,6 +5351,7 @@
   "name": "Destiny Knot",
   "desc": "An item to be held by a Pokémon. If the holder becomes infatuated, the opposing Pokémon will be, too.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Purugly",
@@ -5110,13 +5366,15 @@
   "id": "eviolite",
   "name": "Eviolite",
   "desc": "A mysterious evolutionary lump. When held by a Pokémon that can still evolve, it raises both Defense and Sp. Def.",
-  "category": "Equipável (held)"
+  "category": "Equipável (held)",
+  "icon": true
  },
  {
   "id": "exp_share",
   "name": "Exp. Share",
   "desc": "An item to be held by a Pokémon. The holder gets a share of a battle's Exp. Points without battling.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Arceus",
@@ -5132,6 +5390,7 @@
   "name": "Expert Belt",
   "desc": "An item to be held by a Pokémon. It's a well-worn belt that slightly boosts the power of supereffective moves.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Machamp",
@@ -5168,6 +5427,7 @@
   "name": "Flame Orb",
   "desc": "An item to be held by a Pokémon. It's a bizarre orb that will afflict the holder with a burn during battle.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Victini",
@@ -5225,6 +5485,7 @@
   "name": "Focus Band",
   "desc": "An item to be held by a Pokémon. The holder may endure a potential KO attack, leaving it with just 1 HP.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Medicham",
@@ -5247,6 +5508,7 @@
   "name": "Focus Sash",
   "desc": "An item to be held by a Pokémon. If the holder has full HP, it will endure a potential KO attack with 1 HP.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Mienshao",
@@ -5269,6 +5531,7 @@
   "name": "Grip Claw",
   "desc": "An item to be held by a Pokémon that extends the duration of multi-turn attacks, such as Bind and Wrap.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Sneasler",
@@ -5305,6 +5568,7 @@
   "name": "Heat Rock",
   "desc": "An item to be held by a Pokémon. It extends the duration of the move Sunny Day when used by the holder.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Groudon",
@@ -5340,13 +5604,15 @@
   "id": "heavy_duty_boots",
   "name": "Heavy-Duty Boots",
   "desc": "These boots prevent the effects of traps set on the battlefield.",
-  "category": "Equipável (held)"
+  "category": "Equipável (held)",
+  "icon": true
  },
  {
   "id": "icy_rock",
   "name": "Icy Rock",
   "desc": "An item to be held by a Pokémon. It extends the duration of the move Hail when used by the holder.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Abomasnow",
@@ -5390,6 +5656,7 @@
   "name": "Iron Ball",
   "desc": "An item to be held by a Pokémon that lowers Speed and allows Ground-type moves to hit Flying types and holders that are levitating.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Forretress",
@@ -5405,6 +5672,7 @@
   "name": "King's Rock",
   "desc": "An item to be held by a Pokémon. When the holder successfully inflicts damage, the target may also flinch.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Nidoking",
@@ -5455,6 +5723,7 @@
   "name": "Lagging Tail",
   "desc": "An item to be held by a Pokémon. It is tremendously heavy and makes the holder move slower than usual.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Steelix",
@@ -5491,6 +5760,7 @@
   "name": "Leftovers",
   "desc": "An item to be held by a Pokémon. The holder's HP is slowly but steadily restored throughout every battle.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Munchlax",
@@ -5527,6 +5797,7 @@
   "name": "Life Orb",
   "desc": "An item to be held by a Pokémon. It boosts the power of moves but at the cost of some HP on each hit.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Zekrom",
@@ -5570,6 +5841,7 @@
   "name": "Light Clay",
   "desc": "An item to be held by a Pokémon. Protective moves like Light Screen and Reflect will be effective longer.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "MimeJr",
@@ -5592,6 +5864,7 @@
   "name": "Lucky Egg",
   "desc": "An item to be held by a Pokémon. It's an egg filled with happiness that earns extra Exp. Points in battle.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Blissey",
@@ -5621,6 +5894,7 @@
   "name": "Luminous Moss",
   "desc": "A held item that boosts Sp. Def if hit with a Water-type attack.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Jumpluff",
@@ -5636,6 +5910,7 @@
   "name": "Mental Herb",
   "desc": "An item to be held by a Pokémon. The holder shakes off move-binding effects to move freely.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Alakazam",
@@ -5672,6 +5947,7 @@
   "name": "Metronome",
   "desc": "An item to be held by a Pokémon. It boosts moves used consecutively but only until a different move is used.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Clefable",
@@ -5694,6 +5970,7 @@
   "name": "Muscle Band",
   "desc": "An item to be held by a Pokémon. This headband exudes strength, slightly boosting the power of physical moves.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Conkeldurr",
@@ -5736,31 +6013,36 @@
   "id": "power_anklet",
   "name": "Power Anklet",
   "desc": "An item to be held by a Pokémon. It reduces Speed but allows the holder's Speed stat to grow more after battling.",
-  "category": "Equipável (held)"
+  "category": "Equipável (held)",
+  "icon": true
  },
  {
   "id": "power_band",
   "name": "Power Band",
   "desc": "An item to be held by a Pokémon. It reduces Speed but allows the holder's Sp. Def stat to grow more after battling.",
-  "category": "Equipável (held)"
+  "category": "Equipável (held)",
+  "icon": true
  },
  {
   "id": "power_belt",
   "name": "Power Belt",
   "desc": "An item to be held by a Pokémon. It reduces Speed but allows the holder's Defense stat to grow more after battling.",
-  "category": "Equipável (held)"
+  "category": "Equipável (held)",
+  "icon": true
  },
  {
   "id": "power_bracer",
   "name": "Power Bracer",
   "desc": "An item to be held by a Pokémon. It reduces Speed but allows the holder's Attack stat to grow more after battling.",
-  "category": "Equipável (held)"
+  "category": "Equipável (held)",
+  "icon": true
  },
  {
   "id": "power_herb",
   "name": "Power Herb",
   "desc": "A single-use item to be held by a Pokémon. It allows the holder to immediately use a move that normally requires a turn to charge.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Nuzleaf",
@@ -5782,25 +6064,29 @@
   "id": "power_lens",
   "name": "Power Lens",
   "desc": "An item to be held by a Pokémon. It reduces Speed but allows the holder's Sp. Atk stat to grow more after battling.",
-  "category": "Equipável (held)"
+  "category": "Equipável (held)",
+  "icon": true
  },
  {
   "id": "power_weight",
   "name": "Power Weight",
   "desc": "An item to be held by a Pokémon. It reduces Speed but allows the holder's max HP to grow more after battling.",
-  "category": "Equipável (held)"
+  "category": "Equipável (held)",
+  "icon": true
  },
  {
   "id": "protective_pads",
   "name": "Protective Pads",
   "desc": "A held item that protect the holder from effects caused by making direct contact with the target.",
-  "category": "Equipável (held)"
+  "category": "Equipável (held)",
+  "icon": true
  },
  {
   "id": "quick_claw",
   "name": "Quick Claw",
   "desc": "An item to be held by a Pokémon. This light, sharp claw lets the bearer move first occasionally.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Archeops",
@@ -5865,6 +6151,7 @@
   "name": "Razor Claw",
   "desc": "An item to be held by a Pokémon. This sharply hooked claw increases the holder's critical-hit ratio.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Scizor",
@@ -5936,6 +6223,7 @@
   "name": "Red Card",
   "desc": "An item to be held by a Pokémon. When the holder is hit by an attack, the attacker is removed from battle.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Cinderace",
@@ -5958,6 +6246,7 @@
   "name": "Rocky Helmet",
   "desc": "An item to be held by a Pokémon. If the holder is hit, the attacker will also be damaged upon contact.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Bagon",
@@ -6035,13 +6324,15 @@
   "id": "room_service",
   "name": "Room Service",
   "desc": "An item to be held by a Pokémon. Lowers Speed when Trick Room takes effect.",
-  "category": "Equipável (held)"
+  "category": "Equipável (held)",
+  "icon": true
  },
  {
   "id": "safety_goggles",
   "name": "Safety Goggles",
   "desc": "A held item that protect the holder from both weather-related damage and powder. Can also be worn to reduce heavy fog.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Spinda",
@@ -6056,13 +6347,15 @@
   "id": "scope_lens",
   "name": "Scope Lens",
   "desc": "An item to be held by a Pokémon. It's a lens for scoping out weak points. It boosts the holder's critical-hit ratio.",
-  "category": "Equipável (held)"
+  "category": "Equipável (held)",
+  "icon": true
  },
  {
   "id": "shell_bell",
   "name": "Shell Bell",
   "desc": "An item to be held by a Pokémon. The holder restores a little HP every time it inflicts damage on others.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Cloyster",
@@ -6092,6 +6385,7 @@
   "name": "Smooth Rock",
   "desc": "An item to be held by a Pokémon. It extends the duration of the move Sandstorm when used by the holder.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Castform",
@@ -6114,6 +6408,7 @@
   "name": "Snowball",
   "desc": "A held item that boosts Attack if hit with an Ice-type attack.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Crabominable",
@@ -6157,6 +6452,7 @@
   "name": "Soothe Bell",
   "desc": "An item to be held by a Pokémon. The comforting chime of this bell calms the holder, making it friendly.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Chingling",
@@ -6249,13 +6545,15 @@
   "id": "terrain_extender",
   "name": "Terrain Extender",
   "desc": "An item to be held by a Pokémon that extends the duration of the terrain caused by the holder's move or Ability.",
-  "category": "Equipável (held)"
+  "category": "Equipável (held)",
+  "icon": true
  },
  {
   "id": "throat_spray",
   "name": "Throat Spray",
   "desc": "Raises Sp. Atk when a Pokémon uses a sound-based move.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Exploud",
@@ -6278,6 +6576,7 @@
   "name": "Toxic Orb",
   "desc": "An item to be held by a Pokémon. It's a bizarre orb that will badly poison the holder during battle.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Nidoqueen",
@@ -6334,13 +6633,15 @@
   "id": "weakness_policy",
   "name": "Weakness Policy",
   "desc": "A held item that causes Attack and Sp. Atk to sharply increase if the holder is hit with a move it's weak to.",
-  "category": "Equipável (held)"
+  "category": "Equipável (held)",
+  "icon": true
  },
  {
   "id": "white_herb",
   "name": "White Herb",
   "desc": "An item to be held by a Pokémon. It will restore any lowered stat in battle.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Meganium",
@@ -6356,6 +6657,7 @@
   "name": "Wide Lens",
   "desc": "An item to be held by a Pokémon. It's a magnifying lens that slightly boosts the accuracy of moves.",
   "category": "Equipável (held)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Galvantula",
@@ -6370,301 +6672,351 @@
   "id": "wise_glasses",
   "name": "Wise Glasses",
   "desc": "An item to be held by a Pokémon. This thick pair of glasses slightly boosts the power of special moves.",
-  "category": "Equipável (held)"
+  "category": "Equipável (held)",
+  "icon": true
  },
  {
   "id": "zoom_lens",
   "name": "Zoom Lens",
   "desc": "An item to be held by a Pokémon. If the holder moves after its target moves, its accuracy will be boosted.",
-  "category": "Equipável (held)"
+  "category": "Equipável (held)",
+  "icon": true
  },
  {
   "id": "abomasite",
   "name": "Abomasite",
   "desc": "One of a variety of mysterious Mega Stones. Have Abomasnow hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "absolite",
   "name": "Absolite",
   "desc": "One of a variety of mysterious Mega Stones. Have Absol hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "aerodactylite",
   "name": "Aerodactylite",
   "desc": "One of a variety of mysterious Mega Stones. Have Aerodactyl hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "aggronite",
   "name": "Aggronite",
   "desc": "One of a variety of mysterious Mega Stones. Have Aggron hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "alakazite",
   "name": "Alakazite",
   "desc": "One of a variety of mysterious Mega Stones. Have Alakazam hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "altarianite",
   "name": "Altarianite",
   "desc": "One of a variety of mysterious Mega Stones. Have Altaria hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "ampharosite",
   "name": "Ampharosite",
   "desc": "One of a variety of mysterious Mega Stones. Have Ampharos hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "audinite",
   "name": "Audinite",
   "desc": "One of a variety of mysterious Mega Stones. Have Audino hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "banettite",
   "name": "Banettite",
   "desc": "One of a variety of mysterious Mega Stones. Have Banette hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "beedrillite",
   "name": "Beedrillite",
   "desc": "One of a variety of mysterious Mega Stones. Have Beedrill hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "blastoisinite",
   "name": "Blastoisinite",
   "desc": "One of a variety of mysterious Mega Stones. Have Blastoise hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "blazikenite",
   "name": "Blazikenite",
   "desc": "One of a variety of mysterious Mega Stones. Have Blaziken hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "cameruptite",
   "name": "Cameruptite",
   "desc": "One of a variety of mysterious Mega Stones. Have Camerupt hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "charizardite_x",
   "name": "Charizardite X",
   "desc": "One of a variety of mysterious Mega Stones. Have Charizard hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "charizardite_y",
   "name": "Charizardite Y",
   "desc": "One of a variety of mysterious Mega Stones. Have Charizard hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "diancite",
   "name": "Diancite",
   "desc": "One of a variety of mysterious Mega Stones. Have Diancie hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "galladite",
   "name": "Galladite",
   "desc": "One of a variety of mysterious Mega Stones. Have Gallade hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "garchompite",
   "name": "Garchompite",
   "desc": "One of a variety of mysterious Mega Stones. Have Garchomp hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "gardevoirite",
   "name": "Gardevoirite",
   "desc": "One of a variety of mysterious Mega Stones. Have Gardevoir hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "gengarite",
   "name": "Gengarite",
   "desc": "One of a variety of mysterious Mega Stones. Have Gengar hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "glalitite",
   "name": "Glalitite",
   "desc": "One of a variety of mysterious Mega Stones. Have Glalie hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "gyaradosite",
   "name": "Gyaradosite",
   "desc": "One of a variety of mysterious Mega Stones. Have Gyarados hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "heracronite",
   "name": "Heracronite",
   "desc": "One of a variety of mysterious Mega Stones. Have Heracross hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "houndoominite",
   "name": "Houndoominite",
   "desc": "One of a variety of mysterious Mega Stones. Have Houndoom hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "kangaskhanite",
   "name": "Kangaskhanite",
   "desc": "One of a variety of mysterious Mega Stones. Have Kangaskhan hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "latiasite",
   "name": "Latiasite",
   "desc": "One of a variety of mysterious Mega Stones. Have Latias hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "latiosite",
   "name": "Latiosite",
   "desc": "One of a variety of mysterious Mega Stones. Have Latios hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "lopunnite",
   "name": "Lopunnite",
   "desc": "One of a variety of mysterious Mega Stones. Have Lopunny hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "lucarionite",
   "name": "Lucarionite",
   "desc": "One of a variety of mysterious Mega Stones. Have Lucario hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "manectite",
   "name": "Manectite",
   "desc": "One of a variety of mysterious Mega Stones. Have Manectric hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "mawilite",
   "name": "Mawilite",
   "desc": "One of a variety of mysterious Mega Stones. Have Mawile hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "medichamite",
   "name": "Medichamite",
   "desc": "One of a variety of mysterious Mega Stones. Have Medicham hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "metagrossite",
   "name": "Metagrossite",
   "desc": "One of a variety of mysterious Mega Stones. Have Metagross hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "mewtwonite_x",
   "name": "Mewtwonite X",
   "desc": "One of a variety of mysterious Mega Stones. Have Mewtwo hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "mewtwonite_y",
   "name": "Mewtwonite Y",
   "desc": "One of a variety of mysterious Mega Stones. Have Mewtwo hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "pidgeotite",
   "name": "Pidgeotite",
   "desc": "One of a variety of mysterious Mega Stones. Have Pidgeot hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "pinsirite",
   "name": "Pinsirite",
   "desc": "One of a variety of mysterious Mega Stones. Have Pinsir hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "sablenite",
   "name": "Sablenite",
   "desc": "One of a variety of mysterious Mega Stones. Have Sableye hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "salamencite",
   "name": "Salamencite",
   "desc": "One of a variety of mysterious Mega Stones. Have Salamence hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "sceptilite",
   "name": "Sceptilite",
   "desc": "One of a variety of mysterious Mega Stones. Have Sceptile hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "scizorite",
   "name": "Scizorite",
   "desc": "One of a variety of mysterious Mega Stones. Have Scizor hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "sharpedonite",
   "name": "Sharpedonite",
   "desc": "One of a variety of mysterious Mega Stones. Have Sharpedo hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "slowbronite",
   "name": "Slowbronite",
   "desc": "One of a variety of mysterious Mega Stones. Have Slowbro hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "steelixite",
   "name": "Steelixite",
   "desc": "One of a variety of mysterious Mega Stones. Have Steelix hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "swampertite",
   "name": "Swampertite",
   "desc": "One of a variety of mysterious Mega Stones. Have Swampert hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "tyranitarite",
   "name": "Tyranitarite",
   "desc": "One of a variety of mysterious Mega Stones. Have Tyranitar hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "venusaurite",
   "name": "Venusaurite",
   "desc": "One of a variety of mysterious Mega Stones. Have Venusaur hold it, and this stone will enable it to Mega Evolve during battle.",
-  "category": "Mega Stone"
+  "category": "Mega Stone",
+  "icon": true
  },
  {
   "id": "aloraichium_z",
   "name": "Aloraichium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Alolan Raichu's Thunderbolt to a Z-Move.",
   "category": "Z-Crystal",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Raichu",
@@ -6686,19 +7038,22 @@
   "id": "buginium_z",
   "name": "Buginium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Bug-type moves to Z-Moves.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "darkinium_z",
   "name": "Darkinium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Dark-type moves to Z-Moves.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "decidium_z",
   "name": "Decidium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Decidueye's Spirit Shackle to a Z-Move.",
   "category": "Z-Crystal",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Decidueye",
@@ -6720,13 +7075,15 @@
   "id": "dragonium_z",
   "name": "Dragonium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Dragon-type moves to Z-Moves.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "eevium_z",
   "name": "Eevium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Eevee's Last Resort to a Z-Move.",
   "category": "Z-Crystal",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Eevee",
@@ -6741,61 +7098,71 @@
   "id": "electrium_z",
   "name": "Electrium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Electric-type moves to Z-Moves.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "fairium_z",
   "name": "Fairium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Fairy-type moves to Z-Moves.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "fightinium_z",
   "name": "Fightinium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Fighting-type moves to Z-Moves.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "firium_z",
   "name": "Firium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Fire-type moves to Z-Moves.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "flyinium_z",
   "name": "Flyinium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Flying-type moves to Z-Moves.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "ghostium_z",
   "name": "Ghostium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Ghost-type moves to Z-Moves.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "grassium_z",
   "name": "Grassium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Grass-type moves to Z-Moves.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "groundium_z",
   "name": "Groundium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Ground-type moves to Z-Moves.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "icium_z",
   "name": "Icium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Ice-type moves to Z-Moves.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "incinium_z",
   "name": "Incinium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Incineroar's Darkest Lariat to a Z-Move.",
   "category": "Z-Crystal",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Incineroar",
@@ -6811,6 +7178,7 @@
   "name": "Kommonium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Kommo-o's Clanging Scales to a Z-Move.",
   "category": "Z-Crystal",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Kommo-o",
@@ -6825,13 +7193,15 @@
   "id": "lunalium_z",
   "name": "Lunalium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Lunala's Moongeist Beam to a Z-Move.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "lycanium_z",
   "name": "Lycanium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Lycanroc's Stone Edge to a Z-Move.",
   "category": "Z-Crystal",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Lycanroc (Dusk)",
@@ -6860,19 +7230,22 @@
   "id": "marshadium_z",
   "name": "Marshadium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Marshadow's Spectral Thief to a Z-Move.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "mewnium_z",
   "name": "Mewnium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Mew's Psychic to a Z-Move.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "mimikium_z",
   "name": "Mimikium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Mimikyu's Play Rough to a Z-Move.",
   "category": "Z-Crystal",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Mimikyu",
@@ -6887,13 +7260,15 @@
   "id": "normalium_z",
   "name": "Normalium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Normal-type moves to Z-Moves.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "pikanium_z",
   "name": "Pikanium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Pikachu's Volt Tackle to a Z-Move.",
   "category": "Z-Crystal",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Pikachu",
@@ -6908,19 +7283,22 @@
   "id": "pikashunium_z",
   "name": "Pikashunium Z",
   "desc": "A crystallized form of Z-Power. It upgrades a Thunderbolt by Pikachu in a cap to a Z-Move.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "poisonium_z",
   "name": "Poisonium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Poison-type moves to Z-Moves.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "primarium_z",
   "name": "Primarium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Primarina's Sparkling Aria to a Z-Move.",
   "category": "Z-Crystal",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Primarina",
@@ -6935,19 +7313,22 @@
   "id": "psychium_z",
   "name": "Psychium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Psychic-type moves to Z-Moves.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "rockium_z",
   "name": "Rockium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Rock-type moves to Z-Moves.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "snorlium_z",
   "name": "Snorlium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Snorlax's Giga Impact to a Z-Move.",
   "category": "Z-Crystal",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Snorlax",
@@ -6962,133 +7343,155 @@
   "id": "solganium_z",
   "name": "Solganium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Solgaleo's Sunsteel Strike to a Z-Move.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "steelium_z",
   "name": "Steelium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Steel-type moves to Z-Moves.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "tapunium_z",
   "name": "Tapunium Z",
   "desc": "A crystallized form of Z-Power. It upgrades the tapu's Nature's Madness to a Z-Move.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "ultranecrozium_z",
   "name": "Ultranecrozium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Necrozma's Photon Geyser to a Z-Move.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "waterium_z",
   "name": "Waterium Z",
   "desc": "A crystallized form of Z-Power. It upgrades Water-type moves to Z-Moves.",
-  "category": "Z-Crystal"
+  "category": "Z-Crystal",
+  "icon": true
  },
  {
   "id": "aluminium_plate",
   "name": "Aluminum Plate",
   "desc": "",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "sapphire_plate",
   "name": "Aqua Chestplate",
   "desc": "",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "blank_plate",
   "name": "Blank Plate",
   "desc": "A held item that raises the power of the holder's Normal-type moves by 20%.",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "dawn_stone_plate",
   "name": "Dawn Stone Chestplate",
   "desc": "",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "draco_plate",
   "name": "Draco Plate",
   "desc": "A held item that raises the power of the holder's Dragon-type moves by 20%.",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "dread_plate",
   "name": "Dread Plate",
   "desc": "A held item that raises the power of the holder's Dark-type moves by 20%.",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "dusk_stone_plate",
   "name": "Dusk Stone Chestplate",
   "desc": "",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "earth_plate",
   "name": "Earth Plate",
   "desc": "A held item that raises the power of the holder's Ground-type moves by 20%.",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "fire_stone_plate",
   "name": "Fire Stone Chestplate",
   "desc": "",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "fist_plate",
   "name": "Fist Plate",
   "desc": "A held item that raises the power of the holder's Fighting-type moves by 20%.",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "flame_plate",
   "name": "Flame Plate",
   "desc": "A held item that raises the power of the holder's Fire-type moves by 20%.",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "galactic_plate",
   "name": "Galactic Chestplate",
   "desc": "",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "icicle_plate",
   "name": "Icicle Plate",
   "desc": "A held item that raises the power of the holder's Ice-type moves by 20%.",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "insect_plate",
   "name": "Insect Plate",
   "desc": "A held item that raises the power of the holder's Bug-type moves by 20%.",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "iron_plate",
   "name": "Iron Plate",
   "desc": "A held item that raises the power of the holder's Steel-type moves by 20%.",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "leaf_stone_plate",
   "name": "Leaf Stone Chestplate",
   "desc": "",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "legend_plate",
   "name": "Legend Plate",
   "desc": "A stone tablet imbued with the essence of all creation. When used on a certain Pokémon, it allows that Pokémon to gain the power of every type there is.",
   "category": "Placa (Plate)",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Arceus",
@@ -7103,109 +7506,127 @@
   "id": "ruby_plate",
   "name": "Magma Chestplate",
   "desc": "",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "meadow_plate",
   "name": "Meadow Plate",
   "desc": "A held item that raises the power of the holder's Grass-type moves by 20%.",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "mind_plate",
   "name": "Mind Plate",
   "desc": "A held item that raises the power of the holder's Psychic-type moves by 20%.",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "moon_stone_plate",
   "name": "Moon Stone Chestplate",
   "desc": "",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "neo_plasma_plate",
   "name": "Neo Plasma Chestplate",
   "desc": "",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "pixie_plate",
   "name": "Pixie Plate",
   "desc": "A held item that raises the power of the holder's Fairy-type moves by 20%.",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "plasma_plate",
   "name": "Plasma Chestplate",
   "desc": "",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "rocket_plate",
   "name": "Rocket Chestplate",
   "desc": "",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "sky_plate",
   "name": "Sky Plate",
   "desc": "A held item that raises the power of the holder's Flying-type moves by 20%.",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "splash_plate",
   "name": "Splash Plate",
   "desc": "A held item that raises the power of the holder's Water-type moves by 20%.",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "spooky_plate",
   "name": "Spooky Plate",
   "desc": "A held item that raises the power of the holder's Ghost-type moves by 20%.",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "stone_plate",
   "name": "Stone Plate",
   "desc": "A held item that raises the power of the holder's Rock-type moves by 20%.",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "sun_stone_plate",
   "name": "Sun Stone Chestplate",
   "desc": "",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "thunder_stone_plate",
   "name": "Thunder Stone Chestplate",
   "desc": "",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "toxic_plate",
   "name": "Toxic Plate",
   "desc": "A held item that raises the power of the holder's Poison-type moves by 20%.",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "water_stone_plate",
   "name": "Water Stone Chestplate",
   "desc": "",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "zap_plate",
   "name": "Zap Plate",
   "desc": "A held item that raises the power of the holder's Electric-type moves by 20%.",
-  "category": "Placa (Plate)"
+  "category": "Placa (Plate)",
+  "icon": true
  },
  {
   "id": "bug_gem",
   "name": "Bug Gem",
   "desc": "A held item that boosts the power of a single Bug-type move by 1.3×, being consumed upon use. Created by infusing a Crystal Block with a Tanga Berry.",
   "category": "Gema de tipo",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Lurantis",
@@ -7277,6 +7698,7 @@
   "name": "Dark Gem",
   "desc": "A held item that boosts the power of a single Dark-type move by 1.3×, being consumed upon use. Created by infusing a Crystal Block with a Colbur Berry.",
   "category": "Gema de tipo",
+  "icon": true,
   "drops": [
    {
     "pokemon": "BruteBonnet",
@@ -7369,6 +7791,7 @@
   "name": "Dragon Gem",
   "desc": "A held item that boosts the power of a single Dragon-type move by 1.3×, being consumed upon use. Created by infusing a Crystal Block with a Haban Berry.",
   "category": "Gema de tipo",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Cyclizar",
@@ -7461,6 +7884,7 @@
   "name": "Electric Gem",
   "desc": "A held item that boosts the power of a single Electric-type move by 1.3×, being consumed upon use. Created by infusing a Crystal Block with a Wacan Berry.",
   "category": "Gema de tipo",
+  "icon": true,
   "drops": [
    {
     "pokemon": "IronHands",
@@ -7553,6 +7977,7 @@
   "name": "Fairy Gem",
   "desc": "A held item that boosts the power of a single Fairy-type move by 1.3×, being consumed upon use. Created by infusing a Crystal Block with a Roseli Berry.",
   "category": "Gema de tipo",
+  "icon": true,
   "drops": [
    {
     "pokemon": "FlutterMane",
@@ -7645,6 +8070,7 @@
   "name": "Fighting Gem",
   "desc": "A held item that boosts the power of a single Fighting-type move by 1.3×, being consumed upon use. Created by infusing a Crystal Block with a Chople Berry.",
   "category": "Gema de tipo",
+  "icon": true,
   "drops": [
    {
     "pokemon": "GreatTusk",
@@ -7737,6 +8163,7 @@
   "name": "Fire Gem",
   "desc": "A held item that boosts the power of a single Fire-type move by 1.3×, being consumed upon use. Created by infusing a Crystal Block with a Occa Berry.",
   "category": "Gema de tipo",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Entei",
@@ -7829,6 +8256,7 @@
   "name": "Flying Gem",
   "desc": "A held item that boosts the power of a single Flying-type move by 1.3×, being consumed upon use. Created by infusing a Crystal Block with a Coba Berry.",
   "category": "Gema de tipo",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Gliscor",
@@ -7907,6 +8335,7 @@
   "name": "Ghost Gem",
   "desc": "A held item that boosts the power of a single Ghost-type move by 1.3×, being consumed upon use. Created by infusing a Crystal Block with a Kasib Berry.",
   "category": "Gema de tipo",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Zoroark (Hisuian)",
@@ -7992,6 +8421,7 @@
   "name": "Grass Gem",
   "desc": "A held item that boosts the power of a single Grass-type move by 1.3×, being consumed upon use. Created by infusing a Crystal Block with a Rindo Berry.",
   "category": "Gema de tipo",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Celebi",
@@ -8084,6 +8514,7 @@
   "name": "Ground Gem",
   "desc": "A held item that boosts the power of a single Ground-type move by 1.3×, being consumed upon use. Created by infusing a Crystal Block with a Shuca Berry.",
   "category": "Gema de tipo",
+  "icon": true,
   "drops": [
    {
     "pokemon": "SandyShocks",
@@ -8162,6 +8593,7 @@
   "name": "Ice Gem",
   "desc": "A held item that boosts the power of a single Ice-type move by 1.3×, being consumed upon use. Created by infusing a Crystal Block with a Yache Berry.",
   "category": "Gema de tipo",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Glaceon",
@@ -8233,6 +8665,7 @@
   "name": "Normal Gem",
   "desc": "A held item that boosts the power of a single Normal-type move by 1.3×, being consumed upon use. Created by infusing a Crystal Block with a Chilan Berry.",
   "category": "Gema de tipo",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Porygon",
@@ -8325,6 +8758,7 @@
   "name": "Poison Gem",
   "desc": "A held item that boosts the power of a single Poison-type move by 1.3×, being consumed upon use. Created by infusing a Crystal Block with a Kebia Berry.",
   "category": "Gema de tipo",
+  "icon": true,
   "drops": [
    {
     "pokemon": "IronJugulis",
@@ -8417,6 +8851,7 @@
   "name": "Psychic Gem",
   "desc": "A held item that boosts the power of a single Psychic-type move by 1.3×, being consumed upon use. Created by infusing a Crystal Block with a Payapa Berry.",
   "category": "Gema de tipo",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Articuno (Galarian)",
@@ -8509,6 +8944,7 @@
   "name": "Rock Gem",
   "desc": "A held item that boosts the power of a single Rock-type move by 1.3×, being consumed upon use. Created by infusing a Crystal Block with a Charti Berry.",
   "category": "Gema de tipo",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Aerodactyl",
@@ -8580,6 +9016,7 @@
   "name": "Steel Gem",
   "desc": "A held item that boosts the power of a single Steel-type move by 1.3×, being consumed upon use. Created by infusing a Crystal Block with a Babiri Berry.",
   "category": "Gema de tipo",
+  "icon": true,
   "drops": [
    {
     "pokemon": "IronTreads",
@@ -8658,6 +9095,7 @@
   "name": "Water Gem",
   "desc": "A held item that boosts the power of a single Water-type move by 1.3×, being consumed upon use. Created by infusing a Crystal Block with a Passho Berry.",
   "category": "Gema de tipo",
+  "icon": true,
   "drops": [
    {
     "pokemon": "IronBundle",
@@ -8749,13 +9187,15 @@
   "id": "full_incense",
   "name": "Full Incense",
   "desc": "A Full Incense is a type of incense that causes the Pokémon holding it to move last in battle. This will not occur if the opponent uses a move of lower priority than the user's move. If a Full Incense is held by a Snorlax that is breeding, the resulting Egg will contain a Munchlax instead of another Snorlax.",
-  "category": "Incenso"
+  "category": "Incenso",
+  "icon": true
  },
  {
   "id": "lax_incense",
   "name": "Lax Incense",
   "desc": "A Lax Incense is a held item that increases the holder's evasion by 10%. If held by a Wobbuffet that is breeding, the resulting Egg will hatch into a Wynaut instead of another Wobbuffet.",
   "category": "Incenso",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Slaking",
@@ -8770,13 +9210,15 @@
   "id": "luck_incense",
   "name": "Luck Incense",
   "desc": "A Luck Incense is a type of incense that doubles the amount of PokéDollars received after defeating an NPC Trainer if held by a Pokémon who participated in the battle. It can also be held by a Chansey or a Blissey when breeding to produce a Happiny Egg; without a Luck Incense, a Chansey Egg will be produced instead.",
-  "category": "Incenso"
+  "category": "Incenso",
+  "icon": true
  },
  {
   "id": "odd_incense",
   "name": "Odd Incense",
   "desc": "An Odd Incense is a held item that increases the power of the holder's Psychic-type moves by 20%. An Odd Incense can also be held by a Mr. Mime that is breeding in order to produce a Mime Jr. Egg; otherwise, a Mr. Mime Egg will be produced instead.",
   "category": "Incenso",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Victini",
@@ -8806,6 +9248,7 @@
   "name": "Pure Incense",
   "desc": "A Pure Incense is a held item that can be held by a Chimecho to produce a Chingling Egg when breeding; without a Pure Incense, a Chimecho Egg will be produced instead.",
   "category": "Incenso",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Audino",
@@ -8821,6 +9264,7 @@
   "name": "Rock Incense",
   "desc": "A Rock Incense is a held item that boosts the power of the holder's Rock-type moves by 20%. It can also be held by a Sudowoodo that is breeding in order to produce a Bonsly Egg; otherwise, a Sudowoodo Egg will be produced instead.",
   "category": "Incenso",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Lycanroc (Dusk)",
@@ -8864,6 +9308,7 @@
   "name": "Rose Incense",
   "desc": "A Rose Incense is a held item that increases the power of the holder's Grass-type moves by 20%. It can also be held by a Roselia or a Roserade to obtain a Budew Egg when breeding; without a Rose Incense, a Roselia Egg will be created instead.",
   "category": "Incenso",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Florges palette:blue",
@@ -8907,6 +9352,7 @@
   "name": "Sea Incense",
   "desc": "A Sea Incense is a type of incense that can be held by a Pokémon to raise the power of the holder's Water-type moves by 20%. It also must be held by a breeding Marill or Azumarill to produce an Azurill Egg; otherwise, the Egg will hatch into a Marill.",
   "category": "Incenso",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Manaphy",
@@ -8929,6 +9375,7 @@
   "name": "Wave Incense",
   "desc": "A Wave Incense is a held item that raises the power of the holder's Water-type moves by 20%. If a Mantine holds a Wave Incense while it breeds, it will produce a Mantyke Egg.",
   "category": "Incenso",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Manaphy",
@@ -8957,85 +9404,99 @@
   "id": "armor_fossil",
   "name": "Armor Fossil",
   "desc": "",
-  "category": "Fóssil"
+  "category": "Fóssil",
+  "icon": true
  },
  {
   "id": "bird_fossil",
   "name": "Bird Fossil",
   "desc": "",
-  "category": "Fóssil"
+  "category": "Fóssil",
+  "icon": true
  },
  {
   "id": "claw_fossil",
   "name": "Claw Fossil",
   "desc": "",
-  "category": "Fóssil"
+  "category": "Fóssil",
+  "icon": true
  },
  {
   "id": "cover_fossil",
   "name": "Cover Fossil",
   "desc": "",
-  "category": "Fóssil"
+  "category": "Fóssil",
+  "icon": true
  },
  {
   "id": "dino_fossil",
   "name": "Dino Fossil",
   "desc": "",
-  "category": "Fóssil"
+  "category": "Fóssil",
+  "icon": true
  },
  {
   "id": "dome_fossil",
   "name": "Dome Fossil",
   "desc": "",
-  "category": "Fóssil"
+  "category": "Fóssil",
+  "icon": true
  },
  {
   "id": "drake_fossil",
   "name": "Drake Fossil",
   "desc": "",
-  "category": "Fóssil"
+  "category": "Fóssil",
+  "icon": true
  },
  {
   "id": "fish_fossil",
   "name": "Fish Fossil",
   "desc": "",
-  "category": "Fóssil"
+  "category": "Fóssil",
+  "icon": true
  },
  {
   "id": "helix_fossil",
   "name": "Helix Fossil",
   "desc": "",
-  "category": "Fóssil"
+  "category": "Fóssil",
+  "icon": true
  },
  {
   "id": "jaw_fossil",
   "name": "Jaw Fossil",
   "desc": "",
-  "category": "Fóssil"
+  "category": "Fóssil",
+  "icon": true
  },
  {
   "id": "plume_fossil",
   "name": "Plume Fossil",
   "desc": "",
-  "category": "Fóssil"
+  "category": "Fóssil",
+  "icon": true
  },
  {
   "id": "root_fossil",
   "name": "Root Fossil",
   "desc": "",
-  "category": "Fóssil"
+  "category": "Fóssil",
+  "icon": true
  },
  {
   "id": "sail_fossil",
   "name": "Sail Fossil",
   "desc": "",
-  "category": "Fóssil"
+  "category": "Fóssil",
+  "icon": true
  },
  {
   "id": "skull_fossil",
   "name": "Skull Fossil",
   "desc": "",
-  "category": "Fóssil"
+  "category": "Fóssil",
+  "icon": true
  },
  {
   "id": "tm_gen7_blank",
@@ -9102,6 +9563,7 @@
   "name": "Ability Capsule",
   "desc": "A capsule that allows a Pokémon with two Abilities to switch between these Abilities when it is used.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Hoopa",
@@ -9130,13 +9592,15 @@
   "id": "ability_patch",
   "name": "Ability Patch",
   "desc": "A patch that allows a Pokémon with a regular Ability to have its Hidden Ability.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "adamant_orb",
   "name": "Adamant Orb",
   "desc": "A brightly gleaming orb to be held by Dialga. It boosts the power of Dragon- and Steel-type moves when it is held.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Dialga",
@@ -9151,13 +9615,15 @@
   "id": "azure_flute",
   "name": "Azure Flute",
   "desc": "A flute that puts out echoing sounds that do not seem to be of this world. No one knows who made it.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "balm_mushroom",
   "name": "Balm Mushroom",
   "desc": "Can be sold to shopkeepers.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Oinkologne",
@@ -9172,13 +9638,15 @@
   "id": "big_malasada",
   "name": "Big Malasada",
   "desc": "The Alola region's local specialty—fried bread. It can be used once to heal all the status conditions of a Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "big_mushroom",
   "name": "Big Mushroom",
   "desc": "Can be sold to shopkeepers.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Oinkologne",
@@ -9200,19 +9668,22 @@
   "id": "big_nugget",
   "name": "Big Nugget",
   "desc": "Can be sold to shopkeepers.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "big_pearl",
   "name": "Big Pearl",
   "desc": "Can be sold to shopkeepers.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "black_belt",
   "name": "Black Belt",
   "desc": "An item to be held by a Pokémon. This belt helps the wearer to focus and boosts the power of Fighting-type moves.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Sawk",
@@ -9276,13 +9747,15 @@
   "id": "black_flute",
   "name": "Black Flute",
   "desc": "A flute made from black glass. It makes it easier to encounter strong Pokémon in the place you use it.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "black_glasses",
   "name": "Black Glasses",
   "desc": "An item to be held by a Pokémon. It's a pair of shady-looking glasses that boost the power of Dark-type moves.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Bombirdier",
@@ -9318,37 +9791,43 @@
   "id": "blue_flute",
   "name": "Blue Flute",
   "desc": "A flute made from blue glass that awakens sleeping Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "blue_orb",
   "name": "Blue Orb",
   "desc": "A shiny blue orb that is said to have a legend tied to it. It's known to have a deep connection with the Hoenn region.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "booster_energy",
   "name": "Booster Energy",
   "desc": "An item to be held by Pokémon with certain Abilities. The energy that fills this capsule boosts the strength of the Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "bug_memory",
   "name": "Bug Memory",
   "desc": "A memory disc that contains Bug-type data. It changes the type of the holder if held by a certain species of Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "burn_drive",
   "name": "Burn Drive",
   "desc": "A cassette to be held by Genesect. It changes Genesect's Techno Blast move so it becomes Fire type.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "charcoal",
   "name": "Charcoal",
   "desc": "An item to be held by a Pokémon. It's a combustible fuel that boosts the power of Fire-type moves.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Armarouge",
@@ -9426,19 +9905,22 @@
   "id": "chill_drive",
   "name": "Chill Drive",
   "desc": "A cassette to be held by Genesect. It changes Genesect's Techno Blast move so it becomes Ice type.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "chisel",
   "name": "Chisel",
   "desc": "A chisel is an item that creates Pokémon statues and allows them to be customized. These statues are completely cosmetic. Statues can be removed by left-clicking them with a chisel.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "cloner_cord",
   "name": "Cloner Cord",
   "desc": "One of the components of the Cloning Machine",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "sweet_clover",
@@ -9450,13 +9932,15 @@
   "id": "colorful_shake",
   "name": "Colorful Shake",
   "desc": "Increase a Pokémon's Friendship.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "comet_shard",
   "name": "Comet Shard",
   "desc": "Can be sold to shopkeepers.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Minior",
@@ -9471,31 +9955,36 @@
   "id": "dna_splicers",
   "name": "DNA Splicers",
   "desc": "A splicer that fuses Kyurem and a certain Pokémon. They are said to have been one in the beginning.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "dark_memory",
   "name": "Dark Memory",
   "desc": "A memory disc that contains Dark-type data. It changes the type of the holder if held by a certain species of Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "dire_hit",
   "name": "Dire Hit",
   "desc": "An item that greatly raises the critical-hit ratio of a Pokémon during a battle. It can be used only once and wears off if the Pokémon is withdrawn.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "douse_drive",
   "name": "Douse Drive",
   "desc": "A cassette to be held by Genesect. It changes Genesect's Techno Blast move so it becomes Water type.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "dragon_fang",
   "name": "Dragon Fang",
   "desc": "An item to be held by a Pokémon. This hard and sharp fang boosts the power of Dragon-type moves.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Rayquaza",
@@ -9573,31 +10062,36 @@
   "id": "dragon_memory",
   "name": "Dragon Memory",
   "desc": "A memory disc that contains Dragon-type data. It changes the type of the holder if held by a certain species of Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "dynamax_candy",
   "name": "Dynamax Candy",
   "desc": "A candy that is packed with energy. When consumed, it will raise the Dynamax Level of a single Pokémon by one. A higher level means higher HP when Dynamaxed.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "eject_button",
   "name": "Eject Button",
   "desc": "An item to be held by a Pokémon. If the holder is hit by an attack, it will be switched out of battle.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "electric_memory",
   "name": "Electric Memory",
   "desc": "A memory disc that contains Electric-type data. It changes the type of the holder if held by a certain species of Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "electric_seed",
   "name": "Electric Seed",
   "desc": "An item to be held by a Pokémon that boosts Defense on Electric Terrain.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "TapuKoko",
@@ -9613,6 +10107,7 @@
   "name": "Exp. All",
   "desc": "Turning on this special device will allow all the Pokémon on your team to receive Exp. Points from battles.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Arceus",
@@ -9627,49 +10122,57 @@
   "id": "l_exp_candy",
   "name": "Exp. Candy L",
   "desc": "A candy that is packed with energy. When consumed, it will grant a single Pokémon a large amount of Exp. Points.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "m_exp_candy",
   "name": "Exp. Candy M",
   "desc": "A candy that is packed with energy. When consumed, it will grant a single Pokémon a moderate amount of Exp. Points.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "s_exp_candy",
   "name": "Exp. Candy S",
   "desc": "A candy that is packed with energy. When consumed, it will grant a single Pokémon a very small amount of Exp. Points.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "xl_exp_candy",
   "name": "Exp. Candy XL",
   "desc": "A candy that is packed with energy. When consumed, it will grant a single Pokémon a very large amount of Exp. Points.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "xs_exp_candy",
   "name": "Exp. Candy XS",
   "desc": "A candy that is packed with energy. When consumed, it will grant a single Pokémon a very small amount of Exp. Points.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "eye_of_lugia",
   "name": "Eye of Lugia",
   "desc": "A ball of crystal in the form of an eye dropped by the drowned beast.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "fairy_memory",
   "name": "Fairy Memory",
   "desc": "A memory disc that contains Fairy-type data. It changes the type of the holder if held by a certain species of Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "fairy_wand",
   "name": "Fairy Wand",
   "desc": "An item to be held by a Pokémon. This delicate, shining wand boosts the power of Fairy-type moves.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "IronValiant",
@@ -9691,13 +10194,15 @@
   "id": "fighting_memory",
   "name": "Fighting Memory",
   "desc": "A memory disc that contains Fighting-type data. It changes the type of the holder if held by a certain species of Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "fire_memory",
   "name": "Fire Memory",
   "desc": "A memory disc that contains Fire-type data. It changes the type of the holder if held by a certain species of Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "sweet_flower",
@@ -9710,6 +10215,7 @@
   "name": "Fluffy Tail",
   "desc": "A toy that attracts the attention of a Pokémon. It guarantees escape from any battle with wild Pokémon.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Eevee",
@@ -9759,55 +10265,64 @@
   "id": "flying_memory",
   "name": "Flying Memory",
   "desc": "A memory disc that contains Flying-type data. It changes the type of the holder if held by a certain species of Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "fossil_machine_base",
   "name": "Fossil Machine Base",
   "desc": "The bottom piece of a Fossil machine and one of four components required to craft one.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "fossil_machine_display",
   "name": "Fossil Machine Display",
   "desc": "The Fossil machine's display screen and one of the four components required to craft one.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "fossil_machine_tank",
   "name": "Fossil Machine Tank",
   "desc": "The center piece of a Fossil machine and one of the four components required to craft one.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "fossil_machine_top",
   "name": "Fossil Machine Top",
   "desc": "The top piece of a Fossil machine and one of the four components required to craft one.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "galarica_twig",
   "name": "Galarica Twig",
   "desc": "A twig from a species of tree called Galarica that grows in certain areas around the Galar region. It's a material for an accessory for a certain Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "ghost_memory",
   "name": "Ghost Memory",
   "desc": "A memory disc that contains Ghost-type data. It changes the type of the holder if held by a certain species of Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "gold_leaf",
   "name": "Gold Leaf",
   "desc": "Can be sold to shopkeepers.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "gracidea",
   "name": "Gracidea",
   "desc": "A flower sometimes bundled in bouquets to convey gratitude on special occasions like birthdays.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Shaymin",
@@ -9822,13 +10337,15 @@
   "id": "grass_memory",
   "name": "Grass Memory",
   "desc": "A memory disc that contains Grass-type data. It changes the type of the holder if held by a certain species of Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "grassy_seed",
   "name": "Grassy Seed",
   "desc": "An item to be held by a Pokémon that boosts Defense on Grassy Terrain.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "TapuBulu",
@@ -9850,7 +10367,8 @@
   "id": "green_flute",
   "name": "Green Flute",
   "desc": "A flute made from green glass that restores 20 HP.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "green_tank",
@@ -9863,6 +10381,7 @@
   "name": "Griseous Orb",
   "desc": "A glowing orb to be held by Giratina. It boosts the power of Dragon- and Ghost-type moves when it is held.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Giratina",
@@ -9877,37 +10396,43 @@
   "id": "ground_memory",
   "name": "Ground Memory",
   "desc": "A memory disc that contains Ground-type data. It changes the type of the holder if held by a certain species of Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "guard_spec",
   "name": "Guard Spec.",
   "desc": "An item that prevents stat reduction among the Trainer's party Pokémon for five turns after it is used in battle.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "gaebolg",
   "name": "Gáe Bolg",
   "desc": "If found, please return to Cú Chulainn",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "heart_scale",
   "name": "Heart Scale",
   "desc": "A pretty, heart-shaped scale that is extremely rare. Some people are happy to receive one.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "ice_memory",
   "name": "Ice Memory",
   "desc": "A memory disc that contains Ice-type data. It changes the type of the holder if held by a certain species of Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "incense_burner",
   "name": "Incense Burner",
   "desc": "Used in the Infuser to create various Incenses",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Aromatisse",
@@ -9946,25 +10471,29 @@
   "id": "jade_orb",
   "name": "Jade Orb",
   "desc": "A shiny jade orb that is said to have a legend tied to it. It's known to have a deep connection with the Hoenn region.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "komala_coffee",
   "name": "Komala Coffee",
   "desc": "Restores 100 HP.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "leek",
   "name": "Leek",
   "desc": "An item to be held by Farfetch'd. This very long and stiff stalk of leek boosts its critical-hit ratio.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "loaded_dice",
   "name": "Loaded Dice",
   "desc": "An item to be held by a Pokémon. This loaded dice always rolls a good number, and holding one can ensure that the holder's multistrike moves hit more times.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Accelgor",
@@ -10021,6 +10550,7 @@
   "name": "Lucky Punch",
   "desc": "An item to be held by Chansey. This pair of lucky boxing gloves will boost Chansey's critical-hit ratio.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Annihilape",
@@ -10084,13 +10614,15 @@
   "id": "lumiose_galette",
   "name": "Lumiose Galette",
   "desc": "A popular treat in Lumiose City. It can be used once to heal all the status conditions of a Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "lustrous_orb",
   "name": "Lustrous Orb",
   "desc": "A beautifully glowing orb to be held by Palkia. It boosts the power of Dragon- and Water-type moves when it is held.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Palkia",
@@ -10105,13 +10637,15 @@
   "id": "macho_brace",
   "name": "Macho Brace",
   "desc": "An item to be held by a Pokémon. This stiff, heavy brace helps Pokémon grow strong but cuts Speed in battle.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "magnet",
   "name": "Magnet",
   "desc": "An item to be held by a Pokémon. It's a powerful magnet that boosts the power of Electric-type moves.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Golem (Alolan)",
@@ -10196,19 +10730,22 @@
   "id": "max_repel",
   "name": "Max Repel",
   "desc": "An item that prevents any low-level wild Pokémon from jumping out at you for a while. It lasts longer than Super Repel.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "max_soup",
   "name": "Max Soup",
   "desc": "A soup that causes the Gigantamax Factor to manifest in certain Pokémon when eaten.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "metal_powder",
   "name": "Metal Powder",
   "desc": "An item to be held by Ditto. Extremely fine yet hard, this odd powder boosts the Defense stat.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Ditto",
@@ -10237,13 +10774,15 @@
   "id": "meteorite",
   "name": "Meteorite",
   "desc": "A meteorite that fell from space onto Mt. Moon long ago. It is very lumpy and hard.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "miracle_seed",
   "name": "Miracle Seed",
   "desc": "An item to be held by a Pokémon. It's a seed imbued with life-force that boosts the power of Grass-type moves.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "BruteBonnet",
@@ -10321,13 +10860,15 @@
   "id": "mirror_herb",
   "name": "Mirror Herb",
   "desc": "An item to be held by a Pokémon. This herb will allow the holder to mirror an opponent's stat increases to boost its own stats—but only once.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "misty_seed",
   "name": "Misty Seed",
   "desc": "An item to be held by a Pokémon that boosts Sp. Defense on Misty Terrain.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "TapuFini",
@@ -10343,6 +10884,7 @@
   "name": "Mystic Water",
   "desc": "An item to be held by a Pokémon. This teardrop-shaped gem boosts the power of Water-type moves.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Inteleon",
@@ -10406,19 +10948,22 @@
   "id": "n_lunarizer",
   "name": "N-Lunarizer",
   "desc": "A machine to fuse Necrozma, which needs light, and Lunala.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "n_solarizer",
   "name": "N-Solarizer",
   "desc": "A machine to fuse Necrozma, which needs light, and Solgaleo.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "never_melt_ice",
   "name": "Never-Melt Ice",
   "desc": "An item to be held by a Pokémon. It's a heat-repelling piece of ice that boosts the power of Ice-type moves.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Kyurem",
@@ -10503,13 +11048,15 @@
   "id": "nugget",
   "name": "Nugget",
   "desc": "Can be sold to shopkeepers.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "oas_rod",
   "name": "Oa10712's Fishing Rod",
   "desc": "The best Old Rod.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "orange_tank",
@@ -10522,6 +11069,7 @@
   "name": "Pearl",
   "desc": "Can be sold to shopkeepers.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Samurott",
@@ -10557,19 +11105,22 @@
   "id": "pearl_string",
   "name": "Pearl String",
   "desc": "Can be sold to shopkeepers.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "perilous_soup",
   "name": "Perilous Soup",
   "desc": "Reset a Pokémons EVs.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "poison_barb",
   "name": "Poison Barb",
   "desc": "An item to be held by a Pokémon. This small, poisonous barb boosts the power of Poison-type moves.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Nidorina",
@@ -10661,25 +11212,29 @@
   "id": "poison_memory",
   "name": "Poison Memory",
   "desc": "A memory disc that contains Poison-type data. It changes the type of the holder if held by a certain species of Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "prison_bottle",
   "name": "Prison Bottle",
   "desc": "A bottle believed to have been used to seal away the power of a certain Pokémon long, long ago.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "psychic_memory",
   "name": "Psychic Memory",
   "desc": "A memory disc that contains Psychic-type data. It changes the type of the holder if held by a certain species of Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "psychic_seed",
   "name": "Psychic Seed",
   "desc": "An item to be held by a Pokémon that boosts Sp. Def on Psychic Terrain.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "TapuLele",
@@ -10695,6 +11250,7 @@
   "name": "Punching Glove",
   "desc": "An item to be held by a Pokémon. This protective glove boosts the power of the holder's punching moves and prevents direct contact with targets.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Hitmonchan",
@@ -10751,6 +11307,7 @@
   "name": "Quick Powder",
   "desc": "An item to be held by Ditto. Extremely fine yet hard, this odd powder boosts the Speed stat.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Ditto",
@@ -10766,6 +11323,7 @@
   "name": "Rare Bone",
   "desc": "Can be sold to shopkeepers.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Houndstone",
@@ -10780,55 +11338,64 @@
   "id": "rare_soda",
   "name": "Rare Soda",
   "desc": "Levels up a Pokémon by 2 levels.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "lens_gold",
   "name": "Ras' Golden Lens",
   "desc": "An item that shows the Ability, Nature, Ivs and Gender of a Pokémon when you right click the Pokémon with the item in hand. Can be used 4 times.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "lens_silver",
   "name": "Ras' Silver Lens",
   "desc": "An item that shows the Ability, Nature, Ivs and Gender of a Pokémon when you right click the Pokémon with the item in hand. Can be used 1 times.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "red_chain",
   "name": "Red Chain",
   "desc": "A mythical chain that is said to link and bind the Legendary Pokémon that created the Sinnoh region.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "red_chain_shard",
   "name": "Red Chain Shard",
   "desc": "A fragment of a chain long forgotten.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "red_flute",
   "name": "Red Flute",
   "desc": "A flute made from red glass that snaps Pokémon out of infatuation.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "red_orb",
   "name": "Red Orb",
   "desc": "A shiny red orb that is said to have a legend tied to it. It's known to have a deep connection with the Hoenn region.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "reins_of_unity",
   "name": "Reins of Unity",
   "desc": "Reins that people presented to the king. They enhance Calyrex’s power over bountiful harvests and unite Calyrex with its beloved steed.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "relic_copper",
   "name": "Relic Copper",
   "desc": "Can be sold to shopkeepers.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Gholdengo",
@@ -10851,6 +11418,7 @@
   "name": "Relic Gold",
   "desc": "Can be sold to shopkeepers.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Gholdengo",
@@ -10866,6 +11434,7 @@
   "name": "Relic Silver",
   "desc": "Can be sold to shopkeepers.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Chi-Yu",
@@ -10908,13 +11477,15 @@
   "id": "repel",
   "name": "Repel",
   "desc": "An item that prevents any low-level wild Pokémon from jumping out at you for a while.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "reveal_glass",
   "name": "Reveal Glass",
   "desc": "A looking glass that reveals the truth. It's a mysterious glass that returns a Pokémon to its original shape.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "sweet_ribbon",
@@ -10927,6 +11498,7 @@
   "name": "Ring Target",
   "desc": "An item to be held by a Pokémon. Moves that normally have no effect will land on a Pokémon holding it.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Dragapult",
@@ -10948,13 +11520,15 @@
   "id": "rock_memory",
   "name": "Rock Memory",
   "desc": "A memory disc that contains Rock-type data. It changes the type of the holder if held by a certain species of Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "roserade_tea",
   "name": "Roserade Tea",
   "desc": "Restores 100 HP.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "ruby_mesprit",
@@ -10978,19 +11552,22 @@
   "id": "rusted_shield",
   "name": "Rusted Shield",
   "desc": "It is said that a hero used this shield to halt a terrible disaster in ancient times. But it's grown rusty and worn.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "rusted_sword",
   "name": "Rusted Sword",
   "desc": "It is said that a hero used this sword to halt a terrible disaster in ancient times. But it's grown rusty and worn.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "sacredash",
   "name": "Sacred Ash",
   "desc": "This rare ash can revive all fainted Pokémon in a party. In doing so, it also fully restores their max HP.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "scroll_of_darkness",
@@ -11008,13 +11585,15 @@
   "id": "shalour_sable",
   "name": "Shalour Sable",
   "desc": "Shalour City's famous shortbread. It can be used once to heal all the status conditions of a Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "sharp_beak",
   "name": "Sharp Beak",
   "desc": "An item to be held by a Pokémon. It's a long, sharp beak that boosts the power of Flying-type moves.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Braviary",
@@ -11107,6 +11686,7 @@
   "name": "Shed Shell",
   "desc": "An item to be held by a Pokémon. This discarded carapace enables the holder to switch out of battle without fail.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Sandaconda",
@@ -11199,6 +11779,7 @@
   "name": "Shoal Salt",
   "desc": "Can be sold to shopkeepers.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Barbaracle",
@@ -11263,6 +11844,7 @@
   "name": "Shoal Shell",
   "desc": "Can be sold to shopkeepers.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "TapuFini",
@@ -11326,13 +11908,15 @@
   "id": "shock_drive",
   "name": "Shock Drive",
   "desc": "A cassette to be held by Genesect. It changes Genesect's Techno Blast move so it becomes Electric type.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "silk_scarf",
   "name": "Silk Scarf",
   "desc": "An item to be held by a Pokémon. It's a sumptuous scarf that boosts the power of Normal-type moves.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Drampa",
@@ -11375,13 +11959,15 @@
   "id": "silver_leaf",
   "name": "Silver Leaf",
   "desc": "Can be sold to shopkeepers.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "silver_powder",
   "name": "Silver Powder",
   "desc": "An item to be held by a Pokémon. It's a shiny silver powder that will boost the power of Bug-type moves.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Beautifly",
@@ -11473,13 +12059,15 @@
   "id": "skitty_smoothie",
   "name": "Skitty Smoothie",
   "desc": "Restores 150 HP.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "slowpoke_tail",
   "name": "Slowpoke Tail",
   "desc": "Can be sold to shopkeepers.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Slowbro",
@@ -11530,6 +12118,7 @@
   "name": "Soft Sand",
   "desc": "An item to be held by a Pokémon. It's a loose, silky sand that boosts the power of Ground-type moves.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Clodsire",
@@ -11607,13 +12196,15 @@
   "id": "soul_dew",
   "name": "Soul Dew",
   "desc": "A wondrous orb to be held by either Latios or Latias. It raises the power of Psychic- and Dragon-type moves.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "spell_tag",
   "name": "Spell Tag",
   "desc": "An item to be held by a Pokémon. It's a sinister, eerie tag that boosts the power of Ghost-type moves.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Jirachi",
@@ -11705,7 +12296,8 @@
   "id": "star_piece",
   "name": "Star Piece",
   "desc": "Can be sold to shopkeepers.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "sweet_star",
@@ -11718,6 +12310,7 @@
   "name": "Stardust",
   "desc": "Can be sold to shopkeepers.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Cosmoem",
@@ -11746,7 +12339,8 @@
   "id": "steel_memory",
   "name": "Steel Memory",
   "desc": "A memory disc that contains Steel-type data. It changes the type of the holder if held by a certain species of Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "strange_souvenier",
@@ -11758,7 +12352,8 @@
   "id": "strange_souvenir",
   "name": "Strange Souvenir",
   "desc": "An ornament depicting a mysterious Pokémon that has been venerated as a guardian deity for an extremely long time in the Alola region.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "sweet_strawberry",
@@ -11770,25 +12365,29 @@
   "id": "super_repel",
   "name": "Super Repel",
   "desc": "An item that prevents any low-level wild Pokémon from jumping out at you for a while. It lasts longer than Repel.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "tapu_cocoa",
   "name": "Tapu Cocoa",
   "desc": "Restores 150 HP.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "thick_club",
   "name": "Thick Club",
   "desc": "An item to be held by Cubone or Marowak. It's a hard bone of some sort that boosts the Attack stat.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "tiny_mushroom",
   "name": "Tiny Mushroom",
   "desc": "Can be sold to shopkeepers.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Lechonk",
@@ -11835,6 +12434,7 @@
   "name": "Twisted Spoon",
   "desc": "An item to be held by a Pokémon. This spoon is imbued with telekinetic power and boosts Psychic-type moves.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "IronLeaves",
@@ -11856,31 +12456,36 @@
   "id": "ultra_deep_sea_key",
   "name": "Ultra Deep Sea Key",
   "desc": "WIP. No current use.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "ultra_forest_key",
   "name": "Ultra Forest Key",
   "desc": "WIP. No current use.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "ultra_rare_soda",
   "name": "Ultra Rare Soda",
   "desc": "Levels up a Pokémon by 4 levels.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "ultra_ruin_key",
   "name": "Ultra Ruin Key",
   "desc": "WIP. No current use.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "up_grade",
   "name": "Up-Grade",
   "desc": "A transparent device somehow filled with all sorts of data. It was produced by Silph Co.",
   "category": "Outros",
+  "icon": true,
   "drops": [
    {
     "pokemon": "Porygon2",
@@ -11895,66 +12500,77 @@
   "id": "water_memory",
   "name": "Water Memory",
   "desc": "A memory disc that contains Water-type data. It changes the type of the holder if held by a certain species of Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "white_flute",
   "name": "White Flute",
   "desc": "A flute made from white glass. It makes it easier to encounter weak Pokémon in the place you use it.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "wishing_piece",
   "name": "Wishing Piece",
   "desc": "Throw into a Den to call forth a Dynamax Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "x_accuracy",
   "name": "X Accuracy",
   "desc": "An item that sharply boosts the accuracy of a Pokémon during a battle. It wears off once the Pokémon is withdrawn.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "x_attack",
   "name": "X Attack",
   "desc": "An item that sharply boosts the Attack stat of a Pokémon during a battle. It wears off once the Pokémon is withdrawn.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "x_defense",
   "name": "X Defense",
   "desc": "An item that sharply boosts the Defense stat of a Pokémon during a battle. It wears off once the Pokémon is withdrawn.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "x_special_attack",
   "name": "X Sp. Atk",
   "desc": "An item that sharply boosts the Sp. Atk stat of a Pokémon during a battle. It wears off once the Pokémon is withdrawn.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "x_special_defense",
   "name": "X Sp. Def",
   "desc": "An item that sharply boosts the Sp. Def stat of a Pokémon during a battle. It wears off once the Pokémon is withdrawn.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "x_speed",
   "name": "X Speed",
   "desc": "An item that sharply boosts the Speed stat of a Pokémon during a battle. It wears off once the Pokémon is withdrawn.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "yellow_flute",
   "name": "Yellow Flute",
   "desc": "A flute made from yellow glass that snaps Pokémon out of confusion.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  },
  {
   "id": "waterdude_wishing_piece",
   "name": "§bWaterdude's Wishing Piece",
   "desc": "Throw into a Den to call forth a Legendary Dynamax Pokémon.",
-  "category": "Outros"
+  "category": "Outros",
+  "icon": true
  }
 ]

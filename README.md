@@ -60,9 +60,9 @@ ou passe `-jar`. Depois da importação o app funciona **100% offline**.
   (com ícone) e **categoria** (Físico/Especial/Status), ordenação e um **modal**
   com os detalhes completos (poder, precisão, PP e efeito).
 - **Página de golpe** (`/move/{slug}`): quem aprende e como.
-- **Itens** (`/items`): catálogo dos itens do **Pixelmon** — o que cada um faz
-  (tooltip do mod) e **de quais Pokémon dropa, com a chance** (de `pokedrops.json`).
-  Busca, filtro por categoria e "só com drop".
+- **Itens** (`/items`): catálogo dos itens do **Pixelmon** com o **ícone (textura
+  do mod)** de cada um — o que faz (tooltip) e **de quais Pokémon dropa, com a
+  chance** (de `pokedrops.json`). Busca, filtro por categoria e "só com drop".
 - **Berries & Sucos** (`/berries`): todas as berries e o que fazem, com foco em
   **EV/IV** — sucos e vitaminas (EV), penas/asas (+1 EV), berries que reduzem EV
   e **Bottle Caps** (Hyper Training de IV), com um guia rápido de como treinar.

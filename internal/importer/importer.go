@@ -172,7 +172,7 @@ func Run(opts Options) error {
 
 	// Itens do Pixelmon (nome + o que faz + drops). Só gera se o jar existir;
 	// senão mantém o items.json versionado. Fica embutido em data/.
-	if items := buildPixelmonItems(pixelJar); len(items) > 0 {
+	if items := buildPixelmonItems(pixelJar, opts.OutDir); len(items) > 0 {
 		if err := writeJSON(filepath.Join(opts.OutDir, "items.json"), items); err != nil {
 			return err
 		}

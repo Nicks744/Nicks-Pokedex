@@ -406,6 +406,16 @@ body.modal-open { overflow: hidden; }
 .modal__link { width: 100%; }
 
 /* ---------- itens / berries ---------- */
+.mcard__id { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.item-ico {
+  image-rendering: pixelated; flex: 0 0 auto; object-fit: contain;
+  width: 32px; height: 32px;
+  background: color-mix(in srgb, var(--accent-2) 10%, var(--surface-2));
+  border: 1px solid var(--border); border-radius: 8px; padding: 3px;
+}
+.modal__head--item { flex-direction: row; align-items: center; gap: 12px; }
+.modal__head--item .item-ico { width: 46px; height: 46px; border-radius: 10px; }
+.modal__headmain { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .item-cat {
   display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 11px; font-weight: 800;
   background: var(--surface-2); border: 1px solid var(--border); color: var(--text-dim);

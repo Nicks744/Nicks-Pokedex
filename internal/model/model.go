@@ -100,6 +100,7 @@ type Item struct {
 	Category string     `json:"category"`       // "Berry", "Suco", "Vitamina", "Cura"...
 	EVStat   string     `json:"evStat,omitempty"`   // stat afetada por EV (ex.: "Ataque"), quando aplicavel
 	IV       bool       `json:"iv,omitempty"`       // mexe com IV (bottle caps)
+	Icon     bool       `json:"icon,omitempty"`  // tem textura em itemtex/{id}.png
 	Drops    []ItemDrop `json:"drops,omitempty"` // de quais Pokemon dropa (com chance)
 }
 
