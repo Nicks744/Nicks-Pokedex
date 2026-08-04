@@ -51,6 +51,8 @@
   }
 
   function wire() {
+    // re-renderiza os cards quando o idioma muda (descrições PT/EN)
+    window.addEventListener("npdx:langchange", apply);
     P.buildTypeChips(els.typeChips, (t, on) => {
       if (on) state.types.add(t); else state.types.delete(t);
       apply();

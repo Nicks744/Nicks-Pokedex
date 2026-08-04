@@ -475,6 +475,7 @@ func funcMap() template.FuncMap {
 		"statPct":     func(v int) int { return min(v*100/255, 100) },
 		"statColor":   statColor,
 		"lower":       strings.ToLower,
+		"catPt":       catPt,
 		"dict":        dict,
 		"sprite":      spriteURL,
 		"spriteShiny": spriteShinyURL,
@@ -513,6 +514,19 @@ func statColor(v int) string {
 	default:
 		return "#ef4444"
 	}
+}
+
+// catPt traduz a categoria do golpe para português (para o seletor de idioma).
+func catPt(c string) string {
+	switch c {
+	case "Physical":
+		return "Físico"
+	case "Special":
+		return "Especial"
+	case "Status":
+		return "Status"
+	}
+	return c
 }
 
 func title(s string) string {

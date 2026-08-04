@@ -160,7 +160,9 @@ func Run(opts Options) error {
 		}
 	}
 
-	moves := buildMoves(referenced, sd, lang)
+	langPt, _ := readLangFile(zr, "assets/cobblemon/lang/pt_br.json")
+	fmt.Printf("lang pt_br: %d chaves\n", len(langPt))
+	moves := buildMoves(referenced, sd, lang, langPt)
 
 	if err := writeJSON(filepath.Join(opts.OutDir, "pokedex.json"), pokes); err != nil {
 		return err
@@ -399,8 +401,14 @@ func newestMatch(patterns []string) string {
 // ---------- lang ----------
 
 func readLang(zr *zip.ReadCloser) (map[string]string, error) {
+	return readLangFile(zr, "assets/cobblemon/lang/en_us.json")
+}
+
+// readLangFile lê um arquivo de lang específico do jar (ex.: pt_br). Retorna um
+// mapa vazio (sem erro) se o arquivo não existir.
+func readLangFile(zr *zip.ReadCloser, name string) (map[string]string, error) {
 	for _, f := range zr.File {
-		if f.Name == "assets/cobblemon/lang/en_us.json" {
+		if f.Name == name {
 			rc, err := f.Open()
 			if err != nil {
 				return nil, err
@@ -914,7 +922,7 @@ func fetchShowdownMoves() (map[string]sdMove, error) {
 	return m, nil
 }
 
-func buildMoves(referenced map[string]bool, sd map[string]sdMove, lang map[string]string) map[string]model.Move {
+func buildMoves(referenced map[string]bool, sd map[string]sdMove, lang, langPt map[string]string) map[string]model.Move {
 	out := map[string]model.Move{}
 	for slug := range referenced {
 		mv := model.Move{Slug: slug, Name: moveName(slug, lang)}
@@ -927,8 +935,10 @@ func buildMoves(referenced map[string]bool, sd map[string]sdMove, lang map[strin
 			mv.Desc = firstNonEmpty(s.ShortDesc, s.Desc)
 		}
 		if mv.Desc == "" {
-			mv.Desc = firstNonEmpty(lang["cobblemon.move."+slug+".desc"], "")
+			mv.Desc = lang["cobblemon.move."+slug+".desc"]
 		}
+		// Descrição em português (Cobblemon pt_br). Só o texto "o que faz".
+		mv.DescPt = langPt["cobblemon.move."+slug+".desc"]
 		out[slug] = mv
 	}
 	return out

@@ -5,7 +5,7 @@
     <h1 class="move-detail__name">{{.Name}}</h1>
     <div class="move-detail__meta">
       {{if .Type}}{{template "typebadge" .Type}}{{end}}
-      <span class="cat cat--{{lower .Category}}">{{if .Category}}{{.Category}}{{else}}—{{end}}</span>
+      {{if .Category}}<span class="cat cat--{{lower .Category}}" data-i18n-en="{{.Category}}" data-i18n-pt="{{catPt .Category}}">{{catPt .Category}}</span>{{else}}<span class="cat">—</span>{{end}}
     </div>
   </header>
 
@@ -15,7 +15,7 @@
     <div class="tile"><span class="tile__label">PP</span><span class="tile__val">{{if gt .PP 0}}{{.PP}}{{else}}—{{end}}</span></div>
   </div>
 
-  {{if .Desc}}<p class="move-detail__desc">{{.Desc}}</p>{{end}}
+  {{if or .DescPt .Desc}}<p class="move-detail__desc" data-i18n-en="{{.Desc}}" data-i18n-pt="{{if .DescPt}}{{.DescPt}}{{else}}{{.Desc}}{{end}}">{{if .DescPt}}{{.DescPt}}{{else}}{{.Desc}}{{end}}</p>{{end}}
 </article>
 {{end}}
 

@@ -179,9 +179,11 @@
     return card;
   }
 
-  /* --- helpers de exibição de golpe --- */
+  /* --- helpers de exibição de golpe (respeitam o idioma escolhido) --- */
+  const lang = () => (global.I18N ? global.I18N.get() : "pt");
   const catClass = (c) => "cat cat--" + String(c || "").toLowerCase();
-  const catLabel = (c) => CAT_PT[c] || c || "—";
+  const catLabel = (c) => (lang() === "en" ? (c || "—") : (CAT_PT[c] || c || "—"));
+  const moveDesc = (mv) => (lang() === "en" ? mv.desc : (mv.descPt || mv.desc)) || "";
   const numOrDash = (n) => (n > 0 ? String(n) : "—");
   const accOrInf = (n) => (n > 0 ? String(n) : "∞");
 
@@ -213,10 +215,11 @@
       `<span class="mcard__stat"><b>${numOrDash(mv.pp)}</b> PP</span>`);
 
     card.append(head, meta);
-    if (mv.desc) {
+    const desc = moveDesc(mv);
+    if (desc) {
       const d = document.createElement("p");
       d.className = "mcard__desc";
-      d.textContent = mv.desc;
+      d.textContent = desc;
       card.append(d);
     }
     card.addEventListener("click", () => onOpen(mv));
@@ -272,8 +275,8 @@
       `<div class="tile"><span class="tile__label">Poder</span><span class="tile__val">${numOrDash(mv.power)}</span></div>` +
       `<div class="tile"><span class="tile__label">Precisão</span><span class="tile__val">${accOrInf(mv.accuracy)}</span></div>` +
       `<div class="tile"><span class="tile__label">PP</span><span class="tile__val">${numOrDash(mv.pp)}</span></div></div>` +
-      (mv.desc ? `<p class="modal__desc">${mv.desc}</p>` : "") +
-      `<a class="btn btn--sm modal__link" href="move/${mv.slug}">Ver quem aprende →</a>`;
+      (moveDesc(mv) ? `<p class="modal__desc">${esc(moveDesc(mv))}</p>` : "") +
+      `<a class="btn btn--sm modal__link" href="move/${mv.slug}">${lang() === "en" ? "See who learns it →" : "Ver quem aprende →"}</a>`;
     return el;
   }
   const MoveModal = { open: (mv) => Modal.open(moveDetail(mv)), close: Modal.close };

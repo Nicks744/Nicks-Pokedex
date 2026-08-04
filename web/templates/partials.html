@@ -8,6 +8,7 @@
 <meta name="theme-color" content="#ef4444">
 <title>{{.Title}} · Nick's Pokédex</title>
 <link rel="stylesheet" href="static/css/app.css">
+<script defer src="static/js/i18n.js"></script>
 <script defer src="static/js/components.js"></script>
 <script defer src="static/js/store.js"></script>
 </head>
@@ -27,14 +28,21 @@
     <a class="brand" href="{{.BaseURL}}">
       <span class="brand__dot"></span> Nick's Pokédex
     </a>
-    <nav class="nav__links">
-      <a href="{{.BaseURL}}" class="nav__link {{if eq .Active "dex"}}is-active{{end}}">Pokédex</a>
-      <a href="moves" class="nav__link {{if eq .Active "moves"}}is-active{{end}}">Ataques</a>
-      <a href="items" class="nav__link {{if eq .Active "items"}}is-active{{end}}">Itens</a>
-      <a href="berries" class="nav__link {{if eq .Active "berries"}}is-active{{end}}">Berries</a>
-      <a href="team" class="nav__link {{if eq .Active "team"}}is-active{{end}}">Meu Time</a>
-      <a href="history" class="nav__link {{if eq .Active "history"}}is-active{{end}}">Histórico</a>
-    </nav>
+    <div class="nav__right">
+      <nav class="nav__links">
+        <a href="{{.BaseURL}}" class="nav__link {{if eq .Active "dex"}}is-active{{end}}">Pokédex</a>
+        <a href="moves" class="nav__link {{if eq .Active "moves"}}is-active{{end}}">Ataques</a>
+        <a href="items" class="nav__link {{if eq .Active "items"}}is-active{{end}}">Itens</a>
+        <a href="berries" class="nav__link {{if eq .Active "berries"}}is-active{{end}}">Berries</a>
+        <a href="team" class="nav__link {{if eq .Active "team"}}is-active{{end}}">Meu Time</a>
+        <a href="history" class="nav__link {{if eq .Active "history"}}is-active{{end}}">Histórico</a>
+      </nav>
+      <div class="lang-toggle" role="group" aria-label="Idioma / Language">
+        <span class="lang-toggle__icon" aria-hidden="true">🌐</span>
+        <button class="lang-toggle__btn" type="button" data-lang="pt" title="Português">PT</button>
+        <button class="lang-toggle__btn" type="button" data-lang="en" title="English">EN</button>
+      </div>
+    </div>
   </div>
 </header>{{end}}
 

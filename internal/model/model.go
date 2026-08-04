@@ -89,7 +89,8 @@ type Move struct {
 	Power    int    `json:"power"`    // 0 = variavel/nenhum
 	Accuracy int    `json:"accuracy"` // 0 = nao erra (true)
 	PP       int    `json:"pp"`
-	Desc     string `json:"desc"`
+	Desc     string `json:"desc"`   // descrição em inglês
+	DescPt   string `json:"descPt,omitempty"` // descrição em português (Cobblemon pt_br)
 }
 
 // Item e um item do Pixelmon: o que ele faz (Desc) e onde obter (Drops).
